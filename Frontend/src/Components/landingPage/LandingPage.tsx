@@ -1,5 +1,5 @@
 import React from "react";
-import bg from "../../Assets/background-lp.jpg";
+import bacgroundImage from "../../Assets/background-lp.jpg";
 
 interface Props {}
 
@@ -9,7 +9,7 @@ export const LandingPage: React.FC<Props> = (props) => {
   return (
     <div>
       <div>
-        <img src={bg} alt="background" />
+        <img src={bacgroundImage} alt="background" />
       </div>
       <div>
         <h2>Stragan.com</h2>
