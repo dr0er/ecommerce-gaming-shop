@@ -9,7 +9,7 @@ to beda one w formie tablicy w formie rest props*/
 export const PrivateRoute: React.FC<Props> = ({ children, ...restProps }) => {
   const isAuth = false;
   // sprawdzamy czy dostalismy odpowiedz z serwera odnosnie autoryzacji
-  if (isAuth == null) {
+  if (isAuth === null) {
     return null;
   }
   return (
