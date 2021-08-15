@@ -1,11 +1,11 @@
 import React from "react";
 import bacgroundImage from "../../Assets/background-lp.jpg";
 
-interface Props {}
+interface IProps {}
 
 // React.FC<Props> wymaga od komponentu zeby zwracal jsx
 
-export const LandingPage: React.FC<Props> = (props) => {
+export const LandingPage: React.FC<IProps> = (props) => {
   return (
     <div>
       <div>
