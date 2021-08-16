@@ -1,5 +1,5 @@
 import React from "react";
-import bacgroundImage from "../../Assets/background-lp.jpg";
+import "./LandingPage.css"
 
 interface IProps {}
 
@@ -7,19 +7,23 @@ interface IProps {}
 
 export const LandingPage: React.FC<IProps> = (props) => {
   return (
-    <div>
-      <div>
-        <img src={bacgroundImage} alt="background" />
-      </div>
-      <div>
-        <h2>Stragan.com</h2>
-      </div>
-      <div>
-        <h1>Next level of gaming shopping</h1>
-      </div>
-      <div>
-        <div>Get started</div>
-      </div>
+    <div className="landingPage_Container" >
+
+
+    <div className="center_Text">
+        <p className="stragan_Text">Stragan.com</p>
+        <div className="center_Text_Info">
+            Next level of gaming {" "} 
+            <span className="shopping_Blue" >
+              shopping
+            </span> 
+        </div>
+    </div>
+
+
+        <div className="button_GetStarted">
+          Get started
+        </div>
     </div>
   );
 };
