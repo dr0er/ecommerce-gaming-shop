@@ -8,7 +8,7 @@ interface Props {}
 export const Routing: React.FC<Props> = (Props) => {
   return (
     <Switch>
-      <Route path={Routes.test}>
+      <Route path={Routes.index}>
         <LandingPage />
       </Route>
     </Switch>

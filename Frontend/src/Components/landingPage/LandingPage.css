@@ -1,0 +1,95 @@
+.landingPage_Container{
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100);
+    width: 100vw;
+    overflow: hidden;
+    color: #F3F5F7;
+    background: no-repeat center left 65% url('../../Assets/background-lp.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+}
+
+.center_Text{
+    align-self: flex-start;
+    margin-left: 10%;
+    flex-direction: column;
+    display: flex;
+    z-index: 2;
+}
+
+.center_Text_Info{
+    font-size: 30px;
+    max-width: 230px;
+    margin: 0;
+    font-weight: 600;
+}
+.shopping_Blue{
+    position: relative;
+}
+.shopping_Blue::before{
+    display: block;
+    content:" ";
+    background-color: #498DF8;
+    position: absolute;
+    width: 100%;
+    height: 17px;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transform: translateY(125%);
+}
+
+.stragan_Text{
+    padding:10px 20px;
+    background-color: rgba(56, 56, 56, 1);
+    color: white;
+    font-size: 20px;
+    width: fit-content;
+    border-radius: 15px;
+}
+
+.button_GetStarted{
+    background-color: #D7DAE2;
+    padding: 10px 20px;
+    font-weight: 700;
+    border-radius: 15px;
+    justify-self: flex-end;
+    position: absolute;
+    width: fit-content;
+    top: 90%;
+    left: 70%;
+    transform: translate(-50%,-50%);
+}
+
+.button_GetStarted a{
+    text-decoration: none;
+    color: #498DF8;
+    display: flex;
+    gap: 10px;
+    font-size: 15px;
+    align-items: center;
+}
+
+
+@media(min-width:768px){
+    .center_Text{
+        align-self: center;
+        margin: 0;
+    }
+}
+
+@media(min-width:992px){
+    
+}
+
+@media(min-width:1200px){
+    
+}
+
+@media(min-width:1400px){
+    
+}
