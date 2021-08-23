@@ -1,5 +1,8 @@
 import React from "react";
 import "./LandingPage.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { Link } from "react-router-dom";
 
 interface IProps {}
 
@@ -22,7 +25,10 @@ export const LandingPage: React.FC<IProps> = (props) => {
 
 
         <div className="button_GetStarted">
-          Get started
+          <Link to='/'>
+            Get started
+              <FontAwesomeIcon icon={faChevronRight}/>
+          </Link>
         </div>
     </div>
   );
