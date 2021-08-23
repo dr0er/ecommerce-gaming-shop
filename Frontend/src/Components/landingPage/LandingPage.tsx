@@ -12,7 +12,7 @@ export const LandingPage: React.FC<IProps> = (props) => {
   return (
     <div className="landingPage_Container">
       <div className="center_Text">
-        <p className="stragan_Text text-red-500">Stragan.com</p>
+        <p className="stragan_Text">Stragan.com</p>
         <div className="center_Text_Info">
           Next level of gaming <span className="shopping_Blue">shopping</span>
         </div>
