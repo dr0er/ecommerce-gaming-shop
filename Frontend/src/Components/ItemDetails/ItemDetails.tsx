@@ -1,4 +1,4 @@
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { useSwipeable } from "react-swipeable";
 import Image from "./Image";
 import ImageDot from "./ImageDot";
 import mouse from "../../Assets/mouse.png"
+import Review from "./Review";
 
 export interface ItemDetailsProps {
     currentImage:number,
@@ -27,6 +28,27 @@ const ItemDetails = () => {
             mouse,
             mouse,
         ],
+        reviews:[
+        {  
+            customer:'Janusz Tracz',
+            rate: '4',
+            added: '3 days ago',
+            opinion:'Mauris finibus lorem sit amet urna congue lacinia. Sed pharetra metus non risus facilisis, sed bibendum orci malesuada. Quisque orci lectus, porta quis malesuada sit amet, consequat quis purus. Vestibulum non ex ac nisi cursus mollis quis sit amet risus. Quisque id hendrerit ligula, quis fermentum libero.',
+        },
+        {  
+            customer:'John',
+            rate: '2',
+            added: '23 days ago',
+            opinion:'Vestibulum non ex ac nisi cursus mollis quis sit amet risus@!@!@!',
+        },
+        {  
+            customer:'Uvuvwevwevwe',
+            rate: '5',
+            added: 'a year ago',
+            opinion:'ok',
+        },
+
+        ]
     })
 
 
@@ -79,12 +101,14 @@ const ItemDetails = () => {
         }
     })
 
+    const createReviews = product.reviews.map((review,index) => <Review data={review} key={index} />)
+
     return ( 
         <>
             <div className="w-auto h-20 border-2 border-red-500" >
                 NAVBAR
             </div>
-            <div className="text-grey-light overflow-hidden px-10 flex flex-col gap-4 font-bold" >
+            <div className="text-grey-light overflow-hidden px-10 flex flex-col gap-4 font-bold max-w-md md: mx-auto" >
     
 
                 <Link to="/" >
@@ -110,10 +134,18 @@ const ItemDetails = () => {
                 </div>
 
 
+              
+
                 <div className="flex flex-col  gap-1">
+
+                    {/* PRODUCT NAME */}
+
+
                     <h1 className="text-3xl" >
                         {product.name}
                     </h1>
+
+                    {/* SHORT DESCRIPTION */}
 
                     <p className="opacity-30" >
                         {product.shortDescription}
@@ -121,15 +153,23 @@ const ItemDetails = () => {
                 </div>
                
 
-                <p className="tracking-tighter text-base font-semibold" >
+                {/* DESCRIPTION */}
+
+                <p className="tracking-tighter text-base font-bold" >
                     {product.description}
                 </p>
 
                 <div className="flex justify-between mt-4">
+
+                    {/* PRICE */}
+
                     <div className="flex flex-col ">
                         <p className="opacity-30" >Price:</p>
                         <h1 className="text-3xl">{product.price}</h1>
                     </div>
+
+
+                    {/* RATING */}
 
                     <div className="flex flex-col justify-between text-right">
                         <p>{product.inStock} in stock</p>
@@ -141,6 +181,44 @@ const ItemDetails = () => {
                     </div>
 
                 </div>
+
+                {/* BUY BUTTON */}
+
+                <div className="flex mx-auto rounded-full bg-grey-light p-4 text-white text-xl w-min mt-5 mb-5 shadow ">
+                    <FontAwesomeIcon icon={faShoppingCart}/>
+                </div>
+
+
+                {/* REVIEWS  */}
+
+                <div className="flex flex-col" >
+                    <h2 className="text-xl" >Reviews ({product.reviews.length})</h2>
+                    {createReviews}
+                </div>
+
+
+
+                {/* FOOTER */}
+                <div className="flex flex-col gap-5 my-4">
+                     <div className="flex flex-col font-normal" >
+                        <h2 className="font-bold mb-3 text-xl">Stragan</h2>
+                        <p>About us</p>
+                        <p>Cookies</p>
+                        <p>Privacy policy</p>
+                        <p>Some shit</p>
+                    </div>
+
+                    <div className="flex flex-col font-normal" >
+                        <h2 className="font-bold mb-3 text-xl">Social media</h2>
+                        <p>Facebook</p>
+                        <p>Twitter</p>
+                        <p>Instagram</p>
+                    </div>
+
+                </div>
+                   
+
+
 
              
 
