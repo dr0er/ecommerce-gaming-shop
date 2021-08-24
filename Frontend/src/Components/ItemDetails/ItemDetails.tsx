@@ -53,31 +53,7 @@ const ItemDetails = () => {
 
         ]
     })
-
-
-    const swipeable = useSwipeable({
-        onSwipedRight: ()=>{ 
-            setCurrentImage(prev=>{
-                if(prev > 0){
-                    return prev - 1
-                }else{
-                    return prev
-                }
-            })
-
-        },
-        onSwipedLeft: ()=>{ 
-            setCurrentImage(prev=>{
-                if(prev < product.images.length -1){
-                    return prev + 1
-                }else{
-                    return prev
-                }
-            })
-        },
-      });
-
-
+    
       if(!product) return null
 
 
@@ -85,60 +61,118 @@ const ItemDetails = () => {
         setCurrentImage(image);
     }
 
-    const createImages = product.images.map((image,index)=> {
-    if(index === currentImage){
-        return <Image src={image} key={index} current/>
-    }else{
-        return <Image src={image} key={index}/>
+    const renderBackButton = () =>{
+        return (
+            <Link to="/" >
+                <div className="flex gap-5 items-center text-base font-medium"> 
+                    <FontAwesomeIcon icon={faChevronLeft} />
+                    Back to mice
+                </div>
+            </Link>
+        )
+    }
+
+    const RenderImageWrapper = ()=>{
+
+        const swipeable = useSwipeable({
+            onSwipedRight: ()=>{ 
+                setCurrentImage(prev=>{
+                    if(prev > 0){
+                        return prev - 1
+                    }else{
+                        return prev
+                    }
+                })
+    
+            },
+            onSwipedLeft: ()=>{ 
+                setCurrentImage(prev=>{
+                    if(prev < product.images.length -1){
+                        return prev + 1
+                    }else{
+                        return prev
+                    }
+                })
+            },
+          });
+
+          const createImages = product.images.map((image,index)=> {
+            if(index === currentImage){
+                return <Image src={image} key={index} current/>
+            }else{
+                return <Image src={image} key={index}/>
+            }
+        })
+
+        const createImageDots = product.images.map((image,index)=> {
+            if(currentImage === index){
+                return <ImageDot active  key={index} onClick={() => handleChangeImage(index)} />
+            }else{
+                return <ImageDot key={index} onClick={()=> handleChangeImage(index)} />
+            }
+        })
+
+        return (
+            <ImageWrapper swipeable={swipeable} currentImage={currentImage} createImages={createImages} createImageDots={createImageDots} />
+        )
+    }
+
+
+    const renderProductInfo = () =>{
+        return (
+            <ProductInfo product={product} />
+        )
 
     }
-    
-})
 
 
-    const createImageDots = product.images.map((image,index)=> {
-        if(currentImage === index){
-            return <ImageDot active  key={index} onClick={() => handleChangeImage(index)} />
-        }else{
-            return <ImageDot key={index} onClick={()=> handleChangeImage(index)} />
-        }
-    })
+    const renderPriceAndRating = () =>{
+        return(
+            <PriceAndRating product={product} />
 
-    const createReviews = product.reviews.map((review,index) => <Review data={review} key={index} />)
+        )
+    }
+
+    const renderBuyButton = () =>{
+        return(
+            <div className="flex mx-auto rounded-full bg-grey-light p-4 text-white text-xl w-min mt-5 mb-5 shadow ">
+                <FontAwesomeIcon icon={faShoppingCart}/>
+            </div>
+        )
+    }
+
+
+    const renderReviews = () =>{
+
+        const createReviews = product.reviews.map((review,index) => <Review data={review} key={index} />)
+
+        return(
+            <div className="flex flex-col" >
+                <h2 className="text-xl" >Reviews ({product.reviews.length})</h2>
+                {createReviews}
+            </div>  
+        )
+    }
+
+
+    const renderItemDetails = () =>{
+
+        return (
+            <div className="text-grey-light overflow-hidden px-10 flex flex-col gap-4 font-bold max-w-md md: mx-auto" >
+                {renderBackButton()}
+                {RenderImageWrapper()}
+                {renderProductInfo()}
+                {renderPriceAndRating()}
+                {renderBuyButton()}
+                {renderReviews()}
+            </div>
+        )
+
+    }
 
     return ( 
         <>
-
-            <div className="text-grey-light overflow-hidden px-10 flex flex-col gap-4 font-bold max-w-md md: mx-auto" >
-    
-
-                <Link to="/" >
-                    <div className="flex gap-5 items-center text-base font-medium"> 
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                        Back to mice
-                    </div>
-                </Link>
-
-                <ImageWrapper swipeable={swipeable} currentImage={currentImage} createImages={createImages} createImageDots={createImageDots} />
-
-                <ProductInfo product={product} />
-
-                <PriceAndRating product={product} />
-
-                {/* BUY BUTTON */}
-
-                <div className="flex mx-auto rounded-full bg-grey-light p-4 text-white text-xl w-min mt-5 mb-5 shadow ">
-                    <FontAwesomeIcon icon={faShoppingCart}/>
-                </div>
-
-
-                {/* REVIEWS  */}
-
-                <div className="flex flex-col" >
-                    <h2 className="text-xl" >Reviews ({product.reviews.length})</h2>
-                    {createReviews}
-                </div>                
-            </div>
+            {renderItemDetails()}
         </>
      );
 }
