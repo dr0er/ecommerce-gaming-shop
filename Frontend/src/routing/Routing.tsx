@@ -7,16 +7,15 @@ import ItemDetails from "../Components/ItemDetails/ItemDetails";
 interface Props {}
 
 export const Routing: React.FC<Props> = (Props) => {
-  return (
-    <Switch>
-      <Route path={Routes.index} exact>
-        <LandingPage />
-      </Route>
+	return (
+		<Switch>
+			<Route path={Routes.index} exact>
+				<LandingPage />
+			</Route>
 
-      <Route path="/itemDetails">
-          <ItemDetails/>
-      </Route>
-
-    </Switch>
-  );
+			<Route path="/itemDetails">
+				<ItemDetails />
+			</Route>
+		</Switch>
+	);
 };
