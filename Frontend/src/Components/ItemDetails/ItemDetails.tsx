@@ -7,6 +7,9 @@ import Image from "./Image";
 import ImageDot from "./ImageDot";
 import mouse from "../../Assets/mouse.png"
 import Review from "./Review";
+import ImageWrapper from "./ImageWrapper";
+import ProductInfo from "./ProductInfo";
+import PriceAndRating from "./PriceAndRating";
 
 export interface ItemDetailsProps {
     currentImage:number,
@@ -75,11 +78,11 @@ const ItemDetails = () => {
       });
 
 
-      if(!product) return false
+      if(!product) return null
 
 
-    const handleChangeImage = (e:any) =>{
-        setCurrentImage(Number(e.target.dataset.index));
+    const handleChangeImage = (image:number) =>{
+        setCurrentImage(image);
     }
 
     const createImages = product.images.map((image,index)=> {
@@ -95,9 +98,9 @@ const ItemDetails = () => {
 
     const createImageDots = product.images.map((image,index)=> {
         if(currentImage === index){
-            return <ImageDot active  key={index} index={index} onClick={handleChangeImage} />
+            return <ImageDot active  key={index} onClick={() => handleChangeImage(index)} />
         }else{
-            return <ImageDot key={index} index={index} onClick={handleChangeImage} />
+            return <ImageDot key={index} onClick={()=> handleChangeImage(index)} />
         }
     })
 
@@ -105,9 +108,7 @@ const ItemDetails = () => {
 
     return ( 
         <>
-            <div className="w-auto h-20 border-2 border-red-500" >
-                NAVBAR
-            </div>
+
             <div className="text-grey-light overflow-hidden px-10 flex flex-col gap-4 font-bold max-w-md md: mx-auto" >
     
 
@@ -118,69 +119,11 @@ const ItemDetails = () => {
                     </div>
                 </Link>
 
+                <ImageWrapper swipeable={swipeable} currentImage={currentImage} createImages={createImages} createImageDots={createImageDots} />
 
+                <ProductInfo product={product} />
 
-                <div {...swipeable} className={` h-36 my-3 flex transition duration-300 transform`}
-
-                style={{transform:`translateX(-${currentImage *100}%)`}}
-                
-                >
-                {createImages}
-                </div>
-
-
-                <div className="flex justify-center gap-3 w-auto" >
-                {createImageDots}
-                </div>
-
-
-              
-
-                <div className="flex flex-col  gap-1">
-
-                    {/* PRODUCT NAME */}
-
-
-                    <h1 className="text-3xl" >
-                        {product.name}
-                    </h1>
-
-                    {/* SHORT DESCRIPTION */}
-
-                    <p className="opacity-30" >
-                        {product.shortDescription}
-                    </p>
-                </div>
-               
-
-                {/* DESCRIPTION */}
-
-                <p className="tracking-tighter text-base font-bold" >
-                    {product.description}
-                </p>
-
-                <div className="flex justify-between mt-4">
-
-                    {/* PRICE */}
-
-                    <div className="flex flex-col ">
-                        <p className="opacity-30" >Price:</p>
-                        <h1 className="text-3xl">{product.price}</h1>
-                    </div>
-
-
-                    {/* RATING */}
-
-                    <div className="flex flex-col justify-between text-right">
-                        <p>{product.inStock} in stock</p>
-                        <p className="opacity-30"> 
-                            Reviews {" "}
-                            <span className="opacity-100">{product.rating}</span>
-                            /5 
-                        </p>
-                    </div>
-
-                </div>
+                <PriceAndRating product={product} />
 
                 {/* BUY BUTTON */}
 
@@ -194,36 +137,7 @@ const ItemDetails = () => {
                 <div className="flex flex-col" >
                     <h2 className="text-xl" >Reviews ({product.reviews.length})</h2>
                     {createReviews}
-                </div>
-
-
-
-                {/* FOOTER */}
-                <div className="flex flex-col gap-5 my-4">
-                     <div className="flex flex-col font-normal" >
-                        <h2 className="font-bold mb-3 text-xl">Stragan</h2>
-                        <p>About us</p>
-                        <p>Cookies</p>
-                        <p>Privacy policy</p>
-                        <p>Some shit</p>
-                    </div>
-
-                    <div className="flex flex-col font-normal" >
-                        <h2 className="font-bold mb-3 text-xl">Social media</h2>
-                        <p>Facebook</p>
-                        <p>Twitter</p>
-                        <p>Instagram</p>
-                    </div>
-
-                </div>
-                   
-
-
-
-             
-
-
-
+                </div>                
             </div>
         </>
      );

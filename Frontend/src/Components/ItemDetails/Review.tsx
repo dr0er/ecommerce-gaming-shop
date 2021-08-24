@@ -1,8 +1,7 @@
 export interface ReviewProps {
-
 }
  
-const Review = ({data}) => {
+const Review = ({data}: {data:any}) => {
 
     const {customer, rate,added, opinion} = data
 
