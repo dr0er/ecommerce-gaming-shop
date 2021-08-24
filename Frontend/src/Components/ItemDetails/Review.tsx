@@ -1,7 +1,13 @@
 export interface ReviewProps {
+    data:{
+        customer:string,
+        rate:string,
+        added:string,
+        opinion:string,
+    }
 }
  
-const Review = ({data}: {data:any}) => {
+const Review:React.SFC<ReviewProps> = ({data}) => {
 
     const {customer, rate,added, opinion} = data
 
