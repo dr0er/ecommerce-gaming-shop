@@ -78,7 +78,7 @@ const ItemDetails = () => {
 					if (prev > 0) {
 						return prev - 1;
 					} else {
-						return prev;
+						return product.images.length - 1;
 					}
 				});
 			},
@@ -87,7 +87,7 @@ const ItemDetails = () => {
 					if (prev < product.images.length - 1) {
 						return prev + 1;
 					} else {
-						return prev;
+						return 0;
 					}
 				});
 			},
