@@ -158,7 +158,7 @@ const ItemDetails = () => {
 
 	const renderItemDetails = () => {
 		return (
-			<div className="text-grey-light overflow-hidden px-10 flex flex-col gap-4 font-bold max-w-md md: mx-auto">
+			<div className="text-grey-light overflow-hidden px-6 flex flex-col gap-4 font-bold max-w-md md: mx-auto">
 				{renderBackButton()}
 				{RenderImageWrapper()}
 				{renderProductInfo()}
