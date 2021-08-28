@@ -70,7 +70,7 @@ class Category(models.Model):
     name = models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class OrderItem(models.Model):
