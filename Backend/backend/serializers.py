@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import Adress, User, Order, Review, Product, Brand, Category, OrderItem
+from .models import Address, Order, Review, Product, Brand, Category, OrderItem
 
 
 class AdressSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Adress
+        model = Address
         fields = ('id',
                     'order',
                     'adress',
@@ -76,4 +76,3 @@ class OrderItemSerializer(serializers.ModelSerializer):
                     'qty',
                     'price',
                     'image')
-

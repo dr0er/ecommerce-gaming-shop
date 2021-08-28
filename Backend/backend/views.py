@@ -1,9 +1,20 @@
-from django.views.generic import DetailView
+from rest_framework.viewsets import GenericViewSet
+from rest_framework.mixins import (
+    ListModelMixin,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    DestroyModelMixin
+)
 
 
 from .models import Product
+from .serializers import ProductSerializer
 # Create your views here.
 
 
-class ProductDetailView(DetailView):
-    model = Product
+class ProductDetailViewset(
+                   RetrieveModelMixin,
+                   GenericViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
