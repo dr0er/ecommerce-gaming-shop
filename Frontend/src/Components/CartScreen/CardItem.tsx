@@ -2,7 +2,6 @@ import { faPlusCircle, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import removeCircle from "../../Assets/remove-circle-outline.svg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
 
 export interface CardItemProps {
 	data: {
