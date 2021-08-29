@@ -39,6 +39,11 @@ class ReviewSerializer(serializers.ModelSerializer):
                     'createdAt')
 
 class ProductSerializer(serializers.ModelSerializer):
+
+    reviews = ReviewSerializer(many=True)
+    brand = serializers.SlugRelatedField(slug_field='name', read_only=True)
+    category = serializers.SlugRelatedField(slug_field='name', read_only=True)
+        
     class Meta:
         model = Product
         fields = ('id',
@@ -51,7 +56,8 @@ class ProductSerializer(serializers.ModelSerializer):
                     'reviewNum',
                     'price',
                     'qtylnStock',
-                    'createdAt')
+                    'createdAt',
+                    'reviews',)
 
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:

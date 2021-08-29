@@ -34,7 +34,7 @@ class Order(models.Model):
 
 class Review(models.Model):
     user = models.ForeignKey(author_user, on_delete=models.SET_NULL, null=True)
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, null=True, related_name='reviews')
     title = models.CharField(max_length=50, null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True)
     comment = models.TextField(null=True, blank=True)

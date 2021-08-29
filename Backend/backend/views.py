@@ -8,13 +8,29 @@ from rest_framework.mixins import (
 )
 
 
-from .models import Product
-from .serializers import ProductSerializer
+from .models import (
+    Address,
+    Order,
+    Review,
+    Product,
+    Brand,
+    Category,
+    OrderItem
+)
+from .serializers import (
+    AdressSerializer,
+    OrderSerializer,
+    ReviewSerializer,
+    ProductSerializer,
+    BrandSerializer,
+    CategorySerializer,
+    OrderItemSerializer
+)
 # Create your views here.
 
 
 class ProductDetailViewset(
-                   RetrieveModelMixin,
-                   GenericViewSet):
+                    RetrieveModelMixin,
+                    GenericViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
