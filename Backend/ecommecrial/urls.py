@@ -19,10 +19,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from backend.urls import router
+from accounts.urls import router_acc
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('api/account/', include(router_acc.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
