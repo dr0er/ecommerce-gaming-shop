@@ -60,17 +60,6 @@ const ItemDetails = () => {
 		setCurrentImage(image);
 	};
 
-	const renderBackButton = () => {
-		return (
-			<Link to="/">
-				<div className="flex gap-5 items-center text-base font-medium">
-					<FontAwesomeIcon icon={faChevronLeft} />
-					Back to mice
-				</div>
-			</Link>
-		);
-	};
-
 	const RenderImageWrapper = () => {
 		const swipeable = useSwipeable({
 			onSwipedRight: () => {
@@ -159,7 +148,12 @@ const ItemDetails = () => {
 	const renderItemDetails = () => {
 		return (
 			<div className="text-grey-light overflow-hidden px-6 flex flex-col gap-4 font-bold max-w-md md: mx-auto">
-				{renderBackButton()}
+				<Link to="/">
+					<div className="flex gap-5 items-center text-base font-medium">
+						<FontAwesomeIcon icon={faChevronLeft} />
+						Back to mice
+					</div>
+				</Link>
 				{RenderImageWrapper()}
 				{renderProductInfo()}
 				{renderPriceAndRating()}

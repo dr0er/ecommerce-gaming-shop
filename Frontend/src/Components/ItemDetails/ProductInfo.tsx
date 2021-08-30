@@ -1,43 +1,31 @@
 export interface ProductInfoProps {
-    product:{
-        name:string,
-        shortDescription:string,
-        description:string,
-    },
+	product: {
+		name: string;
+		shortDescription: string;
+		description: string;
+	};
 }
- 
-const ProductInfo: React.SFC<ProductInfoProps> = ({product}) => {
 
-    const {name, shortDescription, description} = product
+const ProductInfo = ({ product }: ProductInfoProps) => {
+	const { name, shortDescription, description } = product;
 
-    return ( 
-        <>
-        
-            <div className="flex flex-col  gap-1">
+	return (
+		<>
+			<div className="flex flex-col  gap-1">
+				{/* PRODUCT NAME */}
 
-            {/* PRODUCT NAME */}
+				<h1 className="text-3xl">{name}</h1>
 
+				{/* SHORT DESCRIPTION */}
 
-            <h1 className="text-3xl" >
-                {name}
-            </h1>
+				<p className="opacity-30">{shortDescription}</p>
+			</div>
 
-            {/* SHORT DESCRIPTION */}
+			{/* DESCRIPTION */}
 
-            <p className="opacity-30" >
-                {shortDescription}
-            </p>
-            </div>
+			<p className="tracking-tighter text-base font-bold">{description}</p>
+		</>
+	);
+};
 
-
-            {/* DESCRIPTION */}
-
-            <p className="tracking-tighter text-base font-bold" >
-            {description}
-            </p>
-
-        </>
-     );
-}
- 
 export default ProductInfo;

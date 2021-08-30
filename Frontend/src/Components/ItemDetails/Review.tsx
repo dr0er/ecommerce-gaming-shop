@@ -7,7 +7,7 @@ export interface ReviewProps {
 	};
 }
 
-const Review: React.SFC<ReviewProps> = ({ data }) => {
+const Review = ({ data }: ReviewProps) => {
 	const { customer, rate, added, opinion } = data;
 
 	return (

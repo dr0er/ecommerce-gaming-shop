@@ -6,19 +6,15 @@ export interface PriceAndRatingProps {
 	};
 }
 
-const PriceAndRating: React.SFC<PriceAndRatingProps> = ({ product }) => {
+const PriceAndRating = ({ product }: PriceAndRatingProps) => {
 	const { price, inStock, rating } = product;
 
 	return (
 		<div className="flex justify-between mt-4">
-			{/* PRICE */}
-
 			<div className="flex flex-col ">
 				<p className="opacity-30">Price:</p>
 				<h1 className="text-3xl">{price}</h1>
 			</div>
-
-			{/* RATING */}
 
 			<div className="flex flex-col justify-between text-right">
 				<p>{inStock} in stock</p>

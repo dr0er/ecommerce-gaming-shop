@@ -1,8 +1,8 @@
 export interface ImageDotProps {
 	active?: boolean;
-	onClick: any;
+	onClick: () => void;
 }
-const ImageDot: React.SFC<ImageDotProps> = ({ active, onClick }) => {
+const ImageDot = ({ active, onClick }: ImageDotProps) => {
 	return (
 		<div
 			onClick={onClick}

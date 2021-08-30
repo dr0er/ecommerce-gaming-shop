@@ -1,12 +1,22 @@
+import clsx from "clsx";
+
 export interface ImageProps {
-    src:string,
-    current?:boolean,
+	src: string;
+	current?: boolean;
 }
- 
-const Image: React.SFC<ImageProps> = ({src,current}) => {
-    return ( 
-        <img className={`object-cover w-screen transition duration-300 ${!current && "opacity-0"}`} src={src} alt="" />
-     );
-}
- 
+
+const Image = ({ src, current }: ImageProps) => {
+	const styles = clsx({
+		"opacity-0": !current,
+	});
+
+	return (
+		<img
+			className={`object-cover w-screen transition duration-300 ${styles}`}
+			src={src}
+			alt=""
+		/>
+	);
+};
+
 export default Image;
