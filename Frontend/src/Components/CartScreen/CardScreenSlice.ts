@@ -1,7 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+interface productProps {
+	name: string;
+	category: string;
+	price: number;
+	image: string;
+	amount: number;
+}
 const initialState = {
-	myProducts: [],
+	myProducts: [] as productProps[],
 };
 
 export const CardScreenSlice = createSlice({
@@ -13,17 +19,18 @@ export const CardScreenSlice = createSlice({
 		},
 
 		addProduct: (state, action) => {
-			//  HERE NEED ID FROM API | NEED TO BE CHANGE IN FUTURE
+			//  HERE NEED ID FROM API | NEED TO BE CHANGE IN THE FUTURE
 			const product = state.myProducts.find(
 				(product) => product.name === action.payload
 			);
-			if (product) {
+			if (product && product.amount) {
 				product.amount = product.amount + 1;
 			}
 		},
 
 		removeProduct: (state, action) => {
-			//  HERE NEED ID FROM API | NEED TO BE CHANGE IN FUTURE
+			//  HERE NEED ID FROM API | NEED TO BE CHANGE IN THE FUTURE
+
 			const product = state.myProducts.find(
 				(product) => product.name === action.payload
 			);
@@ -34,7 +41,8 @@ export const CardScreenSlice = createSlice({
 		},
 
 		deleteProduct: (state, action) => {
-			//  HERE NEED ID FROM API | NEED TO BE CHANGE IN FUTURE
+			//  HERE NEED ID FROM API | NEED TO BE CHANGE IN THE FUTURE
+
 			state.myProducts = state.myProducts.filter(
 				(prodcut) => prodcut.name !== action.payload
 			);
