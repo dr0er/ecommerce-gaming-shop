@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from .models import CustomUser
+
+from .utils import USER_MODEL
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
@@ -11,7 +12,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
     )
 
     class Meta:
-        model = CustomUser
+        model = USER_MODEL
         fields = ['username','email','password','password2']
         extra_kwargs = {
             'password' : {'write_only': True,
@@ -20,7 +21,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         }
 
     def save(self):
-        user = CustomUser(
+        user = USER_MODEL(
             username=self.validated_data['username'],
             email=self.validated_data['email'],
         )

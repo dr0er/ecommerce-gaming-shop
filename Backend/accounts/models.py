@@ -4,6 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 from .managers import CustomUserManager
 from backend.models import *
 
+
+
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=50, null=True, unique=True)
     first_name = models.CharField(max_length=50, null=True)

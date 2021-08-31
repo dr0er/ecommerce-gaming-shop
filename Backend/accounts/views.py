@@ -3,15 +3,15 @@ from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import (
     CreateModelMixin,
 )
+from .utils import USER_MODEL
 
-from .models import CustomUser
 from .serializers import RegistrationSerializer
 
 
 class RegistrationViewset(
                     CreateModelMixin,
                     GenericViewSet):
-    queryset = CustomUser.objects.all()
+    queryset = USER_MODEL.objects.all()
     serializer_class = RegistrationSerializer
 
     def create(self, request, *args, **kwargs):
