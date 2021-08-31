@@ -25,6 +25,7 @@ const CardScreen = () => {
 		dispatch(
 			setProducts([
 				{
+					id: 1,
 					name: "Ninja mouse",
 					category: "Gaming mouse",
 					price: 40,
@@ -32,6 +33,7 @@ const CardScreen = () => {
 					amount: 1,
 				},
 				{
+					id: 2,
 					name: "Zowie S1",
 					category: "Gaming mouse",
 					price: 79,

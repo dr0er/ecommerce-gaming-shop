@@ -7,6 +7,7 @@ import { addProduct, deleteProduct, removeProduct } from "./CardScreenSlice";
 
 export interface CardItemProps {
 	data: {
+		id: number;
 		image: string;
 		name: string;
 		category: string;
@@ -16,20 +17,20 @@ export interface CardItemProps {
 }
 
 const CardItem = ({ data }: CardItemProps) => {
-	const { name, category, price, image, amount } = data;
+	const { id, name, category, price, image, amount } = data;
 
 	const dispatch = useDispatch();
 
 	const handleAddProduct = () => {
-		dispatch(addProduct(name));
+		dispatch(addProduct(id));
 	};
 
 	const handleRemoveProduct = () => {
-		dispatch(removeProduct(name));
+		dispatch(removeProduct(id));
 	};
 
 	const handleDeleteProduct = () => {
-		dispatch(deleteProduct(name));
+		dispatch(deleteProduct(id));
 	};
 
 	return (

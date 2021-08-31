@@ -4,6 +4,7 @@ import { RootState } from "../../Store/store";
 export interface SummaryProps {}
 
 interface productProps {
+	id: number;
 	name: string;
 	category: string;
 	price: number;
