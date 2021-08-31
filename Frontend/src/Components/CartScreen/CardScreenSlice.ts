@@ -11,7 +11,7 @@ const initialState = {
 };
 
 export const CardScreenSlice = createSlice({
-	name: "cardItem",
+	name: "cardScreen",
 	initialState,
 	reducers: {
 		setProducts: (state, action) => {
