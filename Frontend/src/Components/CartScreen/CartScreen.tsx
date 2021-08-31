@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ninjaImage from "../../Assets/ninja.png";
 import zowieImage from "../../Assets/zowie.png";
+import { RootState } from "../../Store/store";
 import CardItem from "./CardItem";
+import { setProducts } from "./CardScreenSlice";
 import Summary from "./Summary";
 
 export interface CardScreenProps {
@@ -16,22 +19,30 @@ export interface CardScreenProps {
 }
 
 const CardScreen = () => {
-	const [myProducts, setMyProducts] = useState([
-		{
-			name: "Ninja mouse",
-			category: "Gaming mouse",
-			price: 40,
-			image: ninjaImage,
-			amount: 1,
-		},
-		{
-			name: "Zowie S1",
-			category: "Gaming mouse",
-			price: 79,
-			image: zowieImage,
-			amount: 2,
-		},
-	]);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(
+			setProducts([
+				{
+					name: "Ninja mouse",
+					category: "Gaming mouse",
+					price: 40,
+					image: ninjaImage,
+					amount: 1,
+				},
+				{
+					name: "Zowie S1",
+					category: "Gaming mouse",
+					price: 79,
+					image: zowieImage,
+					amount: 2,
+				},
+			])
+		);
+	}, [dispatch]);
+
+	const { myProducts } = useSelector((state: RootState) => state.cardScreen);
 
 	const createCardList = myProducts.map((product) => (
 		<CardItem data={product} />

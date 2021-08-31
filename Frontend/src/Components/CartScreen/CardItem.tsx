@@ -2,6 +2,8 @@ import { faPlusCircle, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import removeCircle from "../../Assets/remove-circle-outline.svg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch } from "react-redux";
+import { addProduct, deleteProduct, removeProduct } from "./CardScreenSlice";
 
 export interface CardItemProps {
 	data: {
@@ -15,6 +17,20 @@ export interface CardItemProps {
 
 const CardItem = ({ data }: CardItemProps) => {
 	const { name, category, price, image, amount } = data;
+
+	const dispatch = useDispatch();
+
+	const handleAddProduct = () => {
+		dispatch(addProduct(name));
+	};
+
+	const handleRemoveProduct = () => {
+		dispatch(removeProduct(name));
+	};
+
+	const handleDeleteProduct = () => {
+		dispatch(deleteProduct(name));
+	};
 
 	return (
 		<div className="w-auto flex h-24 justify-between ">
@@ -31,15 +47,28 @@ const CardItem = ({ data }: CardItemProps) => {
 			</div>
 
 			<div className="flex flex-col justify-between">
-				<FontAwesomeIcon icon={faTimesCircle} className="self-end text-xl" />
+				<FontAwesomeIcon
+					icon={faTimesCircle}
+					onClick={handleDeleteProduct}
+					className="self-end text-xl"
+				/>
 
 				<div className="flex items-center gap-2">
-					<img src={removeCircle} className="w-6" alt="" />
+					<img
+						src={removeCircle}
+						onClick={handleRemoveProduct}
+						className="w-6"
+						alt=""
+					/>
 					<p className="font-extrabold">
 						{" "}
 						{amount < 10 ? `0${amount}` : amount}
 					</p>
-					<FontAwesomeIcon icon={faPlusCircle} className="text-xl" />
+					<FontAwesomeIcon
+						icon={faPlusCircle}
+						onClick={handleAddProduct}
+						className="text-xl"
+					/>
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
+import CardScreenSlice from "../Components/CartScreen/CardScreenSlice.js";
 
 export const store = configureStore({
-  reducer: {},
+	reducer: {
+		cardScreen: CardScreenSlice,
+	},
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
