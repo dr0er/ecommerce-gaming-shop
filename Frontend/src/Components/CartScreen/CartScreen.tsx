@@ -4,9 +4,18 @@ import zowieImage from "../../Assets/zowie.png";
 import CardItem from "./CardItem";
 import Summary from "./Summary";
 
-export interface CardScreenProps {}
+export interface CardScreenProps {
+	myProducts: {
+		name: string;
+		category: string;
+		price: number;
+		image: string;
+		amount: number;
+	};
+	createCardList: JSX.Element[];
+}
 
-const CardScreen: React.SFC<CardScreenProps> = () => {
+const CardScreen = () => {
 	const [myProducts, setMyProducts] = useState([
 		{
 			name: "Ninja mouse",
@@ -35,7 +44,6 @@ const CardScreen: React.SFC<CardScreenProps> = () => {
 			{/* Item list */}
 			<div className="flex flex-col gap-8">{createCardList}</div>
 
-			{/* Summary */}
 			<Summary />
 
 			{/* Checkout button */}

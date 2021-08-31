@@ -1,6 +1,6 @@
 export interface SummaryProps {}
 
-const Summary: React.SFC<SummaryProps> = () => {
+const Summary = () => {
 	return (
 		<div className="flex flex-col mt-16 gap-6">
 			<div className="flex justify-between">

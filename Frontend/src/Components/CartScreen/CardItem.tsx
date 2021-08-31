@@ -13,7 +13,7 @@ export interface CardItemProps {
 	};
 }
 
-const CardItem: React.SFC<CardItemProps> = ({ data }) => {
+const CardItem = ({ data }: CardItemProps) => {
 	const { name, category, price, image, amount } = data;
 
 	return (
