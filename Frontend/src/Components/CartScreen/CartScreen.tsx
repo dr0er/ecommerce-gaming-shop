@@ -47,7 +47,7 @@ const CardScreen = () => {
 	const { myProducts } = useSelector((state: RootState) => state.cardScreen);
 
 	const createCardList = myProducts.map((product) => (
-		<CardItem data={product} />
+		<CardItem data={product} key={product.id} />
 	));
 
 	return (
