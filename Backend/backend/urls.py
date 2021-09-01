@@ -6,4 +6,5 @@ from .views import (
 
 router = routers.DefaultRouter()
 
-router.register('product', ProductDetailViewset, basename='product')
+router.register('product_detail', ProductDetailViewset, basename='product')
+router.register('products', ProductViewSet, basename='product')

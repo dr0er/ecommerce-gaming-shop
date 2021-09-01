@@ -1,3 +1,4 @@
+
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import (
     ListModelMixin,
@@ -6,7 +7,7 @@ from rest_framework.mixins import (
     UpdateModelMixin,
     DestroyModelMixin
 )
-
+from django.views.generic import ListView
 
 from .models import (
     Address,
@@ -34,3 +35,7 @@ class ProductDetailViewset(
                     GenericViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+class ProductViewSet(ListView):
+    serializer_class = ProductSerializer
+    queryset = Product.objects.all()
