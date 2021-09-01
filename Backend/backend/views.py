@@ -1,3 +1,4 @@
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import (
     ListModelMixin,
@@ -26,7 +27,6 @@ from .serializers import (
     CategorySerializer,
     OrderItemSerializer
 )
-# Create your views here.
 
 
 class ProductViewset(
@@ -35,3 +35,12 @@ class ProductViewset(
                     GenericViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [AllowAny]
+
+
+class OrderItemCreateViewset(
+                    CreateModelMixin,
+                    GenericViewSet):
+    queryset = OrderItem.objects.all()
+    serializer_class = OrderItemSerializer
+    permission_classes = [IsAuthenticated]
