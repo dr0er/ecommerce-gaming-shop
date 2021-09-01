@@ -1,10 +1,37 @@
-from django.shortcuts import render
-from django.views.generic import ListView
-from .models import *
-from .serializers import *
+from rest_framework.viewsets import GenericViewSet
+from rest_framework.mixins import (
+    ListModelMixin,
+    CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    DestroyModelMixin
+)
 
-class ProductViewSet(ListView):
-    serializer_class = ProductSerializer
+
+from .models import (
+    Address,
+    Order,
+    Review,
+    Product,
+    Brand,
+    Category,
+    OrderItem
+)
+from .serializers import (
+    AdressSerializer,
+    OrderSerializer,
+    ReviewSerializer,
+    ProductSerializer,
+    BrandSerializer,
+    CategorySerializer,
+    OrderItemSerializer
+)
+# Create your views here.
+
+
+class ProductViewset(
+                    ListModelMixin,
+                    RetrieveModelMixin,
+                    GenericViewSet):
     queryset = Product.objects.all()
-
-
+    serializer_class = ProductSerializer

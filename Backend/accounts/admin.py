@@ -4,17 +4,18 @@ from django.contrib.auth.admin import UserAdmin
 from .models import CustomUser
 
 
-    class CustomUserAdmin(UserAdmin):
-        readonly_fields = [
-            'date_joined',
-        ]
-        def get_form(self, request, obj=None, **kwargs):
-            form = super().get_form(request, obj, **kwargs)
-            is_superuser = request.user.is_superuser
-            disabled_fields = set()
-        
+class CustomUserAdmin(UserAdmin):
+
+    readonly_fields = [
+        'date_joined',
+    ]
+    def get_form(self, request, obj=None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        is_superuser = request.user.is_superuser
+        disabled_fields = set()
+
         if not is_superuser:
-            disabled_fields | = {
+            disabled_fields |={
                 'username',
                 'is_superuser',
                 'user_permissions',
@@ -30,7 +31,7 @@ from .models import CustomUser
                 'is_superuser',
                 'groups',
                 'user_permissions',
-            } 
+            }
 
         for f in disabled_fields:
             if f in form.base_fields:
@@ -38,4 +39,4 @@ from .models import CustomUser
 
         return form
 
-admin.site.register(CustomUser, CustomUserAdmin)   
+admin.site.register(CustomUser, CustomUserAdmin)
