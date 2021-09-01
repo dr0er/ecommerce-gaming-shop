@@ -18,11 +18,21 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from backend.urls import router
+from rest_framework import routers
+
+from patches.router import DefaultRouter
+from backend.urls import router_b
+from accounts.urls import router_acc
+
+
+router = DefaultRouter()
+
+router.extend(router_b)
+router.extend(router_acc)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
 
