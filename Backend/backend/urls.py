@@ -1,9 +1,9 @@
 from rest_framework import routers
 
 from .views import (
-    ProductDetailViewset,
+    ProductViewset,
 )
 
-router = routers.DefaultRouter()
+router_b = routers.DefaultRouter()
 
-router.register('product', ProductDetailViewset, basename='product')
+router_b.register('products', ProductViewset, basename='product')

@@ -29,7 +29,8 @@ from .serializers import (
 # Create your views here.
 
 
-class ProductDetailViewset(
+class ProductViewset(
+                    ListModelMixin,
                     RetrieveModelMixin,
                     GenericViewSet):
     queryset = Product.objects.all()
