@@ -2,20 +2,22 @@ from rest_framework import serializers
 
 
 from .utils import USER_MODEL
+from .models import CustomUser
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
 
     password2 = serializers.CharField(
         style={'input_type': 'password'},
-        write_only=True
+        write_only=True,
+        max_length=16
     )
 
     class Meta:
         model = USER_MODEL
         fields = ['username','email','password','password2']
         extra_kwargs = {
-            'password' : {'write_only': True,
+            'password' : {'write_only': True, 'max_length': 16,
             'style' : {'input_type': 'password'}
             }
         }
@@ -36,3 +38,10 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.is_active = True
         user.save()
         return user
+
+
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = USER_MODEL
+        fields = ['id','username','email','first_name','last_name','is_active']
