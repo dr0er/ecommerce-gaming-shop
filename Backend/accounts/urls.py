@@ -6,4 +6,4 @@ from .views import (
 
 router_acc = routers.DefaultRouter()
 
-router_acc.register('register', RegistrationViewset, basename='register')
+router_acc.register('account/register', RegistrationViewset, basename='register')
