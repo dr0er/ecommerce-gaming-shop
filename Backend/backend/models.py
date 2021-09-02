@@ -66,7 +66,7 @@ class Review(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, related_name='reviews')
     title = models.CharField(max_length=50, null=True, blank=True)
-    rating = models.IntegerField(null=True, blank=True)
+    rating = models.IntegerField(null=True, blank=True, default=0)
     comment = models.TextField(null=True, blank=True)
     createdAt = models.DateField(auto_now_add=True)
 
