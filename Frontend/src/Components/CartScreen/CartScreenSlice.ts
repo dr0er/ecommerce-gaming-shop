@@ -11,8 +11,8 @@ const initialState = {
 	myProducts: [] as productProps[],
 };
 
-export const CardScreenSlice = createSlice({
-	name: "cardScreen",
+export const CartScreenSlice = createSlice({
+	name: "cartScreen",
 	initialState,
 	reducers: {
 		setProducts: (state, action) => {
@@ -48,6 +48,6 @@ export const CardScreenSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { setProducts, addProduct, removeProduct, deleteProduct } =
-	CardScreenSlice.actions;
+	CartScreenSlice.actions;
 
-export default CardScreenSlice.reducer;
+export default CartScreenSlice.reducer;

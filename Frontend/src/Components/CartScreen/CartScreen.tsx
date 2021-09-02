@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import ninjaImage from "../../Assets/ninja.png";
 import zowieImage from "../../Assets/zowie.png";
 import { RootState } from "../../Store/store";
-import CardItem from "./CardItem";
-import { setProducts } from "./CardScreenSlice";
+import CartItem from "./CartItem";
+import { setProducts } from "./CartScreenSlice";
 import Summary from "./Summary";
 
-export interface CardScreenProps {
+export interface CartScreenProps {
 	myProducts: {
 		name: string;
 		category: string;
@@ -15,10 +15,10 @@ export interface CardScreenProps {
 		image: string;
 		amount: number;
 	};
-	createCardList: JSX.Element[];
+	createCartList: JSX.Element[];
 }
 
-const CardScreen = () => {
+const CartScreen = () => {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
@@ -44,18 +44,18 @@ const CardScreen = () => {
 		);
 	}, [dispatch]);
 
-	const { myProducts } = useSelector((state: RootState) => state.cardScreen);
+	const { myProducts } = useSelector((state: RootState) => state.cartScreen);
 
-	const createCardList = myProducts.map((product) => (
-		<CardItem data={product} key={product.id} />
+	const createCartList = myProducts.map((product) => (
+		<CartItem data={product} key={product.id} />
 	));
 
 	return (
 		<div className="flex flex-col text-grey-light px-6 max-w-sm bg-background-grey min-h-screen sm: mx-auto">
-			<h1 className="text-3xl font-extrabold py-5">My card</h1>
+			<h1 className="text-3xl font-extrabold py-5">My cart</h1>
 
 			{/* Item list */}
-			<div className="flex flex-col gap-8">{createCardList}</div>
+			<div className="flex flex-col gap-8">{createCartList}</div>
 
 			<Summary />
 
@@ -68,4 +68,4 @@ const CardScreen = () => {
 	);
 };
 
-export default CardScreen;
+export default CartScreen;

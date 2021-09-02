@@ -3,9 +3,9 @@ import removeCircle from "../../Assets/remove-circle-outline.svg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
-import { addProduct, deleteProduct, removeProduct } from "./CardScreenSlice";
+import { addProduct, deleteProduct, removeProduct } from "./CartScreenSlice";
 
-export interface CardItemProps {
+export interface CartItemProps {
 	data: {
 		id: number;
 		image: string;
@@ -16,7 +16,7 @@ export interface CardItemProps {
 	};
 }
 
-const CardItem = ({ data }: CardItemProps) => {
+const CartItem = ({ data }: CartItemProps) => {
 	const { id, name, category, price, image, amount } = data;
 
 	const dispatch = useDispatch();
@@ -76,4 +76,4 @@ const CardItem = ({ data }: CardItemProps) => {
 	);
 };
 
-export default CardItem;
+export default CartItem;

@@ -13,7 +13,7 @@ interface productProps {
 }
 
 const Summary = () => {
-	const { myProducts } = useSelector((state: RootState) => state.cardScreen);
+	const { myProducts } = useSelector((state: RootState) => state.cartScreen);
 
 	const handleSubtotal = () => {
 		let price = 0;

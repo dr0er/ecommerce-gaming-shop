@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import CardScreenSlice from "../Components/CartScreen/CardScreenSlice";
+import CartScreenSlice from "../Components/CartScreen/CartScreenSlice";
 
 export const store = configureStore({
 	reducer: {
-		cardScreen: CardScreenSlice,
+		cartScreen: CartScreenSlice,
 	},
 });
 
