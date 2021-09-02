@@ -30,7 +30,7 @@ const Summary = () => {
 		return price;
 	};
 
-	const prodcutsAmount = () => {
+	const productsAmount = () => {
 		let amount = 0;
 		myProducts.forEach((product) => {
 			amount += product.amount;
@@ -53,7 +53,7 @@ const Summary = () => {
 			<div className="flex justify-between">
 				<p className="opacity-30 font-bold">Bag total</p>
 				<div className="flex gap-5 align-middle">
-					<span className="font-medium">({prodcutsAmount()} items)</span>
+					<span className="font-medium">({productsAmount()} items)</span>
 					<h2 className="text-grey-light font-extrabold text-xl">
 						{handleBagTotal()}€
 					</h2>
