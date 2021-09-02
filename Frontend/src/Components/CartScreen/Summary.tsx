@@ -18,14 +18,15 @@ const Summary = () => {
 	const handleSubtotal = () => {
 		let price = 0;
 		myProducts.forEach((product: productProps) => {
-			price = price + product.price * product.amount;
+			price += product.price * product.amount;
 		});
 		return price;
 	};
 
 	const handleBagTotal = () => {
 		let price = handleSubtotal();
-		price += 5;
+		const shippingPrice = 5;
+		price += shippingPrice;
 		return price;
 	};
 

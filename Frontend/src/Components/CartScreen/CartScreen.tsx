@@ -61,7 +61,7 @@ const CardScreen = () => {
 
 			{/* Checkout button */}
 
-			<div className="bg-grey-light px-3 text-sm mt-12 py-3 font-bold text-red-50 flex justify-center rounded-2xl">
+			<div className="bg-grey-light px-3 text-sm mt-12 py-3 font-bold text-red-50 flex justify-center rounded-2xl cursor-pointer">
 				Procced To Checkout
 			</div>
 		</div>
