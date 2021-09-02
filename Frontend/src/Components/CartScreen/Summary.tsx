@@ -30,6 +30,14 @@ const Summary = () => {
 		return price;
 	};
 
+	const prodcutsAmount = () => {
+		let amount = 0;
+		myProducts.forEach((product) => {
+			amount += product.amount;
+		});
+		return amount;
+	};
+
 	return (
 		<div className="flex flex-col mt-16 gap-6">
 			<div className="flex justify-between">
@@ -45,7 +53,7 @@ const Summary = () => {
 			<div className="flex justify-between">
 				<p className="opacity-30 font-bold">Bag total</p>
 				<div className="flex gap-5 align-middle">
-					<span className="font-medium">(3 items)</span>
+					<span className="font-medium">({prodcutsAmount()} items)</span>
 					<h2 className="text-grey-light font-extrabold text-xl">
 						{handleBagTotal()}€
 					</h2>
