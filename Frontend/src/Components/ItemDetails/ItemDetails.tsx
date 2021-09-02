@@ -91,19 +91,13 @@ const ItemDetails = () => {
 		});
 
 		const createImageDots = product.images.map((image, index) => {
-			if (currentImage === index) {
-				return (
-					<ImageDot
-						active
-						key={index}
-						onClick={() => handleChangeImage(index)}
-					/>
-				);
-			} else {
-				return (
-					<ImageDot key={index} onClick={() => handleChangeImage(index)} />
-				);
-			}
+			return (
+				<ImageDot
+					active={currentImage === index}
+					key={index}
+					onClick={() => handleChangeImage(index)}
+				/>
+			);
 		});
 
 		return (
