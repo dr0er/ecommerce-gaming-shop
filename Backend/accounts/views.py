@@ -1,5 +1,7 @@
-from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import GenericViewSet
+from rest_framework.response import Response
+from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.mixins import (
     ListModelMixin,
     CreateModelMixin,
@@ -8,7 +10,6 @@ from rest_framework.mixins import (
     DestroyModelMixin
 )
 from .utils import USER_MODEL
-from .permissions import IsOwner
 from .serializers import (
     RegistrationSerializer,
     UserSerializer,
@@ -35,11 +36,13 @@ class RegistrationViewset(
             return Response(data)
 
 
-class UserViewSet(
-                    ListModelMixin,
-                    RetrieveModelMixin,
-                    UpdateModelMixin,
-                    GenericViewSet):
-    queryset = USER_MODEL.objects.all()
+class UserViewSet(RetrieveUpdateAPIView):
+
     serializer_class = UserSerializer
-    permission_classes = [IsOwner]
+    permission_classes = [IsAuthenticated,]
+
+    def get_object(self):
+        return self.request.user
+
+    def get_queryset(self):
+        return get_user_model().objects.none()

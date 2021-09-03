@@ -37,13 +37,6 @@ class ProductViewset(
     permission_classes = [AllowAny]
 
 
-class OrderItemCreateViewset(
-                    CreateModelMixin,
-                    GenericViewSet):
-    queryset = OrderItem.objects.all()
-    serializer_class = OrderItemSerializer
-    permission_classes = [IsAuthenticated]
-
 
 class OrderListViewset(
                     ListModelMixin,
