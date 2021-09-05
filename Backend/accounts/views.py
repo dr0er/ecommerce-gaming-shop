@@ -1,11 +1,19 @@
-from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import GenericViewSet
+from rest_framework.response import Response
+from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.mixins import (
+    ListModelMixin,
     CreateModelMixin,
+    RetrieveModelMixin,
+    UpdateModelMixin,
+    DestroyModelMixin
 )
 from .utils import USER_MODEL
-
-from .serializers import RegistrationSerializer
+from .serializers import (
+    RegistrationSerializer,
+    UserSerializer,
+)
 
 
 class RegistrationViewset(
@@ -26,3 +34,15 @@ class RegistrationViewset(
             else:
                 data = serializer.errors
             return Response(data)
+
+
+class UserViewSet(RetrieveUpdateAPIView):
+
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated,]
+
+    def get_object(self):
+        return self.request.user
+
+    def get_queryset(self):
+        return get_user_model().objects.none()
