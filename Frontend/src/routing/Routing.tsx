@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { Routes } from "../Utilities/routes";
 import { LandingPage } from "../Components/landingPage/LandingPage";
 import CartScreen from "../Components/CartScreen/CartScreen";
+import ItemDetails from "../Components/ItemDetails/ItemDetails";
 
 interface Props {}
 
@@ -15,6 +16,10 @@ export const Routing: React.FC<Props> = (Props) => {
 
 			<Route path={"/CartScreen"}>
 				<CartScreen />
+       </Route>
+      
+			<Route path="/itemDetails">
+				<ItemDetails />
 			</Route>
 		</Switch>
 	);
