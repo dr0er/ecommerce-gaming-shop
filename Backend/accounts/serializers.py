@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 from .utils import USER_MODEL
 from .models import CustomUser
+from backend.serializers import AddressSerializer
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
@@ -40,8 +41,16 @@ class RegistrationSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    address = serializers.SerializerMethodField()
 
     class Meta:
         model = USER_MODEL
-        fields = ['id','username','email','first_name','last_name','is_active']
+        fields = ['id','username','email','first_name','last_name', 'date_of_birth', 'info', 'address']
+
+    def get_address(self, obj):
+        try:
+            address = AddressSerializer(obj.address, many=False).data
+        except:
+            address = False
+        return address

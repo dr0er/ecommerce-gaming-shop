@@ -1,5 +1,5 @@
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.viewsets import GenericViewSet
+from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
 from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.mixins import (
@@ -9,6 +9,7 @@ from rest_framework.mixins import (
     UpdateModelMixin,
     DestroyModelMixin
 )
+from django.contrib.auth import get_user_model
 from .utils import USER_MODEL
 from .serializers import (
     RegistrationSerializer,
@@ -36,13 +37,10 @@ class RegistrationViewset(
             return Response(data)
 
 
-class UserViewSet(RetrieveUpdateAPIView):
+class UserViewset(ReadOnlyModelViewSet, UpdateModelMixin):
 
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated,]
-
-    def get_object(self):
-        return self.request.user
-
+    
     def get_queryset(self):
-        return get_user_model().objects.none()
+        return get_user_model().objects.filter(pk=self.request.user.id)

@@ -38,7 +38,7 @@ class ProductViewset(
 
 
 
-class OrderListViewset(
+class MyOrderListViewset(
                     ListModelMixin,
                     GenericViewSet):
     queryset = Order.objects.filter()
