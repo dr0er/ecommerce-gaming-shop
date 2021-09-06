@@ -1,12 +1,11 @@
 from rest_framework import serializers
-
+from django.contrib import auth
 
 from .utils import USER_MODEL
 from .models import CustomUser
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
-
     password2 = serializers.CharField(
         style={'input_type': 'password'},
         write_only=True,
@@ -15,11 +14,11 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = USER_MODEL
-        fields = ['username','email','password','password2']
+        fields = ['username', 'email', 'password', 'password2']
         extra_kwargs = {
-            'password' : {'write_only': True, 'max_length': 16,
-            'style' : {'input_type': 'password'}
-            }
+            'password': {'write_only': True, 'max_length': 16,
+                         'style': {'input_type': 'password'}
+                         }
         }
 
     def save(self):
@@ -41,7 +40,28 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = USER_MODEL
-        fields = ['id','username','email','first_name','last_name','is_active']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'is_active']
+
+
+class UserLoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['id', 'email', 'password']
+
+    def login(self, request):
+        self.email = request.POST['email']
+        self.password = request.POST['password']
+        user = auth.authenticate(email=self.email, password=self.password)
+
+        if user is not None and user.is_active:
+            # correct password and user is marked as active
+            auth.login(request, user)
+            print('login')
+        else:
+            print('login error')
+
+    @staticmethod
+    def logout(self, request):
+        auth.logout(request)
