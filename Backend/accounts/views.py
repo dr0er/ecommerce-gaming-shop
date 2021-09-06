@@ -46,3 +46,7 @@ class UserViewSet(RetrieveUpdateAPIView):
 
     def get_queryset(self):
         return get_user_model().objects.none()
+
+
+class UserLogin():
+    pass
