@@ -1,3 +1,4 @@
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import (
     ListModelMixin,
@@ -6,7 +7,6 @@ from rest_framework.mixins import (
     UpdateModelMixin,
     DestroyModelMixin
 )
-
 
 from .models import (
     Address,
@@ -26,7 +26,6 @@ from .serializers import (
     CategorySerializer,
     OrderItemSerializer
 )
-# Create your views here.
 
 
 class ProductViewset(
@@ -35,3 +34,18 @@ class ProductViewset(
                     GenericViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    permission_classes = [AllowAny]
+
+
+
+class OrderListViewset(
+                    ListModelMixin,
+                    GenericViewSet):
+    queryset = Order.objects.filter()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        queryset = Order.objects.filter(user=user).order_by('-createdAt')
+        return queryset
