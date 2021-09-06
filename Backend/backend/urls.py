@@ -8,4 +8,4 @@ from .views import (
 router_b = routers.DefaultRouter()
 
 router_b.register('products/', ProductViewset, basename='product')
-router_b.register('myorders/', MyOrderListViewset, basename='myorder')
+router_b.register('myorders/', MyOrderListViewset, basename='myorders')
