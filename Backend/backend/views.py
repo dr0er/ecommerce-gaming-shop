@@ -18,7 +18,7 @@ from .models import (
     OrderItem
 )
 from .serializers import (
-    AdressSerializer,
+    AddressSerializer,
     OrderSerializer,
     ReviewSerializer,
     ProductSerializer,
