@@ -2,15 +2,10 @@ from rest_framework import serializers
 from .models import Address, Order, Review, Product, Brand, Category, OrderItem
 
 
-class AdressSerializer(serializers.ModelSerializer):
+class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
-        fields = ('id',
-                    'order',
-                    'adress',
-                    'city',
-                    'postalCode',
-                    'country')
+        fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
@@ -43,7 +38,7 @@ class ProductSerializer(serializers.ModelSerializer):
     reviews = ReviewSerializer(many=True)
     brand = serializers.SlugRelatedField(slug_field='name', read_only=True)
     category = serializers.SlugRelatedField(slug_field='name', read_only=True)
-        
+
     class Meta:
         model = Product
         fields = ('id',
@@ -55,7 +50,7 @@ class ProductSerializer(serializers.ModelSerializer):
                     'rating',
                     'reviewNum',
                     'price',
-                    'qtylnStock',
+                    'qtyInStock',
                     'createdAt',
                     'reviews',)
 
