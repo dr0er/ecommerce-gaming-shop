@@ -25,13 +25,7 @@ class OrderSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ('id',
-                    'user',
-                    'product',
-                    'title',
-                    'rating',
-                    'comment',
-                    'createdAt')
+        fields = '__all__'
 
 class ProductSerializer(serializers.ModelSerializer):
 
@@ -57,23 +51,15 @@ class ProductSerializer(serializers.ModelSerializer):
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        fields = ('id',
-                    'name')
+        fields = '__all__'
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ('id',
-                    'name')
+        fields = '__all__'
 
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
-        fields = ('id',
-                    'order',
-                    'product',
-                    'name',
-                    'qty',
-                    'price',
-                    'image')
+        fields = '__all__'
