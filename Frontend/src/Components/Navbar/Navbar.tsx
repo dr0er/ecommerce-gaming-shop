@@ -18,7 +18,8 @@ export const NavBar = () => {
         className={c(
           'w-auto h-20 text-black flex justify-around font text-2xl items-center duration-200 transition-opacity',
           isMenuOpen && 'opacity-0',
-        )}>
+        )}
+      >
         <div>
           <FontAwesomeIcon icon={faBars} onClick={onClick} />
         </div>

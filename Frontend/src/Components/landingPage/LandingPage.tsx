@@ -15,14 +15,16 @@ export const LandingPage = () => {
             <div className="flex flex-col relative w-auto">
               <div
                 className="absolute bg-blue-after h-4 my-5 w-full top-1"
-                style={{ zIndex: -10 }}></div>
+                style={{ zIndex: -10 }}
+              ></div>
               shopping
             </div>
           </div>
         </div>
         <Link
           to="/"
-          className="bg-grey-verylight font-bold absolute bottom-3 right-8 text-base text-blue-after py-2 rounded-xl px-5 aboslute justify-center flex gap-2 items-center hover:bg-gray-700 ">
+          className="bg-grey-verylight font-bold absolute bottom-3 right-8 text-base text-blue-after py-2 rounded-xl px-5 aboslute justify-center flex gap-2 items-center hover:bg-gray-700 "
+        >
           Get started
           <FontAwesomeIcon icon={faChevronRight} />
         </Link>

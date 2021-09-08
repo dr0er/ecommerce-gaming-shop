@@ -9,7 +9,8 @@ interface ItemMenuProps {
 const ItemMenu = ({ children }: ItemMenuProps) => {
   return (
     <li
-      className={'flex justify-between items-center w-full py-2 font-semibold hover:text-blue-400'}>
+      className={'flex justify-between items-center w-full py-2 font-semibold hover:text-blue-400'}
+    >
       {children}
       <FontAwesomeIcon icon={faChevronRight} />
     </li>
