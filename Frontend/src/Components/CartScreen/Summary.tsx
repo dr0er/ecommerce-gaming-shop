@@ -1,23 +1,15 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../Store/store";
-
-export interface SummaryProps {}
-
-interface productProps {
-	id: number;
-	name: string;
-	category: string;
-	price: number;
-	image: string;
-	amount: number;
-}
+import { ProductProps } from "./CartScreenSlice";
 
 const Summary = () => {
 	const { myProducts } = useSelector((state: RootState) => state.cartScreen);
 
+	const shippingPrice = 5;
+
 	const handleSubtotal = () => {
 		let price = 0;
-		myProducts.forEach((product: productProps) => {
+		myProducts.forEach((product: ProductProps) => {
 			price += product.price * product.amount;
 		});
 		return price;
@@ -25,9 +17,7 @@ const Summary = () => {
 
 	const handleBagTotal = () => {
 		let price = handleSubtotal();
-		const shippingPrice = 5;
-		price += shippingPrice;
-		return price;
+		return (price += shippingPrice);
 	};
 
 	const productsAmount = () => {

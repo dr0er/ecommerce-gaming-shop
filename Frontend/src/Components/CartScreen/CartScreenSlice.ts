@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-interface productProps {
+export interface ProductProps {
 	id: number;
 	name: string;
 	category: string;
@@ -7,8 +7,13 @@ interface productProps {
 	image: string;
 	amount: number;
 }
-const initialState = {
-	myProducts: [] as productProps[],
+
+interface CartScreenSliceState {
+	myProducts: ProductProps[];
+}
+
+const initialState: CartScreenSliceState = {
+	myProducts: [],
 };
 
 export const CartScreenSlice = createSlice({

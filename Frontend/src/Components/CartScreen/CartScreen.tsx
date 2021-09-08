@@ -9,6 +9,7 @@ import Summary from "./Summary";
 
 export interface CartScreenProps {
 	myProducts: {
+		id: number;
 		name: string;
 		category: string;
 		price: number;
@@ -47,14 +48,21 @@ const CartScreen = () => {
 	const { myProducts } = useSelector((state: RootState) => state.cartScreen);
 
 	const createCartList = myProducts.map((product) => (
-		<CartItem data={product} key={product.id} />
+		<CartItem
+			id={product.id}
+			image={product.image}
+			name={product.name}
+			category={product.category}
+			price={product.price}
+			amount={product.amount}
+			key={product.id}
+		/>
 	));
 
 	return (
 		<div className="flex flex-col text-grey-light px-6 max-w-sm bg-background-grey min-h-screen sm: mx-auto">
-			<h1 className="text-3xl font-extrabold py-5">My cart</h1>
+			<p className="text-3xl font-extrabold py-5">My cart</p>
 
-			{/* Item list */}
 			<div className="flex flex-col gap-8">{createCartList}</div>
 
 			<Summary />

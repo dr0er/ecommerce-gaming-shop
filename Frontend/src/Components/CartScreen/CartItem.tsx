@@ -4,21 +4,16 @@ import removeCircle from "../../Assets/remove-circle-outline.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useDispatch } from "react-redux";
 import { addProduct, deleteProduct, removeProduct } from "./CartScreenSlice";
+import { ProductProps } from "./CartScreenSlice";
 
-export interface CartItemProps {
-	data: {
-		id: number;
-		image: string;
-		name: string;
-		category: string;
-		price: number;
-		amount: number;
-	};
-}
-
-const CartItem = ({ data }: CartItemProps) => {
-	const { id, name, category, price, image, amount } = data;
-
+const CartItem = ({
+	id,
+	name,
+	category,
+	price,
+	image,
+	amount,
+}: ProductProps) => {
 	const dispatch = useDispatch();
 
 	const handleAddProduct = () => {
@@ -44,7 +39,7 @@ const CartItem = ({ data }: CartItemProps) => {
 			<div className="flex flex-col">
 				<p className="font-bold text-sm">{name}</p>
 				<p className="opacity-30 mt-1 text-sm font-bold">{category}</p>
-				<h2 className="font-extrabold text-xl mt-auto">{price}€</h2>
+				<p className="font-extrabold text-xl mt-auto">{price}€</p>
 			</div>
 
 			<div className="flex flex-col justify-between">
