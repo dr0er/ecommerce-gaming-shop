@@ -11,11 +11,11 @@ import { useState } from "react";
 
 export interface NavBarProps {}
 
-const NavBar: React.SFC<NavBarProps> = () => {
-    const [isMenu, setIsMenu] = useState(false);
+const NavBar = () => {
+    const [isExpanded, setIsExpanded] = useState(false);
 
     const handleToggleMenu = () => {
-        setIsMenu((prev) => !prev);
+        setIsExpanded((prev) => !prev);
     };
     return (
         <>
@@ -36,7 +36,7 @@ const NavBar: React.SFC<NavBarProps> = () => {
                     <FontAwesomeIcon icon={faSearch} />
                 </div>
             </div>
-            {isMenu && <Menu />}
+            <Menu isOpened={isExpanded}/>
         </>
     );
 };
