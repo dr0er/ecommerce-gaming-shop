@@ -1,3 +1,7 @@
+from django.contrib.auth import get_user_model
+from .serializers import UserSerializerWithToken
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.response import Response
@@ -13,12 +17,13 @@ from .utils import USER_MODEL
 from .serializers import (
     RegistrationSerializer,
     UserSerializer,
+    UserLoginSerializer,
 )
 
 
 class RegistrationViewset(
-                    CreateModelMixin,
-                    GenericViewSet):
+    CreateModelMixin,
+    GenericViewSet):
     queryset = USER_MODEL.objects.all()
     serializer_class = RegistrationSerializer
 
@@ -37,9 +42,8 @@ class RegistrationViewset(
 
 
 class UserViewSet(RetrieveUpdateAPIView):
-
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated,]
+    permission_classes = [IsAuthenticated, ]
 
     def get_object(self):
         return self.request.user
@@ -48,5 +52,26 @@ class UserViewSet(RetrieveUpdateAPIView):
         return get_user_model().objects.none()
 
 
-class UserLogin():
-    pass
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        data['username'] = self.user.username
+        data['email'] = self.user.email
+
+        serializer = UserSerializerWithToken(self.user).data
+        for k, v in serializer.items():
+            data[k] = v
+
+            return data
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
+
+class UserLogin(GenericViewSet):
+
+    def post(self, request):
+        pass

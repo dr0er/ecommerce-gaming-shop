@@ -1,5 +1,7 @@
 from rest_framework import serializers
+from rest_framework.authtoken.models import Token
 from django.contrib import auth
+from rest_framework_simplejwt.tokens import RefreshToken
 
 from .utils import USER_MODEL
 from .models import CustomUser
@@ -45,15 +47,30 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'first_name', 'last_name', 'is_active']
 
 
+class UserSerializerWithToken(UserSerializer):
+    token = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = USER_MODEL
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'date_of_birth', 'info', 'address', 'token']
+
+    def get_token(self, obj):
+        token = RefreshToken.for_user(obj)
+        return str(token.access_token)
+
+
 class UserLoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
         fields = ['id', 'email', 'password']
 
     def login(self, request):
-        self.email = request.POST['email']
-        self.password = request.POST['password']
-        user = auth.authenticate(email=self.email, password=self.password)
+        email = request.POST['email']
+        password = request.POST['password']
+        user = auth.authenticate(email=email, password=password)
+        token = Token.objects.create(user=user)
+        # for testing email='email', password='password'
+        # for production: email=email, password=password
 
         if user is not None and user.is_active:
             # correct password and user is marked as active
@@ -62,6 +79,6 @@ class UserLoginSerializer(serializers.ModelSerializer):
         else:
             print('login error')
 
-    @staticmethod
     def logout(self, request):
         auth.logout(request)
+        print('logout')
