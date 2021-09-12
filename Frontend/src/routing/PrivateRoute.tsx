@@ -1,16 +1,14 @@
-import React from "react";
-import { Route, Redirect } from "react-router";
-
-interface Props {}
+import React from 'react'
+import { Route, Redirect, RouteProps } from 'react-router'
 
 /*jesli dostane do tego komponentu jakies dodatkowe propsy poza children, 
 to beda one w formie tablicy w formie rest props*/
 
-export const PrivateRoute: React.FC<Props> = ({ children, ...restProps }) => {
-  const isAuth = false;
+export const PrivateRoute: React.FC<RouteProps> = ({ children, ...restProps }) => {
+  const isAuth = false
   // sprawdzamy czy dostalismy odpowiedz z serwera odnosnie autoryzacji
   if (isAuth === null) {
-    return null;
+    return null
   }
   return (
     // przekazujemy wszystkie propsy, ktore byly przekazane w routerze
@@ -25,11 +23,9 @@ export const PrivateRoute: React.FC<Props> = ({ children, ...restProps }) => {
           children
         ) : (
           // przekierowuje nas do logowania
-          <Redirect
-            to={{ pathname: "/login", state: { from: location.pathname } }}
-          />
+          <Redirect to={{ pathname: '/login', state: { from: location.pathname } }} />
         )
       }
     />
-  );
-};
+  )
+}

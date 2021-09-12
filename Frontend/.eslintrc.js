@@ -10,6 +10,14 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'prettier',
   ],
+  overrides: [
+    {
+      files: ['*.jsx', '*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': ['off'],
+      },
+    },
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -29,12 +37,9 @@ module.exports = {
     'no-console': [2, { allow: ['warn', 'error'] }],
     'react/react-in-jsx-scope': 'off',
   },
-  overrides: [
-    {
-      files: ['*.jsx', '*.tsx'],
-      rules: {
-        '@typescript-eslint/explicit-module-boundary-types': ['off'],
-      },
+  settings: {
+    react: {
+      version: 'detect',
     },
-  ],
+  },
 }
