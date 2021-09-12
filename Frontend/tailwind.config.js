@@ -6,6 +6,9 @@ module.exports = {
       colors:{
        'grey-light': '#383838',
        "background-grey": '#F3F5F7',
+      },
+      fontFamily: {
+        'lato': ['"Lato"', 'cursive']
       }
     },
   },
