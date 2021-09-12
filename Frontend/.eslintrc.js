@@ -5,7 +5,10 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'standard',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -15,33 +18,23 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint',
-  ],
-  settings: {
-    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
-    'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx'],
-    },
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
-  },
+  plugins: ['react', '@typescript-eslint', 'prettier'],
   rules: {
-    'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
-    'linebreak-style': 0,
-    'import/extensions': [
+    'prettier/prettier': [
       'error',
-      'ignorePackages',
       {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
+        endOfLine: 'auto',
       },
     ],
+    'no-console': [2, { allow: ['warn', 'error'] }],
+    'react/react-in-jsx-scope': 'off',
   },
-};
+  overrides: [
+    {
+      files: ['*.jsx', '*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': ['off'],
+      },
+    },
+  ],
+}
