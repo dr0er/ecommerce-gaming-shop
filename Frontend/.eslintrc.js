@@ -34,7 +34,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
-    'no-console': [2, { allow: ['warn', 'error'] }],
+    'no-console': ['warn', { allow: ['warn', 'error'] }],
     'react/react-in-jsx-scope': 'off',
   },
   settings: {
