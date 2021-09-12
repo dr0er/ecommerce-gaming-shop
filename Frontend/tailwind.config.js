@@ -3,10 +3,20 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+<<<<<<< HEAD
       colors: {
         'grey-light': '#383838',
         'background-grey': '#F3F5F7',
       },
+=======
+      colors:{
+       'grey-light': '#383838',
+       "background-grey": '#F3F5F7',
+      },
+      fontFamily: {
+        'lato': ['"Lato"', 'cursive']
+      }
+>>>>>>> d5a7a3d... adding page layout
     },
   },
   variants: {
