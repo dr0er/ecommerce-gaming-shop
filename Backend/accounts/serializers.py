@@ -59,26 +59,3 @@ class UserSerializerWithToken(UserSerializer):
         return str(token.access_token)
 
 
-class UserLoginSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = ['id', 'email', 'password']
-
-    def login(self, request):
-        email = request.POST['email']
-        password = request.POST['password']
-        user = auth.authenticate(email=email, password=password)
-        token = Token.objects.create(user=user)
-        # for testing email='email', password='password'
-        # for production: email=email, password=password
-
-        if user is not None and user.is_active:
-            # correct password and user is marked as active
-            auth.login(request, user)
-            print('login')
-        else:
-            print('login error')
-
-    def logout(self, request):
-        auth.logout(request)
-        print('logout')

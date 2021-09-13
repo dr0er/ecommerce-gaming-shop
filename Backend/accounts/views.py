@@ -17,7 +17,7 @@ from .utils import USER_MODEL
 from .serializers import (
     RegistrationSerializer,
     UserSerializer,
-    UserLoginSerializer,
+
 )
 
 
@@ -71,7 +71,3 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-class UserLogin(GenericViewSet):
-
-    def post(self, request):
-        pass
