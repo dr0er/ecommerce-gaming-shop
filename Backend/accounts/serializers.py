@@ -42,14 +42,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
         return user
 
 
-class UserSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     address = serializers.SerializerMethodField()
 
     class Meta:
         model = USER_MODEL
-        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'is_active']
-        fields = ['id','username','email','first_name','last_name', 'date_of_birth', 'info', 'address']
+        fields = ['id', 'username', 'email', 'first_name', 'last_name', 'date_of_birth', 'info', 'address']
 
     def get_address(self, obj):
         try:
@@ -69,5 +67,3 @@ class UserSerializerWithToken(UserSerializer):
     def get_token(self, obj):
         token = RefreshToken.for_user(obj)
         return str(token.access_token)
-
-
