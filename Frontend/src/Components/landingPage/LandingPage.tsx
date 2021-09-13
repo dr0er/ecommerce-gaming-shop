@@ -19,7 +19,7 @@ export const LandingPage: React.FC<IProps> = (props) => {
       </div>
 
       <div className="button_GetStarted">
-        <Link to="/">
+        <Link to="/signup">
           Get started
           <FontAwesomeIcon icon={faChevronRight} />
         </Link>
