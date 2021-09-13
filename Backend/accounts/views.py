@@ -41,6 +41,6 @@ class UserViewset(ReadOnlyModelViewSet, UpdateModelMixin):
 
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated,]
-    
+
     def get_queryset(self):
         return get_user_model().objects.filter(pk=self.request.user.id)

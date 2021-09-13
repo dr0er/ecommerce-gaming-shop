@@ -28,6 +28,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
             username=self.validated_data['username'],
             email=self.validated_data['email'],
         )
+        if not user.username:
+            user.username = user.email
 
         password = self.validated_data['password']
         password2 = self.validated_data['password2']
