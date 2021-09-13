@@ -1,14 +1,10 @@
-import React from "react";
-import "./LandingPage.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import React from 'react'
+import './LandingPage.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
-interface IProps {}
-
-// React.FC<Props> wymaga od komponentu zeby zwracal jsx
-
-export const LandingPage: React.FC<IProps> = (props) => {
+export const LandingPage = () => {
   return (
     <div className="landingPage_Container">
       <div className="center_Text">
@@ -25,5 +21,5 @@ export const LandingPage: React.FC<IProps> = (props) => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}

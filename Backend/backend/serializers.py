@@ -2,15 +2,10 @@ from rest_framework import serializers
 from .models import Address, Order, Review, Product, Brand, Category, OrderItem
 
 
-class AdressSerializer(serializers.ModelSerializer):
+class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
-        fields = ('id',
-                    'order',
-                    'adress',
-                    'city',
-                    'postalCode',
-                    'country')
+        fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
     class Meta:
@@ -30,20 +25,14 @@ class OrderSerializer(serializers.ModelSerializer):
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
-        fields = ('id',
-                    'user',
-                    'product',
-                    'title',
-                    'rating',
-                    'comment',
-                    'createdAt')
+        fields = '__all__'
 
 class ProductSerializer(serializers.ModelSerializer):
 
     reviews = ReviewSerializer(many=True)
     brand = serializers.SlugRelatedField(slug_field='name', read_only=True)
     category = serializers.SlugRelatedField(slug_field='name', read_only=True)
-        
+
     class Meta:
         model = Product
         fields = ('id',
@@ -55,30 +44,22 @@ class ProductSerializer(serializers.ModelSerializer):
                     'rating',
                     'reviewNum',
                     'price',
-                    'qtylnStock',
+                    'qtyInStock',
                     'createdAt',
                     'reviews',)
 
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Brand
-        fields = ('id',
-                    'name')
+        fields = '__all__'
 
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ('id',
-                    'name')
+        fields = '__all__'
 
 class OrderItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrderItem
-        fields = ('id',
-                    'order',
-                    'product',
-                    'name',
-                    'qty',
-                    'price',
-                    'image')
+        fields = '__all__'

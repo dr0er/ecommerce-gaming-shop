@@ -1,9 +1,6 @@
-from django.contrib.auth import get_user_model
-from .serializers import UserSerializerWithToken
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.viewsets import GenericViewSet
+from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
 from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.mixins import (
@@ -13,17 +10,20 @@ from rest_framework.mixins import (
     UpdateModelMixin,
     DestroyModelMixin
 )
+from django.contrib.auth import get_user_model
 from .utils import USER_MODEL
 from .serializers import (
     RegistrationSerializer,
     UserSerializer,
+    UserSerializerWithToken,
+
 
 )
 
 
 class RegistrationViewset(
-    CreateModelMixin,
-    GenericViewSet):
+                    CreateModelMixin,
+                    GenericViewSet):
     queryset = USER_MODEL.objects.all()
     serializer_class = RegistrationSerializer
 
@@ -41,15 +41,13 @@ class RegistrationViewset(
             return Response(data)
 
 
-class UserViewSet(RetrieveUpdateAPIView):
-    serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated, ]
+class UserViewset(ReadOnlyModelViewSet, UpdateModelMixin):
 
-    def get_object(self):
-        return self.request.user
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated,]
 
     def get_queryset(self):
-        return get_user_model().objects.none()
+        return get_user_model().objects.filter(pk=self.request.user.id)
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):

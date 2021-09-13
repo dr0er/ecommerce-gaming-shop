@@ -1,31 +1,31 @@
 export interface ProductInfoProps {
-	product: {
-		name: string;
-		shortDescription: string;
-		description: string;
-	};
+  product: {
+    name: string
+    shortDescription: string
+    description: string
+  }
 }
 
 const ProductInfo = ({ product }: ProductInfoProps) => {
-	const { name, shortDescription, description } = product;
+  const { name, shortDescription, description } = product
 
-	return (
-		<>
-			<div className="flex flex-col  gap-1">
-				{/* PRODUCT NAME */}
+  return (
+    <>
+      <div className="flex flex-col  gap-1">
+        {/* PRODUCT NAME */}
 
-				<h1 className="text-3xl">{name}</h1>
+        <h1 className="text-3xl">{name}</h1>
 
-				{/* SHORT DESCRIPTION */}
+        {/* SHORT DESCRIPTION */}
 
-				<p className="opacity-30">{shortDescription}</p>
-			</div>
+        <p className="opacity-30">{shortDescription}</p>
+      </div>
 
-			{/* DESCRIPTION */}
+      {/* DESCRIPTION */}
 
-			<p className="tracking-tighter text-base font-bold">{description}</p>
-		</>
-	);
-};
+      <p className="tracking-tighter text-base font-bold">{description}</p>
+    </>
+  )
+}
 
-export default ProductInfo;
+export default ProductInfo

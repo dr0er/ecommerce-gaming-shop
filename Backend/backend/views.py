@@ -18,7 +18,7 @@ from .models import (
     OrderItem
 )
 from .serializers import (
-    AdressSerializer,
+    AddressSerializer,
     OrderSerializer,
     ReviewSerializer,
     ProductSerializer,
@@ -38,7 +38,7 @@ class ProductViewset(
 
 
 
-class OrderListViewset(
+class MyOrderListViewset(
                     ListModelMixin,
                     GenericViewSet):
     queryset = Order.objects.filter()

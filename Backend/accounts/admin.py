@@ -9,6 +9,11 @@ class CustomUserAdmin(UserAdmin):
     readonly_fields = [
         'date_joined',
     ]
+
+    fieldsets = UserAdmin.fieldsets + (
+        (None, {'fields': ('date_of_birth', 'info', 'address')}),
+    )
+    
     def get_form(self, request, obj=None, **kwargs):
         form = super().get_form(request, obj, **kwargs)
         is_superuser = request.user.is_superuser
