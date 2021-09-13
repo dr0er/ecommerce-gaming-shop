@@ -25,6 +25,7 @@ export default function RegisterForm (){
 
     function handleRegister(e: any){
         e.preventDefault()
+        //todo: POST userData to server
     }
 
     return(
