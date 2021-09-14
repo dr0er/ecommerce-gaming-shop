@@ -41,11 +41,10 @@ class ProductViewset(
 class MyOrderListViewset(
                     ListModelMixin,
                     GenericViewSet):
-    queryset = Order.objects.filter()
     serializer_class = OrderSerializer
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
-        queryset = Order.objects.filter(user=user).order_by('-createdAt')
+        queryset = user.order_set.all().order_by('-createdAt')
         return queryset
