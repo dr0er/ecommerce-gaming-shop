@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function RegisterBtn(props: {btnText: string, register: any}) {
     return (
         <div>
