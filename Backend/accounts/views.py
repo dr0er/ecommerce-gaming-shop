@@ -1,5 +1,3 @@
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
@@ -16,9 +14,6 @@ from .utils import USER_MODEL
 from .serializers import (
     RegistrationSerializer,
     UserSerializer,
-    UserSerializerWithToken,
-
-
 )
 
 
@@ -49,24 +44,3 @@ class UserViewset(ReadOnlyModelViewSet, UpdateModelMixin):
 
     def get_queryset(self):
         return get_user_model().objects.filter(pk=self.request.user.id)
-
-
-class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-
-    def validate(self, attrs):
-        data = super().validate(attrs)
-
-        data['username'] = self.user.username
-        data['email'] = self.user.email
-
-        serializer = UserSerializerWithToken(self.user).data
-        for k, v in serializer.items():
-            data[k] = v
-
-            return data
-
-
-class MyTokenObtainPairView(TokenObtainPairView):
-    serializer_class = MyTokenObtainPairSerializer
-
-

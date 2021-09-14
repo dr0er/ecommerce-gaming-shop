@@ -8,12 +8,9 @@ from backend.models import Address
 class CustomUser(AbstractUser):
     username = models.CharField(max_length=50, null=True, unique=True)
     email = models.EmailField(_('email adress'), unique=True)
-    password = models.CharField(max_length=50, null=True)
-    is_active = models.BooleanField(default=None, null=True)
-    is_staff = models.BooleanField(default=None, null=True)
     date_of_birth = models.DateField(null=True, blank=True)
     info = models.TextField(null=True, blank=True)
-    address = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True)
+    address = models.ForeignKey(Address, on_delete=models.SET_NULL, null=True, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
