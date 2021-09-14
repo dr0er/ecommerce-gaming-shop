@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 module.exports = {
   purge: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx}'],
   darkMode: false, // or 'media' or 'class'
@@ -46,3 +47,26 @@ module.exports = {
   plugins: [],
 };
 >>>>>>> aabb4c4... basic features added
+=======
+module.exports = {
+  purge: ["./public/**/*.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {
+      colors:{
+       'grey-light': '#383838',
+       "background-grey": '#F3F5F7',
+      },
+      fontFamily: {
+        'lato': ['"Lato"', 'cursive']
+      }
+    },
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [
+    require('daisyui'),
+  ],
+};
+>>>>>>> ecb188d... added password icons, handle password visibility
