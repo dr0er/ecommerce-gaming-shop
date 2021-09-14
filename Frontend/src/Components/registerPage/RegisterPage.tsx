@@ -2,7 +2,7 @@ import RegisterForm from '../registerPage/RegisterForm'
 import { Link } from 'react-router-dom'
 import BackToMain from '../registerPage/BackToMain'
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <div className="h-screen text-grey-light py-6 flex flex-col gap-6 align-middle  max-w-md px-6 md: mx-auto">
       <BackToMain />
@@ -21,4 +21,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default RegisterPage

@@ -15,7 +15,7 @@ export const LandingPage = () => {
       </div>
 
       <div className="button_GetStarted">
-        <Link to="/">
+        <Link to="/signup">
           Get started
           <FontAwesomeIcon icon={faChevronRight} />
         </Link>
