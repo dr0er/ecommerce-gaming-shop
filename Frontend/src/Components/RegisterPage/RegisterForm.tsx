@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import RegisterBtn from './RegisterBtn'
 
 export default function RegisterForm (){
 
@@ -9,7 +10,7 @@ export default function RegisterForm (){
         password2: '',
         areTermsAccepted: false
     })
-    
+
     function handleChange(e: any): void{
         const {name, value, type, checked} = e.target
         type === 'checkbox' ? setUserData({
@@ -20,6 +21,10 @@ export default function RegisterForm (){
             ...userData,
             [name]: value
         })
+    }
+
+    function handleRegister(e: any){
+        e.preventDefault()
     }
 
     return(
@@ -76,16 +81,21 @@ export default function RegisterForm (){
                         onChange={handleChange} 
                         required
                     />
+                    
                 </div>
-                <div className="flex gap-2 mt-4">
-                    <label htmlFor="areTermsAccepted">
+                <div className="flex gap-2 mt-4 items-center">
                     <input 
                         name="areTermsAccepted"
                         type="checkbox" 
                         checked={userData.areTermsAccepted} 
-                        onChange={handleChange}/>
-                        Accept Terms and Conditions</label>
+                        onChange={handleChange}
+                        required/>
+                        
+                    <label htmlFor="areTermsAccepted">
+                        Accept Terms and Conditions
+                    </label>
                 </div>
+                <RegisterBtn btnText="Register" register={handleRegister} />
             </form>
         </div>
     )

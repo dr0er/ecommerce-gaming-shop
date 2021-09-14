@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module.exports = {
   style: {
     postcss: {
@@ -5,3 +6,12 @@ module.exports = {
     },
   },
 }
+=======
+module.exports = {
+  style: {
+    postcss: {
+      plugins: [require("tailwindcss"), require("autoprefixer")],
+    },
+  },
+};
+>>>>>>> aabb4c4... basic features added
