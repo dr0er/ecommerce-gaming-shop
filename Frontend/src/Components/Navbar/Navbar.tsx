@@ -1,44 +1,48 @@
 import {
-    faBars,
-    faSearch,
-    faShoppingCart,
-    faUser,
+	faBars,
+	faSearch,
+	faShoppingCart,
+	faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Menu from "./Menu";
-import * as React from "react";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../Store/store";
+import { setIsMenu } from "./MenuSlice";
 
 export interface NavBarProps {}
 
 const NavBar = () => {
-    const [isExpanded, setIsExpanded] = useState(false);
+	const { isMenu } = useSelector((state: RootState) => state.menuSlice);
 
-    const handleToggleMenu = () => {
-        setIsExpanded((prev) => !prev);
-    };
-    return (
-        <>
-            <div
-                className="w-auto h-20
+	const dispatch = useDispatch();
+
+	const handleOpenMenu = () => {
+		dispatch(setIsMenu(true));
+	};
+
+	return (
+		<>
+			<div
+				className="w-auto h-20
   text-black flex justify-around font text-2xl items-center"
-            >
-                <div onClick={handleToggleMenu}>
-                    <FontAwesomeIcon icon={faBars} />
-                </div>
-                <div>
-                    <FontAwesomeIcon icon={faShoppingCart} />
-                </div>
-                <div>
-                    <FontAwesomeIcon icon={faUser} />
-                </div>
-                <div>
-                    <FontAwesomeIcon icon={faSearch} />
-                </div>
-            </div>
-            <Menu isOpened={isExpanded}/>
-        </>
-    );
+			>
+				<div>
+					<FontAwesomeIcon icon={faBars} onClick={handleOpenMenu} />
+				</div>
+				<div>
+					<FontAwesomeIcon icon={faShoppingCart} />
+				</div>
+				<div>
+					<FontAwesomeIcon icon={faUser} />
+				</div>
+				<div>
+					<FontAwesomeIcon icon={faSearch} />
+				</div>
+			</div>
+			<Menu isOpened={isMenu} />
+		</>
+	);
 };
 
 export default NavBar;
