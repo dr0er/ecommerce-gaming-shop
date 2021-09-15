@@ -10,13 +10,6 @@ export interface MenuProps {
 
 const Menu = ({isOpened}: MenuProps) => {
 
-    const [isExpanded, setIsExpanded] = useState(false);
-
-    const handleToggleMenu = () => {
-        setIsExpanded((prev) => !prev);
-
-    };
-
     const baseClasses = `h-full w-8/12 flex flex-col 
     bg-background-grey absolute top-0 left-0 transform border-8 
     border-red-500 px-8 text-grey-light text-xl transition-transform duration-250`
@@ -28,7 +21,7 @@ const Menu = ({isOpened}: MenuProps) => {
             className={classNames}
         >
             <div className={"flex gap-6 items-center"}>
-                <FontAwesomeIcon onClick={handleToggleMenu} icon={faTimes} />
+                <FontAwesomeIcon icon={faTimes} />
                 Menu
             </div>
             <div className={"opacity-30 py-2"}>
