@@ -7,9 +7,9 @@ module.exports = {
        'grey-light': '#383838',
        "background-grey": '#F3F5F7',
       },
-      backgroundImage: theme => ({
-        'straganLandingPageBackground': "url('./Assets/background-lp.jpg')",
-      })
+      backgroundImage: {
+        'LandingPageBackground': "url('./Assets/background-lp.jpg')"
+      },
     },
   },
   variants: {
