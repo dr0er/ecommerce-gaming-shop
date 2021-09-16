@@ -1,44 +1,38 @@
-import { useState } from 'react'
-import RegisterBtn from '../registerPage/RegisterBtn'
+import { useState, MouseEvent } from 'react'
+import SubmitBtn from './SubmitBtn'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-export default function RegisterForm() {
+const RegisterForm = () => {
   const [userData, setUserData] = useState({
     name: '',
     email: '',
     password: '',
-    password2: '',
+    passwordConfirm: '',
     areTermsAccepted: false,
   })
 
-  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false)
-  const [isPassword2Visible, setIsPassword2Visible] = useState<boolean>(false)
+  type passwordsVisibility = { pass: boolean; passConfirm: boolean }
+  const [passwordsVisibility, setPasswordsVisibility] = useState<passwordsVisibility>({
+    pass: false,
+    passConfirm: false,
+  })
 
-  function handleChange(e: any): void {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value, type, checked } = e.target
-    type === 'checkbox'
-      ? setUserData({
-          ...userData,
-          [name]: checked,
-        })
-      : setUserData({
-          ...userData,
-          [name]: value,
-        })
+    setUserData({
+      ...userData,
+      [name]: type === 'checkbox' ? checked : value,
+    })
   }
 
-  function handleRegister(e: any): void {
+  const handleRegister = (e: MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault()
     //todo: POST userData to server
   }
 
-  function handleChangePasswordVisibility() {
-    setIsPasswordVisible((prevState) => !prevState)
-  }
-
-  function handleChangePassword2Visibility() {
-    setIsPassword2Visible((prevState) => !prevState)
+  const handleChangePasswordVisibility = (iconId: keyof passwordsVisibility): void => {
+    setPasswordsVisibility((prev) => ({ ...passwordsVisibility, [iconId]: !prev[iconId] }))
   }
 
   return (
@@ -81,7 +75,7 @@ export default function RegisterForm() {
             <input
               className={`py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
                                 border-grey-light focus:opacity-100 bg-background-grey`}
-              type={isPasswordVisible ? 'text' : 'password'}
+              type={passwordsVisibility.pass ? 'text' : 'password'}
               value={userData.password}
               name="password"
               placeholder="password..."
@@ -89,30 +83,33 @@ export default function RegisterForm() {
               required
             />
             <FontAwesomeIcon
-              icon={isPasswordVisible ? faEye : faEyeSlash}
+              icon={passwordsVisibility.pass ? faEye : faEyeSlash}
               className="absolute flex top-1/2 right-7 transform -translate-y-2/4"
-              onClick={handleChangePasswordVisibility}
+              onClick={() => handleChangePasswordVisibility('pass')}
             />
           </div>
         </div>
         <div className="flex flex-col gap-2 mt-4">
-          <label htmlFor="password2">Repeat password</label>
+          <label htmlFor="passwordConfirm">Repeat password</label>
           <div
-            className={`relative ${!userData.password2 && 'opacity-30'} focus-within:opacity-100 `}>
+            className={`relative ${
+              !userData.passwordConfirm && 'opacity-30'
+            } focus-within:opacity-100 `}>
             <input
               className={`py-2 px-6 w-full  rounded-2xl outline-none border-2 
                                 border-grey-light focus:opacity-100 bg-background-grey`}
-              type={isPassword2Visible ? 'text' : 'password'}
-              value={userData.password2}
-              name="password2"
+              type={passwordsVisibility.passConfirm ? 'text' : 'password'}
+              value={userData.passwordConfirm}
+              name="passwordConfirm"
               placeholder="password..."
               onChange={handleChange}
               required
             />
             <FontAwesomeIcon
-              icon={isPassword2Visible ? faEye : faEyeSlash}
+              id="passConfirm"
+              icon={passwordsVisibility.passConfirm ? faEye : faEyeSlash}
               className="absolute flex top-1/2 right-7 transform -translate-y-2/4"
-              onClick={handleChangePassword2Visibility}
+              onClick={() => handleChangePasswordVisibility('passConfirm')}
             />
           </div>
         </div>
@@ -131,8 +128,10 @@ export default function RegisterForm() {
           </div>
         </label>
 
-        <RegisterBtn btnText="Register" register={handleRegister} />
+        <SubmitBtn register={handleRegister}>Register</SubmitBtn>
       </form>
     </div>
   )
 }
+
+export default RegisterForm

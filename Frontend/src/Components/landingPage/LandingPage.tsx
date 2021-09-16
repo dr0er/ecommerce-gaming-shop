@@ -3,6 +3,7 @@ import './LandingPage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { Routes } from '../../Utilities/routes'
 
 export const LandingPage = () => {
   return (
@@ -15,7 +16,7 @@ export const LandingPage = () => {
       </div>
 
       <div className="button_GetStarted">
-        <Link to="/signup">
+        <Link to={Routes.signup}>
           Get started
           <FontAwesomeIcon icon={faChevronRight} />
         </Link>
