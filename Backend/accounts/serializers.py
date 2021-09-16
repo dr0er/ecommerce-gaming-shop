@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from .utils import USER_MODEL
 from .models import CustomUser
+from rest_framework_simplejwt.tokens import RefreshToken
 from backend.serializers import AddressSerializer
 
 
@@ -17,7 +18,8 @@ class RegistrationSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'password' : {'write_only': True, 'max_length': 16,
             'style' : {'input_type': 'password'}
-            }
+            },
+            'username': {'required': True}
         }
     def save(self):
         user = USER_MODEL(
@@ -33,12 +35,12 @@ class RegistrationSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     address = serializers.SerializerMethodField()
 
     class Meta:
         model = USER_MODEL
-        fields = ['id','username','email','first_name','last_name', 'date_of_birth', 'info', 'address']
+        fields = ['id','username','email','first_name','last_name', 'date_of_birth', 'info', 'address', 'is_staff']
 
     def get_address(self, obj):
         try:
@@ -46,3 +48,14 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         except:
             address = False
         return address
+
+class UserSerializerWithToken(UserSerializer):
+    token = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = USER_MODEL
+        fields = ['id','username','email','first_name','last_name', 'date_of_birth', 'info', 'address', 'is_staff', 'token']
+
+    def get_token(self, obj):
+        token = RefreshToken.for_user(obj)
+        return str(token.access_token)
