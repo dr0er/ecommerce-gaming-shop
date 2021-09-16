@@ -8,17 +8,22 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Menu from "./Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Store/store";
-import { setIsMenu } from "./MenuSlice";
+/*import { setIsMenu } from "./MenuSlice";*/
+import {useState} from "react";
 
 export interface NavBarProps {}
 
 const NavBar = () => {
+/*
 	const { isMenu } = useSelector((state: RootState) => state.menuSlice);
-
-	const dispatch = useDispatch();
+*/
+	const [isMenu, setIsMenu] = useState(false);
 
 	const handleOpenMenu = () => {
-		dispatch(setIsMenu(true));
+		setIsMenu(true);
+	};
+	const handleCloseMenu = () => {
+		setIsMenu(false);
 	};
 
 	return (
@@ -40,7 +45,7 @@ const NavBar = () => {
 					<FontAwesomeIcon icon={faSearch} />
 				</div>
 			</div>
-			<Menu isOpened={isMenu} />
+			<Menu isOpened={isMenu} onClose={handleCloseMenu}/>
 		</>
 	);
 };
