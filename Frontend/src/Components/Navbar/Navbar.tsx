@@ -8,15 +8,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Menu from "./Menu";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../Store/store";
-/*import { setIsMenu } from "./MenuSlice";*/
 import {useState} from "react";
 
 export interface NavBarProps {}
 
 const NavBar = () => {
-/*
-	const { isMenu } = useSelector((state: RootState) => state.menuSlice);
-*/
+
 	const [isMenu, setIsMenu] = useState(false);
 
 	const handleOpenMenu = () => {

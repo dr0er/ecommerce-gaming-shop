@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MenuItem from "./MenuItem";
 import { useDispatch } from "react-redux";
 import {useEffect, useState} from "react";
-/*import { setIsMenu } from "./MenuSlice";*/
 
 export interface MenuProps {
 	isOpened: boolean,
@@ -11,8 +10,6 @@ export interface MenuProps {
 }
 
 const Menu = ({ isOpened, onClose }: MenuProps) => {
-/*	const dispatch = useDispatch();*/
-
 
 	const baseClasses = `h-full w-8/12 flex flex-col 
     bg-background-grey absolute top-0 left-0 transform
@@ -24,11 +21,6 @@ const Menu = ({ isOpened, onClose }: MenuProps) => {
 			? baseClasses.replace("-translate-x-full","")
 			: baseClasses)
 	},[isOpened])
-
-
-/*	const classNames = isMenu
-		? baseClasses
-		: baseClasses + " -translate-x-full";*/
 
 	const handleCloseMenu = () => {
 		onClose()
