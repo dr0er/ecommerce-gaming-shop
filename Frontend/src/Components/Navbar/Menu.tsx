@@ -12,8 +12,8 @@ const Menu = ({ isOpened }: MenuProps) => {
 	const dispatch = useDispatch();
 
 	const baseClasses = `h-full w-8/12 flex flex-col 
-    bg-background-grey absolute top-0 left-0 transform border-8 
-    border-red-500 px-8 text-grey-light text-xl transition-transform duration-250`;
+    bg-background-grey absolute top-0 left-0 transform
+    px-8 text-grey-light text-xl transition-transform duration-250 pt-6`;
 
 	const classNames = isOpened
 		? baseClasses
@@ -25,12 +25,12 @@ const Menu = ({ isOpened }: MenuProps) => {
 
 	return (
 		<div className={classNames}>
-			<div className={"flex gap-6 items-center"}>
+			<div className={"flex gap-6 items-center font-semibold"}>
 				<FontAwesomeIcon icon={faTimes} onClick={handleCloseMenu} />
 				Menu
 			</div>
 			<div className={"opacity-30 py-2"}>Categories</div>
-			<ul className={"flex flex-col w-full"}>
+			<ul className={"flex flex-col w-full font-semibold"}>
 				<MenuItem>Mouse</MenuItem>
 				<MenuItem>Keyboard</MenuItem>
 				<MenuItem>Chair</MenuItem>
@@ -41,7 +41,7 @@ const Menu = ({ isOpened }: MenuProps) => {
 				<MenuItem>Helpdesk</MenuItem>
 				<MenuItem>About us</MenuItem>
 			</ul>
-			<div className={"text-grey-light text-xl font-semibold"}>Logout</div>
+			<div className={"text-grey-light text-xl font-bold"}>Logout</div>
 		</div>
 	);
 };

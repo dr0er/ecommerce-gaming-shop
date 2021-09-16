@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface MenuSliceProps {
+export interface MenuSliceProps {
 	isMenu: boolean;
 }
 
