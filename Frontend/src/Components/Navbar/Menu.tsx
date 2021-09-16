@@ -1,33 +1,25 @@
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MenuItem from "./MenuItem";
-import { useDispatch } from "react-redux";
-import {useEffect, useState} from "react";
 
 export interface MenuProps {
-	isOpened: boolean,
+	isOpened: boolean;
 	onClose: () => void;
 }
 
 const Menu = ({ isOpened, onClose }: MenuProps) => {
-
 	const baseClasses = `h-full w-8/12 flex flex-col 
     bg-background-grey absolute top-0 left-0 transform
-    px-8 text-grey-light text-xl transition-transform duration-250 pt-6 -translate-x-full`;
-
-	const [classNames, setClassNames] = useState(baseClasses)
-	useEffect(() => {
-		setClassNames(isOpened
-			? baseClasses.replace("-translate-x-full","")
-			: baseClasses)
-	},[isOpened])
+    px-8 text-grey-light text-xl transition-transform duration-250 pt-6 ${
+			!isOpened && "-translate-x-full"
+		}`;
 
 	const handleCloseMenu = () => {
-		onClose()
+		onClose();
 	};
 
 	return (
-		<div className={classNames}>
+		<div className={baseClasses}>
 			<div className={"flex gap-6 items-center font-semibold"}>
 				<FontAwesomeIcon icon={faTimes} onClick={handleCloseMenu} />
 				Menu

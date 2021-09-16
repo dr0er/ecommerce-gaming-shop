@@ -6,14 +6,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Menu from "./Menu";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../Store/store";
-import {useState} from "react";
+import { useState } from "react";
 
 export interface NavBarProps {}
 
 const NavBar = () => {
-
 	const [isMenu, setIsMenu] = useState(false);
 
 	const handleOpenMenu = () => {
@@ -42,7 +39,7 @@ const NavBar = () => {
 					<FontAwesomeIcon icon={faSearch} />
 				</div>
 			</div>
-			<Menu isOpened={isMenu} onClose={handleCloseMenu}/>
+			<Menu isOpened={isMenu} onClose={handleCloseMenu} />
 		</>
 	);
 };
