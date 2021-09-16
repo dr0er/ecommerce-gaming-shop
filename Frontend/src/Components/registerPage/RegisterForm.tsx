@@ -36,11 +36,12 @@ const RegisterForm = () => {
   }
 
   return (
-    <div className="flex flex-col gap-4 px-4 mt-4">
+    <div className="flex flex-col gap-4 px-4 mt-4 w-full">
       <form>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 w-full">
           <label htmlFor="name">Name</label>
           <input
+            id="name"
             className={`py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
                         ${
                           !userData.name && 'opacity-30'
@@ -56,6 +57,7 @@ const RegisterForm = () => {
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="email">Email</label>
           <input
+            id="email"
             className={`py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
                         ${
                           !userData.email && 'opacity-30'
@@ -73,8 +75,9 @@ const RegisterForm = () => {
           <div
             className={`relative ${!userData.password && 'opacity-30'} focus-within:opacity-100 `}>
             <input
-              className={`py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
-                                border-grey-light focus:opacity-100 bg-background-grey`}
+              id="password"
+              className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
+                                border-grey-light focus:opacity-100 bg-background-grey"
               type={passwordsVisibility.pass ? 'text' : 'password'}
               value={userData.password}
               name="password"
@@ -89,15 +92,16 @@ const RegisterForm = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-2 mt-4">
+        <div className="flex flex-col gap-2 mt-4 w-full">
           <label htmlFor="passwordConfirm">Repeat password</label>
           <div
-            className={`relative ${
+            className={`relative w-full ${
               !userData.passwordConfirm && 'opacity-30'
             } focus-within:opacity-100 `}>
             <input
-              className={`py-2 px-6 w-full  rounded-2xl outline-none border-2 
-                                border-grey-light focus:opacity-100 bg-background-grey`}
+              id="passwordConfirm"
+              className="py-2 px-6 w-full  rounded-2xl outline-none border-2 
+                                border-grey-light focus:opacity-100 bg-background-grey"
               type={passwordsVisibility.passConfirm ? 'text' : 'password'}
               value={userData.passwordConfirm}
               name="passwordConfirm"
