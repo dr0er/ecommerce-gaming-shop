@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 export const LandingPage = () => {
   return (
-    <div className="text-white h-screen w-screen bg-no-repeat bg-LandingPageBackground bg-center bg-cover flex flex-col justify-center items-center overflow-hidden">
+    <div className="text-white h-screen w-screen bg-no-repeat bg-landing-page-background bg-center bg-cover flex flex-col justify-center items-center overflow-hidden">
       <div className="flex flex-col justify-center items-center z-10">
         <p className="px-5 py-4 text-lg bg-gray-500 rounded-lg my-5">
           Stragan.com

@@ -8,7 +8,7 @@ module.exports = {
        "background-grey": '#F3F5F7',
       },
       backgroundImage: {
-        'LandingPageBackground': "url('./Assets/background-lp.jpg')"
+        'landing-page-background': "url('./Assets/background-lp.jpg')"
       },
     },
   },
