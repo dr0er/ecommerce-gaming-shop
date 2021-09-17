@@ -73,10 +73,10 @@ const RegisterForm = () => {
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="password">Password</label>
           <div
-            className={`relative ${!userData.password && 'opacity-30'} focus-within:opacity-100 `}>
+            className={`relative ${!userData.password && 'opacity-30'} focus-within:opacity-100`}>
             <input
               id="password"
-              className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
+              className="py-2 px-6 pr-12 w-full duration-300 rounded-2xl outline-none border-2 
                                 border-grey-light focus:opacity-100 bg-background-grey"
               type={passwordsVisibility.pass ? 'text' : 'password'}
               value={userData.password}
@@ -87,7 +87,7 @@ const RegisterForm = () => {
             />
             <FontAwesomeIcon
               icon={passwordsVisibility.pass ? faEye : faEyeSlash}
-              className="absolute flex top-1/2 right-7 transform -translate-y-2/4"
+              className="absolute flex top-1/2 right-5 transform -translate-y-2/4"
               onClick={() => handleChangePasswordVisibility('pass')}
             />
           </div>
@@ -100,7 +100,7 @@ const RegisterForm = () => {
             } focus-within:opacity-100 `}>
             <input
               id="passwordConfirm"
-              className="py-2 px-6 w-full  rounded-2xl outline-none border-2 
+              className="py-2 px-6 pr-12 w-full  rounded-2xl outline-none border-2 
                                 border-grey-light focus:opacity-100 bg-background-grey"
               type={passwordsVisibility.passConfirm ? 'text' : 'password'}
               value={userData.passwordConfirm}
@@ -112,7 +112,7 @@ const RegisterForm = () => {
             <FontAwesomeIcon
               id="passConfirm"
               icon={passwordsVisibility.passConfirm ? faEye : faEyeSlash}
-              className="absolute flex top-1/2 right-7 transform -translate-y-2/4"
+              className="absolute flex top-1/2 right-5 transform -translate-y-2/4"
               onClick={() => handleChangePasswordVisibility('passConfirm')}
             />
           </div>
@@ -121,7 +121,7 @@ const RegisterForm = () => {
           <label htmlFor="areTermsAccepted" className="cursor-pointer relative">
             <input
               id="areTermsAccepted"
-              className="appearance-none w-4 h-4 border-2 rounded-md border-grey-light opacity-30 active:opacity-100 "
+              className="appearance-none w-4 h-4 border-2 rounded-md border-grey-light opacity-30 active:opacity-100"
               name="areTermsAccepted"
               type="checkbox"
               checked={userData.areTermsAccepted}
