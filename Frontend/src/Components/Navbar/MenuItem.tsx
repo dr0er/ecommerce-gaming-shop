@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import * as React from "react";
 
 interface ItemMenuProps {
-    children: string;
+    children: React.ReactNode;
 }
 
 const ItemMenu = ({children}:ItemMenuProps) => {
