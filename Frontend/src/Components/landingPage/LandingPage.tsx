@@ -8,9 +8,7 @@ export const LandingPage = () => {
   return (
     <div className="text-white h-screen w-screen bg-no-repeat bg-landing-page-background bg-center bg-cover flex flex-col justify-center items-center overflow-hidden">
       <div className="flex flex-col justify-center items-center z-10">
-        <p className="px-5 py-4 text-lg bg-gray-500 rounded-lg my-5">
-          Stragan.com
-        </p>
+        <p className="px-5 py-4 text-lg bg-gray-500 rounded-lg my-5">Stragan.com</p>
         <div className="text-3xl font-semibold flex flex-col justify-center">
           Next level of gaming
           <span className="flex flex-col place-content-end bg-blue-500 h-4 my-5 w-1/2">
