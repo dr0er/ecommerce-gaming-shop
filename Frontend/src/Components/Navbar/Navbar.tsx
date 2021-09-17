@@ -6,19 +6,19 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Menu from "./Menu";
-import { useState } from "react";
+import {useCallback, useState} from "react";
 
 export interface NavBarProps {}
 
 const NavBar = () => {
 	const [isMenu, setIsMenu] = useState(false);
 
-	const handleOpenMenu = () => {
+	const handleOpenMenu = useCallback(() => {
 		setIsMenu(true);
-	};
-	const handleCloseMenu = () => {
+	}, []);
+	const handleCloseMenu = useCallback(() => {
 		setIsMenu(false);
-	};
+	}, []);
 
 	return (
 		<>
