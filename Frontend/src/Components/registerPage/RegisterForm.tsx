@@ -1,6 +1,6 @@
 import { useState, MouseEvent } from 'react'
 import SubmitBtn from './SubmitBtn'
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const RegisterForm = () => {
@@ -117,20 +117,24 @@ const RegisterForm = () => {
             />
           </div>
         </div>
-
-        <label htmlFor="areTermsAccepted">
-          <div className="flex gap-2 mt-4 items-center ">
+        <div className="flex gap-2 mt-4 items-center ">
+          <label htmlFor="areTermsAccepted" className="cursor-pointer relative">
             <input
-              className="checkbox checkbox-sm"
+              id="areTermsAccepted"
+              className="appearance-none w-4 h-4 border-2 rounded-md border-grey-light opacity-30 active:opacity-100 "
               name="areTermsAccepted"
               type="checkbox"
               checked={userData.areTermsAccepted}
               onChange={handleChange}
               required
             />
-            <span>Accept Terms and Conditions</span>
-          </div>
-        </label>
+            <FontAwesomeIcon
+              icon={faCheck}
+              className="w-4 h-4 text-grey-light text-sm absolute left-0.5 top-0.5 text-opacity-0 check-1 transition"
+            />
+          </label>
+          <span>Accept Terms and Conditions</span>
+        </div>
 
         <SubmitBtn register={handleRegister}>Register</SubmitBtn>
       </form>
