@@ -19,6 +19,7 @@ code {
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -29,4 +30,19 @@ code {
 
 .scroll-snap-center {
   scroll-snap-align: center;
+=======
+#areTermsAccepted:checked ~ .check-1{
+  @apply text-opacity-100;
+  animation: check-animate .5s 1;
+}
+
+@keyframes check-animate {
+  0%, 100%{
+    @apply transform scale-100;
+  }
+  50%{
+    @apply transform scale-150 text-opacity-0;
+  }
+  
+>>>>>>> 5504e24... adding custom checkbox with animation
 }
