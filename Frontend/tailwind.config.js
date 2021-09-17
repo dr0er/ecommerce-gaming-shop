@@ -3,12 +3,12 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      colors: {
-        'grey-light': '#383838',
-        'background-grey': '#F3F5F7',
+      colors:{
+       'grey-light': '#383838',
+       "background-grey": '#F3F5F7',
       },
       backgroundImage: {
-        'landing-page-background': "url('./Assets/background-lp.jpg')",
+        'landing-page-background': "url('./Assets/background-lp.jpg')"
       },
     },
   },
