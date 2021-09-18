@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Menu from './Menu'
 import { useCallback, useState } from 'react'
 
-export interface NavBarProps {}
-
 export const NavBar = () => {
   const [isMenu, setIsMenu] = useState(false)
 
