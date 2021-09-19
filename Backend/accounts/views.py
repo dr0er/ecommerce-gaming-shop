@@ -1,3 +1,5 @@
+from django.contrib.auth import authenticate, login
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
@@ -54,9 +56,16 @@ class RegistrationViewset(
                 data['response'] = 'Successfully registered a new user!'
                 data['email'] = user.email
                 data['username'] = user.username
+                data['token'] = serializer.get_token(user)
+                new_user = authenticate(email=request.POST.get('email'),
+                    password=request.POST.get('password'),
+                    )
+                if new_user is not None:
+                    if new_user.is_active:
+                        login(request, new_user)
             else:
                 data = serializer.errors
-            return Response(data)
+            return Response(data, status=status.HTTP_201_CREATED)
 
 
 class UserViewset(ReadOnlyModelViewSet, UpdateModelMixin):

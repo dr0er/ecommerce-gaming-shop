@@ -12,15 +12,28 @@ class RegistrationSerializer(serializers.ModelSerializer):
         write_only=True,
         max_length=16
     )
+    token = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = USER_MODEL
-        fields = ['username','email','password','password2']
+        fields = ['username','email','password','password2','token']
         extra_kwargs = {
             'password' : {'write_only': True, 'max_length': 16,
             'style' : {'input_type': 'password'}
             },
             'username': {'required': True}
         }
+
+    def get_token(self, user):
+        token = RefreshToken.for_user(user)
+        refresh = str(token)
+        access = str(token.access_token)
+        data = {
+            "refresh": refresh,
+            "access": access
+        }
+        return data
+
     def save(self):
         user = USER_MODEL(
             username=self.validated_data['username'],
