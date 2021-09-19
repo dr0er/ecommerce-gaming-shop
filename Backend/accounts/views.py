@@ -60,9 +60,8 @@ class RegistrationViewset(
                 new_user = authenticate(email=request.POST.get('email'),
                     password=request.POST.get('password'),
                     )
-                if new_user is not None:
-                    if new_user.is_active:
-                        login(request, new_user)
+                if new_user is not None and if new_user.is_active:
+                    login(request, new_user)
             else:
                 data = serializer.errors
             return Response(data, status=status.HTTP_201_CREATED)
