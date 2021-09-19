@@ -1,5 +1,4 @@
 import React from 'react'
-import './LandingPage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
