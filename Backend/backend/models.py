@@ -47,7 +47,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    image = models.ImageField(upload_to='', null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
     name = models.CharField(max_length=200)
     brand = models.ForeignKey(Brand, on_delete=models.SET_NULL, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
