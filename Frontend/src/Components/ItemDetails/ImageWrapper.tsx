@@ -17,7 +17,7 @@ const ImageWrapper = ({
     <>
       <div
         {...swipeable}
-        className={` h-36 my-3 flex transition duration-300 transform`}
+        className="h-36 my-3 flex transition duration-300 transform"
         style={{ transform: `translateX(-${currentImage * 100}%)` }}>
         {createImages}
       </div>

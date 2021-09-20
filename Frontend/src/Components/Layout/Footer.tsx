@@ -1,8 +1,8 @@
 export const Footer = () => {
   return (
     <>
-      <div className={'h-px bg-gray-300 mt-16'} />
-      <footer className={'p-8 flex flex-col gap-4'}>
+      <div className="h-px bg-gray-300 mt-16" />
+      <footer className="p-8 flex flex-col gap-4">
         <h2 className="font-bold text-lg">Stragan</h2>
         <ul>
           <li>About us</li>

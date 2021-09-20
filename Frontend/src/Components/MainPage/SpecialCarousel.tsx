@@ -11,7 +11,7 @@ export const SpecialCarousel = () => {
 
   return (
     <div>
-      <ul className={'flex flex-row gap-6 pb-6 font-semibold text-xl overflow-hidden'}>
+      <ul className="flex flex-row gap-6 pb-6 font-semibold text-xl overflow-hidden">
         {headerItems.map((item, index) => (
           <HeaderItem
             item={item}
@@ -22,7 +22,7 @@ export const SpecialCarousel = () => {
         ))}
       </ul>
       <Carousel />
-      <div className={'flex flex-row gap-2 justify-center items-center pt-6 font-semibold text-xl'}>
+      <div className="flex flex-row gap-2 justify-center items-center pt-6 font-semibold text-xl">
         <p>Show more</p>
         <FontAwesomeIcon icon={faChevronRight} />
       </div>

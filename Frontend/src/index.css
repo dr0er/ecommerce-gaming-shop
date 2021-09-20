@@ -22,3 +22,11 @@ code {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+.snap-mandatory {
+  scroll-snap-type: x mandatory
+}
+
+.scroll-snap-center {
+  scroll-snap-align: center;
+}
