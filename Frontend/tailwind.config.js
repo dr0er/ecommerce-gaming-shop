@@ -11,6 +11,9 @@ module.exports = {
 			fontFamily: {
 				sans: ["Lato"],
 			},
+      backgroundImage: {
+        'landing-page-background': "url('./Assets/background-lp.jpg')"
+      },
 		},
 	},
 	variants: {
@@ -18,3 +21,4 @@ module.exports = {
 	},
 	plugins: [],
 };
+

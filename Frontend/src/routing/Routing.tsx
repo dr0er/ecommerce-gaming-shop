@@ -5,9 +5,7 @@ import { LandingPage } from "../Components/landingPage/LandingPage";
 import CartScreen from "../Components/CartScreen/CartScreen";
 import ItemDetails from "../Components/ItemDetails/ItemDetails";
 
-interface Props {}
-
-export const Routing: React.FC<Props> = (Props) => {
+export const Routing = () => {
 	return (
 		<Switch>
 			<Route path={Routes.index} exact>
