@@ -21,7 +21,7 @@ code {
   box-sizing: border-box;
 }
 
-#areTermsAccepted:checked ~ .check-1{
+#acceptTerms:checked ~ .check-1{
   @apply text-opacity-100;
   animation: check-animate .5s 1;
 }
