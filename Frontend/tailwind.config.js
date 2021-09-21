@@ -10,6 +10,9 @@ module.exports = {
       backgroundImage: {
         'landing-page-background': "url('./Assets/background-lp.jpg')",
       },
+      saturate: {
+        90: '.9',
+      },
     },
   },
   variants: {
