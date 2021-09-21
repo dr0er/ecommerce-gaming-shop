@@ -1,8 +1,5 @@
-import React, { FunctionComponent, ReactNode } from 'react'
-
-interface btnProps {
-  children: ReactNode
-}
+import { FunctionComponent } from 'react'
+import btnProps from './interfaces/BtnProps'
 
 const SubmitBtn: FunctionComponent<btnProps> = ({ children }) => {
   return (
