@@ -12,7 +12,7 @@ module.exports = {
 				sans: ["Lato"],
 			},
       backgroundImage: {
-        'landing-page-background': "url('./Assets/background-lp.jpg')"
+        'landing-page-background': "url('./Assets/background-lp.jpg')",
       },
 		},
 	},
