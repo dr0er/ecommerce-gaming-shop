@@ -1,5 +1,7 @@
+from django.contrib.auth import authenticate, login
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.viewsets import GenericViewSet
+from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
 from rest_framework.generics import RetrieveUpdateAPIView
 from rest_framework.mixins import (
@@ -9,11 +11,34 @@ from rest_framework.mixins import (
     UpdateModelMixin,
     DestroyModelMixin
 )
+from django.contrib.auth import get_user_model
 from .utils import USER_MODEL
 from .serializers import (
     RegistrationSerializer,
     UserSerializer,
+    UserSerializerWithToken
 )
+
+# tokens
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        # What should be returned in api response
+        # data['username'] = self.user.username
+        # data['email'] = self.user.email
+
+        serializer = UserSerializerWithToken(self.user).data
+        for k, v in serializer.items():
+            data[k] = v
+
+        return data
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 
 class RegistrationViewset(
@@ -31,18 +56,21 @@ class RegistrationViewset(
                 data['response'] = 'Successfully registered a new user!'
                 data['email'] = user.email
                 data['username'] = user.username
+                data['token'] = serializer.get_token(user)
+                new_user = authenticate(email=request.POST.get('email'),
+                    password=request.POST.get('password'),
+                    )
+                if new_user is not None and if new_user.is_active:
+                    login(request, new_user)
             else:
                 data = serializer.errors
-            return Response(data)
+            return Response(data, status=status.HTTP_201_CREATED)
 
 
-class UserViewSet(RetrieveUpdateAPIView):
+class UserViewset(ReadOnlyModelViewSet, UpdateModelMixin):
 
-    serializer_class = UserSerializer
+    serializer_class = UserSerializerWithToken
     permission_classes = [IsAuthenticated,]
 
-    def get_object(self):
-        return self.request.user
-
     def get_queryset(self):
-        return get_user_model().objects.none()
+        return get_user_model().objects.filter(pk=self.request.user.id)
