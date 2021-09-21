@@ -40,10 +40,6 @@ export const CartScreenSlice = createSlice({
 
 			if (product && product.amount > 1) {
 				product.amount = product.amount - 1;
-			} else if (product?.amount === 1) {
-				state.myProducts = state.myProducts.filter(
-					(currentProduct) => currentProduct.id !== product.id
-				);
 			}
 		},
 
