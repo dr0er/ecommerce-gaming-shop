@@ -1,13 +1,17 @@
 import { faBars, faSearch, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import c from 'clsx'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../Store/store'
+import { useCallback } from 'react'
+import { handleMenuClick } from '../../Store/menuSlice'
 
-interface NavBarProps {
-  isMenuOpen: boolean
-  handleMenuClick: () => void
-}
+export const NavBar = () => {
+  const isMenuOpen = useSelector((state: RootState) => state.menu.isOpen)
+  const dispatch = useDispatch()
 
-export const NavBar = ({ isMenuOpen, handleMenuClick }: NavBarProps) => {
+  const onClick = useCallback(() => dispatch(handleMenuClick()), [dispatch])
+
   return (
     <>
       <div
@@ -16,7 +20,7 @@ export const NavBar = ({ isMenuOpen, handleMenuClick }: NavBarProps) => {
           isMenuOpen && 'opacity-0',
         )}>
         <div>
-          <FontAwesomeIcon icon={faBars} onClick={handleMenuClick} />
+          <FontAwesomeIcon icon={faBars} onClick={onClick} />
         </div>
         <div>
           <FontAwesomeIcon icon={faShoppingCart} />

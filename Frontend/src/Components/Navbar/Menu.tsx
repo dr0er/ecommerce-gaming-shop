@@ -1,17 +1,21 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import MenuItem from './MenuItem'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../Store/store'
+import { useCallback } from 'react'
+import { handleMenuClick } from '../../Store/menuSlice'
 
-export interface MenuProps {
-  isOpened: boolean
-  onClose: () => void
-}
+const Menu = () => {
+  const isMenuOpen = useSelector((state: RootState) => state.menu.isOpen)
+  const dispatch = useDispatch()
 
-const Menu = ({ isOpened, onClose }: MenuProps) => {
+  const onClose = useCallback(() => dispatch(handleMenuClick()), [dispatch])
+
   const baseClasses = `h-full w-64 flex flex-col 
     bg-background-grey absolute top-0 left-0 transform
     px-8 text-grey-light text-xl transition-transform duration-200 pt-6 z-10 ${
-      !isOpened && '-translate-x-full'
+      !isMenuOpen && '-translate-x-full'
     }`
 
   return (
