@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import SubmitBtn from './SubmitBtn'
 import { faCheck, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { ErrorMessage } from '@hookform/error-message'
 
 const RegisterForm = () => {
   interface IFormInputs {
@@ -18,7 +19,9 @@ const RegisterForm = () => {
     watch,
     getValues,
     formState: { errors },
-  } = useForm<IFormInputs>()
+  } = useForm<IFormInputs>({
+    criteriaMode: 'all',
+  })
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(JSON.stringify(data))
 
@@ -49,7 +52,11 @@ const RegisterForm = () => {
               maxLength: 20,
             })}
           />
-          <p className="text-red-500">{errors?.name?.message}</p>
+          <ErrorMessage
+            errors={errors}
+            name="name"
+            render={({ message }) => <p className="text-red-500">{message}</p>}
+          />
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="email">Email</label>
@@ -68,7 +75,11 @@ const RegisterForm = () => {
               },
             })}
           />
-          <p className="text-red-500">{errors?.email?.message}</p>
+          <ErrorMessage
+            errors={errors}
+            name="email"
+            render={({ message }) => <p className="text-red-500">{message}</p>}
+          />
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="password">Password</label>
@@ -81,7 +92,7 @@ const RegisterForm = () => {
               type={passwordsVisibility.pass ? 'text' : 'password'}
               placeholder="password..."
               {...register('password', {
-                required: 'Password is required!',
+                required: 'This field is required!',
                 minLength: {
                   value: 6,
                   message: 'Password has to be at least 6 characters long!',
@@ -95,7 +106,11 @@ const RegisterForm = () => {
               onClick={() => handleChangePasswordVisibility('pass')}
             />
           </div>
-          <p className="text-red-500">{errors?.password?.message}</p>
+          <ErrorMessage
+            errors={errors}
+            name="password"
+            render={({ message }) => <p className="text-red-500">{message}</p>}
+          />
         </div>
         <div className="flex flex-col gap-2 mt-4 w-full">
           <label htmlFor="passwordConfirm">Repeat password</label>
@@ -109,11 +124,7 @@ const RegisterForm = () => {
               type={passwordsVisibility.passConfirm ? 'text' : 'password'}
               placeholder="password..."
               {...register('passwordConfirm', {
-                required: 'Password is required!',
-                minLength: {
-                  value: 6,
-                  message: 'Password has to be at least 6 characters long!',
-                },
+                required: 'This field is required!',
                 validate: {
                   matchesPreviousPassword: (value) => {
                     const { password } = getValues()
@@ -130,8 +141,8 @@ const RegisterForm = () => {
               onClick={() => handleChangePasswordVisibility('passConfirm')}
             />
           </div>
-          <p className="text-red-500">{errors?.passwordConfirm?.message}</p>
         </div>
+        {errors.passwordConfirm && <p className="text-red-500">{errors.passwordConfirm.message}</p>}
         <div className="flex gap-2 mt-4 items-center ">
           <label htmlFor="acceptTerms" className="cursor-pointer relative">
             <input
@@ -149,7 +160,11 @@ const RegisterForm = () => {
           </label>
           <span>Accept Terms and Conditions</span>
         </div>
-        <p className="text-red-500">{errors?.acceptTerms?.message}</p>
+        <ErrorMessage
+          errors={errors}
+          name="acceptTerms"
+          render={({ message }) => <p className="text-red-500">{message}</p>}
+        />
 
         <SubmitBtn>Register</SubmitBtn>
       </form>
