@@ -1,58 +1,51 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 export interface ProductProps {
-	id: number;
-	name: string;
-	category: string;
-	price: number;
-	image: string;
-	amount: number;
+  id: number
+  name: string
+  category: string
+  price: number
+  image: string
+  amount: number
 }
 
 interface CartScreenSliceState {
-	myProducts: ProductProps[];
+  myProducts: ProductProps[]
 }
 
 const initialState: CartScreenSliceState = {
-	myProducts: [],
-};
+  myProducts: [],
+}
 
 export const CartScreenSlice = createSlice({
-	name: "cartScreen",
-	initialState,
-	reducers: {
-		setProducts: (state, action) => {
-			state.myProducts = action.payload;
-		},
+  name: 'cartScreen',
+  initialState,
+  reducers: {
+    setProducts: (state, action) => {
+      state.myProducts = action.payload
+    },
 
-		addProduct: (state, action) => {
-			const product = state.myProducts.find(
-				(product) => product.id === action.payload
-			);
-			if (product && product.amount) {
-				product.amount = product.amount + 1;
-			}
-		},
+    addProduct: (state, action) => {
+      const product = state.myProducts.find((product) => product.id === action.payload)
+      if (product && product.amount) {
+        product.amount = product.amount + 1
+      }
+    },
 
-		removeProduct: (state, action) => {
-			const product = state.myProducts.find(
-				(product) => product.id === action.payload
-			);
+    removeProduct: (state, action) => {
+      const product = state.myProducts.find((product) => product.id === action.payload)
 
-			if (product && product.amount > 1) {
-				product.amount = product.amount - 1;
-			}
-		},
+      if (product && product.amount > 1) {
+        product.amount = product.amount - 1
+      }
+    },
 
-		deleteProduct: (state, action) => {
-			state.myProducts = state.myProducts.filter(
-				(prodcut) => prodcut.id !== action.payload
-			);
-		},
-	},
-});
+    deleteProduct: (state, action) => {
+      state.myProducts = state.myProducts.filter((prodcut) => prodcut.id !== action.payload)
+    },
+  },
+})
 
 // Action creators are generated for each case reducer function
-export const { setProducts, addProduct, removeProduct, deleteProduct } =
-	CartScreenSlice.actions;
+export const { setProducts, addProduct, removeProduct, deleteProduct } = CartScreenSlice.actions
 
-export default CartScreenSlice.reducer;
+export default CartScreenSlice.reducer
