@@ -9,7 +9,6 @@ const RegisterPage = () => {
       <BackToMain />
       <h1 className="font-bold text-3xl text-center ">Register to Stragan</h1>
       <RegisterForm />
-
       <p className="flex gap-2 opacity-70 mx-auto">
         Already have an account?
         <Link

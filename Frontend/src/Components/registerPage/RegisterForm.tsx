@@ -4,24 +4,15 @@ import SubmitBtn from './SubmitBtn'
 import { faCheck, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ErrorMessage } from '@hookform/error-message'
+import IFormInputs from './interfaces/IFormInputs'
 
 const RegisterForm = () => {
-  interface IFormInputs {
-    name: string
-    email: string
-    password: string
-    passwordConfirm: string
-    acceptTerms: boolean
-  }
   const {
     register,
     handleSubmit,
-    watch,
     getValues,
     formState: { errors },
-  } = useForm<IFormInputs>({
-    criteriaMode: 'all',
-  })
+  } = useForm<IFormInputs>()
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(JSON.stringify(data))
 
@@ -42,9 +33,8 @@ const RegisterForm = () => {
           <label htmlFor="name">Name</label>
           <input
             id="name"
-            className={`py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
-                        ${!watch('name') && 'opacity-30'}  
-                        border-grey-light focus:opacity-100 bg-background-grey`}
+            className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
+                        opacity-30 border-grey-light focus:opacity-100 bg-background-grey"
             type="text"
             placeholder="Orangutan"
             {...register('name', {
@@ -62,9 +52,8 @@ const RegisterForm = () => {
           <label htmlFor="email">Email</label>
           <input
             id="email"
-            className={`py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
-                        ${!watch('email') && 'opacity-30'}  
-                        border-grey-light focus:opacity-100 bg-background-grey`}
+            className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
+                        opacity-30 border-grey-light focus:opacity-100 bg-background-grey"
             type="email"
             placeholder="mario@gmail.com"
             {...register('email', {
@@ -83,8 +72,7 @@ const RegisterForm = () => {
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="password">Password</label>
-          <div
-            className={`relative ${!watch('password') && 'opacity-30'} focus-within:opacity-100`}>
+          <div className={`relative opacity-30 focus-within:opacity-100`}>
             <input
               id="password"
               className="py-2 px-6 pr-12 w-full duration-300 rounded-2xl outline-none border-2 
@@ -115,7 +103,7 @@ const RegisterForm = () => {
         <div className="flex flex-col gap-2 mt-4 w-full">
           <label htmlFor="passwordConfirm">Repeat password</label>
           <div
-            className={`relative w-full ${!watch('passwordConfirm') && 'opacity-30'} 
+            className={`relative w-full opacity-30
             focus-within:opacity-100 `}>
             <input
               id="passwordConfirm"
