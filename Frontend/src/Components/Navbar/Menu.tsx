@@ -8,9 +8,9 @@ export interface MenuProps {
 }
 
 const Menu = ({ isOpened, onClose }: MenuProps) => {
-  const baseClasses = `h-full w-8/12 flex flex-col 
+  const baseClasses = `h-full w-64 flex flex-col 
     bg-background-grey absolute top-0 left-0 transform
-    px-8 text-grey-light text-xl transition-transform duration-250 pt-6 ${
+    px-8 text-grey-light text-xl transition-transform duration-200 pt-6 z-10 ${
       !isOpened && '-translate-x-full'
     }`
 
@@ -28,7 +28,7 @@ const Menu = ({ isOpened, onClose }: MenuProps) => {
         <MenuItem>Mousepad</MenuItem>
         <MenuItem>Special offer</MenuItem>
       </ul>
-      <ul className={'py-6 '}>
+      <ul className={'py-6'}>
         <MenuItem>Helpdesk</MenuItem>
         <MenuItem>About us</MenuItem>
       </ul>

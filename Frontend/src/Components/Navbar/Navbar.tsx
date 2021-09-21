@@ -1,25 +1,22 @@
 import { faBars, faSearch, faShoppingCart, faUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Menu from './Menu'
-import { useCallback, useState } from 'react'
+import c from 'clsx'
 
-export const NavBar = () => {
-  const [isMenu, setIsMenu] = useState(false)
+interface NavBarProps {
+  isMenuOpen: boolean
+  handleMenuClick: () => void
+}
 
-  const handleOpenMenu = useCallback(() => {
-    setIsMenu(true)
-  }, [])
-  const handleCloseMenu = useCallback(() => {
-    setIsMenu(false)
-  }, [])
-
+export const NavBar = ({ isMenuOpen, handleMenuClick }: NavBarProps) => {
   return (
     <>
       <div
-        className="w-auto h-20
-  text-black flex justify-around font text-2xl items-center">
+        className={c(
+          'w-auto h-20 text-black flex justify-around font text-2xl items-center duration-200 transition-opacity',
+          isMenuOpen && 'opacity-0',
+        )}>
         <div>
-          <FontAwesomeIcon icon={faBars} onClick={handleOpenMenu} />
+          <FontAwesomeIcon icon={faBars} onClick={handleMenuClick} />
         </div>
         <div>
           <FontAwesomeIcon icon={faShoppingCart} />
@@ -31,7 +28,6 @@ export const NavBar = () => {
           <FontAwesomeIcon icon={faSearch} />
         </div>
       </div>
-      <Menu isOpened={isMenu} onClose={handleCloseMenu} />
     </>
   )
 }
