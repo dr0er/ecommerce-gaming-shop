@@ -1,4 +1,3 @@
-import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
@@ -22,8 +21,8 @@ export const LandingPage = () => {
         </button>
       </div>
 
-      <div className="bg-gray-500 font-bold text-white py-2 rounded-full my-4 w-32 flex justify-center hover:bg-gray-700 absolute bottom-10 right-10">
-        <Link to="/">
+      <div className="button_GetStarted">
+        <Link to="/signup">
           Get started
           <FontAwesomeIcon icon={faChevronRight} />
         </Link>
