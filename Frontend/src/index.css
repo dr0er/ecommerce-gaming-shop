@@ -20,6 +20,7 @@ code {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -32,6 +33,9 @@ code {
   scroll-snap-align: center;
 =======
 #areTermsAccepted:checked ~ .check-1{
+=======
+#acceptTerms:checked ~ .check-1{
+>>>>>>> a1871f6... create forms using hook forms
   @apply text-opacity-100;
   animation: check-animate .5s 1;
 }
