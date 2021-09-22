@@ -6,12 +6,17 @@ module.exports = {
       colors: {
         'grey-light': '#383838',
         'background-grey': '#F3F5F7',
+        'blue-after': '#498DF8',
+        'grey-verylight': '#D7DAE2',
       },
       backgroundImage: {
         'landing-page-background': "url('./Assets/background-lp.jpg')",
       },
-      saturate: {
-        90: '.9',
+      backgroundPosition: {
+        'left-transtion': 'left -570px top 0px',
+      },
+      backgroundSize: {
+        '110%': '110%',
       },
     },
   },

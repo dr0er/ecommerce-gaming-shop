@@ -5,24 +5,28 @@ import { Link } from 'react-router-dom'
 
 export const LandingPage = () => {
   return (
-    <div className="text-white pl-8 h-screen w-screen bg-no-repeat bg-landing-page-background bg-center bg-cover flex flex-col justify-center items-start filter saturate-.9">
-      <p className="px-8 py-2 text-lg bg-black rounded-xl my-5">Stragan.com</p>
-      <div className="text-3xl font-semibold flex flex-col justify-center">
-        Next level of
-        <div className="flex gap-2">
-          gaming
-          <span className="flex flex-col place-content-end bg-blue-400 h-4 my-5 w-1/2">
-            shopping
-          </span>
+    <div className="text-white pl-8 h-screen w-screen bg-no-repeat bg-landing-page-background bg-left-transtion transform bg-cover max-w-xl mx-auto ">
+      <div className="flex flex-col justify-center items-start h-full gap-4 font-bold transform -translate-y-8">
+        <p className="px-6 py-3 text-xl bg-grey-light rounded-xl  mt-28">Stragan.com</p>
+        <div className="text-3xl flex flex-col justify-center font-extrabold">
+          Next level of
+          <div className="flex gap-2">
+            gaming
+            <div className="flex flex-col relative w-auto">
+              <div
+                className="absolute bg-blue-after h-4 my-5 w-full top-1"
+                style={{ zIndex: -10 }}></div>
+              shopping
+            </div>
+          </div>
         </div>
+        <Link
+          to="/"
+          className="bg-grey-verylight font-bold absolute bottom-3 right-8 text-base text-blue-after py-2 rounded-xl px-5 aboslute justify-center flex gap-2 items-center hover:bg-gray-700 ">
+          Get started
+          <FontAwesomeIcon icon={faChevronRight} />
+        </Link>
       </div>
-
-      <Link
-        to="/"
-        className="bg-gray-300 font-bold text-blue-400 py-2 rounded-xl my-4 w-32 justify-center hover:bg-gray-700 absolute bottom-10 right-10 flex gap-2 items-center">
-        Get started
-        <FontAwesomeIcon icon={faChevronRight} />
-      </Link>
     </div>
   )
 }
