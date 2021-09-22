@@ -3,18 +3,26 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import mouse from '../../Assets/mouse.png'
 import { useInView } from 'react-intersection-observer'
 import c from 'clsx'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../Store/store'
 
-const ItemPreview = () => {
+interface ItemPreviewProps {
+  index: number
+}
+
+const ItemPreview = ({ index }: ItemPreviewProps) => {
   const { ref, inView } = useInView({
     threshold: 0.6,
+    initialInView: index === 0,
   })
-
+  const isMenuOpen = useSelector((state: RootState) => state.menu.isOpen)
   return (
     <div
       ref={ref}
       className={c(
         'bg-gray-300 rounded-2xl w-2/3 h-64 flex flex-col flex-shrink-0 transform duration-200',
         inView && 'scale-110',
+        isMenuOpen && 'scale-110',
       )}>
       <img className="mx-auto h-2/3 scroll-snap-center" src={mouse} alt="Displaying mouse image" />
       <div className="bg-white flex justify-between items-center justify-center m-1 p-3.5 rounded-xl h-1/3">

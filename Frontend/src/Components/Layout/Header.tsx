@@ -1,9 +1,9 @@
+import { NavBar } from '../Navbar/Navbar'
+
 export const Header = () => {
   return (
     <>
-      <div>
-        <p>Placeholder for navbar</p>
-      </div>
+      <NavBar />
       <div>
         <h1 className="font-bold mx-6 text-3xl">Stragan.com</h1>
       </div>
