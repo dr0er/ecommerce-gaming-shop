@@ -33,8 +33,7 @@ const RegisterForm = () => {
           <label htmlFor="name">Name</label>
           <input
             id="name"
-            className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
-                        opacity-30 border-grey-light focus:opacity-100 bg-background-grey"
+            className="input-field"
             type="text"
             placeholder="Orangutan"
             {...register('name', {
@@ -52,8 +51,7 @@ const RegisterForm = () => {
           <label htmlFor="email">Email</label>
           <input
             id="email"
-            className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
-                        opacity-30 border-grey-light focus:opacity-100 bg-background-grey"
+            className="input-field"
             type="email"
             placeholder="mario@gmail.com"
             {...register('email', {
@@ -72,11 +70,10 @@ const RegisterForm = () => {
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="password">Password</label>
-          <div className={`relative opacity-30 focus-within:opacity-100`}>
+          <div className="relative focus-within:opacity-100">
             <input
               id="password"
-              className="py-2 px-6 pr-12 w-full duration-300 rounded-2xl outline-none border-2 
-                                border-grey-light focus:opacity-100 bg-background-grey"
+              className="input-field"
               type={passwordsVisibility.pass ? 'text' : 'password'}
               placeholder="password..."
               {...register('password', {
@@ -87,28 +84,24 @@ const RegisterForm = () => {
                 },
               })}
             />
-
             <FontAwesomeIcon
               icon={passwordsVisibility.pass ? faEye : faEyeSlash}
               className="absolute top-9 right-5 transform -translate-y-5"
               onClick={() => handleChangePasswordVisibility('pass')}
             />
+            <ErrorMessage
+              errors={errors}
+              name="password"
+              render={({ message }) => <p className="text-red-500">{message}</p>}
+            />
           </div>
-          <ErrorMessage
-            errors={errors}
-            name="password"
-            render={({ message }) => <p className="text-red-500">{message}</p>}
-          />
         </div>
         <div className="flex flex-col gap-2 mt-4 w-full">
           <label htmlFor="passwordConfirm">Repeat password</label>
-          <div
-            className={`relative w-full opacity-30
-            focus-within:opacity-100 `}>
+          <div className="relative focus-within:opacity-100">
             <input
               id="passwordConfirm"
-              className="py-2 px-6 pr-12 w-full  rounded-2xl outline-none border-2 
-                                border-grey-light focus:opacity-100 bg-background-grey"
+              className="input-field"
               type={passwordsVisibility.passConfirm ? 'text' : 'password'}
               placeholder="password..."
               {...register('passwordConfirm', {
@@ -121,7 +114,6 @@ const RegisterForm = () => {
                 },
               })}
             />
-
             <FontAwesomeIcon
               id="passConfirm"
               icon={passwordsVisibility.passConfirm ? faEye : faEyeSlash}
@@ -129,9 +121,11 @@ const RegisterForm = () => {
               onClick={() => handleChangePasswordVisibility('passConfirm')}
             />
           </div>
+          {errors.passwordConfirm && (
+            <p className="text-red-500">{errors.passwordConfirm.message}</p>
+          )}
         </div>
-        {errors.passwordConfirm && <p className="text-red-500">{errors.passwordConfirm.message}</p>}
-        <div className="flex gap-2 mt-4 items-center ">
+        <div className="flex gap-2 mt-4 items-center">
           <label htmlFor="acceptTerms" className="cursor-pointer relative">
             <input
               id="acceptTerms"
