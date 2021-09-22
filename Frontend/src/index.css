@@ -19,9 +19,6 @@ code {
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -31,24 +28,9 @@ code {
 }
 
 .scroll-snap-center {
-  scroll-snap-align: center;
-=======
-#areTermsAccepted:checked ~ .check-1{
-=======
-=======
-@layer components{
-  .input-field{
-    @apply py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
-    border-grey-light opacity-100 placeholder-gray-400 focus:placeholder-gray-600 bg-background-grey
-  }
-  input:placeholder-shown {
-    @apply opacity-30;
-  }
-}
-
->>>>>>> 40653a8... changing opacity when input not empty-ain't working
+  scroll-snap-align: center;}
+  
 #acceptTerms:checked ~ .check-1{
->>>>>>> a1871f6... create forms using hook forms
   @apply text-opacity-100;
   animation: check-animate .5s 1;
 }
@@ -61,6 +43,4 @@ code {
     @apply transform scale-150 text-opacity-0;
   }
   
->>>>>>> 5504e24... adding custom checkbox with animation
 }
-
