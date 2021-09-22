@@ -5,9 +5,13 @@ import { faCheck, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ErrorMessage } from '@hookform/error-message'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import IFormInputs from './interfaces/IFormInputs'
 =======
 >>>>>>> 867f730... used Error@hookform/error-message to handle form errors
+=======
+import IFormInputs from './interfaces/IFormInputs'
+>>>>>>> 296ec60... got rid of unnecessary 'watch' method in hook form
 
 const RegisterForm = () => {
   const {
@@ -15,9 +19,7 @@ const RegisterForm = () => {
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm<IFormInputs>({
-    criteriaMode: 'all',
-  })
+  } = useForm<IFormInputs>()
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(JSON.stringify(data))
 
@@ -38,7 +40,12 @@ const RegisterForm = () => {
           <label htmlFor="name">Name</label>
           <input
             id="name"
+<<<<<<< HEAD
             className="input-field"
+=======
+            className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
+                        opacity-30 border-grey-light focus:opacity-100 bg-background-grey"
+>>>>>>> 296ec60... got rid of unnecessary 'watch' method in hook form
             type="text"
             placeholder="Orangutan"
             {...register('name', {
@@ -60,7 +67,12 @@ const RegisterForm = () => {
           <label htmlFor="email">Email</label>
           <input
             id="email"
+<<<<<<< HEAD
             className="input-field"
+=======
+            className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
+                        opacity-30 border-grey-light focus:opacity-100 bg-background-grey"
+>>>>>>> 296ec60... got rid of unnecessary 'watch' method in hook form
             type="email"
             placeholder="mario@gmail.com"
             {...register('email', {
@@ -83,7 +95,11 @@ const RegisterForm = () => {
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="password">Password</label>
+<<<<<<< HEAD
           <div className="relative focus-within:opacity-100">
+=======
+          <div className={`relative opacity-30 focus-within:opacity-100`}>
+>>>>>>> 296ec60... got rid of unnecessary 'watch' method in hook form
             <input
               id="password"
               className="input-field"
@@ -117,7 +133,13 @@ const RegisterForm = () => {
         </div>
         <div className="flex flex-col gap-2 mt-4 w-full">
           <label htmlFor="passwordConfirm">Repeat password</label>
+<<<<<<< HEAD
           <div className="relative focus-within:opacity-100">
+=======
+          <div
+            className={`relative w-full opacity-30
+            focus-within:opacity-100 `}>
+>>>>>>> 296ec60... got rid of unnecessary 'watch' method in hook form
             <input
               id="passwordConfirm"
               className="input-field"
