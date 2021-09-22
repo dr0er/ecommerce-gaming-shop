@@ -4,7 +4,10 @@ import SubmitBtn from './SubmitBtn'
 import { faCheck, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ErrorMessage } from '@hookform/error-message'
+<<<<<<< HEAD
 import IFormInputs from './interfaces/IFormInputs'
+=======
+>>>>>>> 867f730... used Error@hookform/error-message to handle form errors
 
 const RegisterForm = () => {
   const {
@@ -12,7 +15,9 @@ const RegisterForm = () => {
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm<IFormInputs>()
+  } = useForm<IFormInputs>({
+    criteriaMode: 'all',
+  })
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(JSON.stringify(data))
 
@@ -46,7 +51,10 @@ const RegisterForm = () => {
             name="name"
             render={({ message }) => <p className="text-red-500">{message}</p>}
           />
+<<<<<<< HEAD
           <p className="text-red-500">{errors?.name?.message}</p>
+=======
+>>>>>>> 867f730... used Error@hookform/error-message to handle form errors
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="email">Email</label>
@@ -68,7 +76,10 @@ const RegisterForm = () => {
             name="email"
             render={({ message }) => <p className="text-red-500">{message}</p>}
           />
+<<<<<<< HEAD
           <p className="text-red-500">{errors?.email?.message}</p>
+=======
+>>>>>>> 867f730... used Error@hookform/error-message to handle form errors
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="password">Password</label>
@@ -98,7 +109,11 @@ const RegisterForm = () => {
               render={({ message }) => <p className="text-red-500">{message}</p>}
             />
           </div>
-          <p className="text-red-500">{errors?.password?.message}</p>
+          <ErrorMessage
+            errors={errors}
+            name="password"
+            render={({ message }) => <p className="text-red-500">{message}</p>}
+          />
         </div>
         <div className="flex flex-col gap-2 mt-4 w-full">
           <label htmlFor="passwordConfirm">Repeat password</label>
@@ -126,11 +141,17 @@ const RegisterForm = () => {
               onClick={() => handleChangePasswordVisibility('passConfirm')}
             />
           </div>
+<<<<<<< HEAD
           {errors.passwordConfirm && (
             <p className="text-red-500">{errors.passwordConfirm.message}</p>
           )}
         </div>
         <div className="flex gap-2 mt-4 items-center">
+=======
+        </div>
+        {errors.passwordConfirm && <p className="text-red-500">{errors.passwordConfirm.message}</p>}
+        <div className="flex gap-2 mt-4 items-center ">
+>>>>>>> 867f730... used Error@hookform/error-message to handle form errors
           <label htmlFor="acceptTerms" className="cursor-pointer relative">
             <input
               id="acceptTerms"
