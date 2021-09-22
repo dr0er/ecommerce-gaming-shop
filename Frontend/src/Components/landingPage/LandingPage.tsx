@@ -23,7 +23,11 @@ export const LandingPage = () => {
       </div>
 
       <div className="button_GetStarted">
+<<<<<<< HEAD
         <Link to={Routes.signup}>
+=======
+        <Link to="/signup">
+>>>>>>> e4fdf3c... minor fixes, added DaisyUI tailwind plugin
           Get started
           <FontAwesomeIcon icon={faChevronRight} />
         </Link>
