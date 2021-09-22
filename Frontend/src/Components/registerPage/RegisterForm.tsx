@@ -125,11 +125,20 @@ const RegisterForm = () => {
             <p className="text-red-500">{errors.passwordConfirm.message}</p>
           )}
         </div>
+<<<<<<< HEAD
         <div className="flex gap-2 mt-4 items-center">
           <label htmlFor="acceptTerms" className="cursor-pointer relative">
             <input
               id="acceptTerms"
               className="appearance-none w-4 h-4 border-2 rounded-md border-grey-light opacity-30 active:opacity-100"
+=======
+        <div className="flex gap-2 mt-4 items-center ">
+          <label htmlFor="areTermsAccepted" className="cursor-pointer relative">
+            <input
+              id="areTermsAccepted"
+              className="appearance-none w-4 h-4 border-2 rounded-md border-grey-light opacity-30 active:opacity-100 "
+              name="areTermsAccepted"
+>>>>>>> 5504e24... adding custom checkbox with animation
               type="checkbox"
               {...register('acceptTerms', {
                 required: 'Please accept Terms and Conditions.',
@@ -142,11 +151,14 @@ const RegisterForm = () => {
           </label>
           <span>Accept Terms and Conditions</span>
         </div>
+<<<<<<< HEAD
         <ErrorMessage
           errors={errors}
           name="acceptTerms"
           render={({ message }) => <p className="text-red-500">{message}</p>}
         />
+=======
+>>>>>>> 5504e24... adding custom checkbox with animation
 
         <SubmitBtn>Register</SubmitBtn>
       </form>

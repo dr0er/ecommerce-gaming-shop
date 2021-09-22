@@ -19,6 +19,7 @@ code {
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -31,6 +32,9 @@ code {
   scroll-snap-align: center;}
   
 #acceptTerms:checked ~ .check-1{
+=======
+#areTermsAccepted:checked ~ .check-1{
+>>>>>>> 5504e24... adding custom checkbox with animation
   @apply text-opacity-100;
   animation: check-animate .5s 1;
 }
