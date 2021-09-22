@@ -12,9 +12,13 @@ const RegisterForm = () => {
     handleSubmit,
     getValues,
     formState: { errors },
+<<<<<<< HEAD
   } = useForm<IFormInputs>({
     criteriaMode: 'all',
   })
+=======
+  } = useForm<IFormInputs>()
+>>>>>>> 296ec60c9ce54bf6438431ced0d4c49d275ea1a6
 
   const onSubmit: SubmitHandler<IFormInputs> = (data) => console.log(JSON.stringify(data))
 
@@ -35,7 +39,12 @@ const RegisterForm = () => {
           <label htmlFor="name">Name</label>
           <input
             id="name"
+<<<<<<< HEAD
             className="input-field"
+=======
+            className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
+                        opacity-30 border-grey-light focus:opacity-100 bg-background-grey"
+>>>>>>> 296ec60c9ce54bf6438431ced0d4c49d275ea1a6
             type="text"
             placeholder="Orangutan"
             {...register('name', {
@@ -48,13 +57,21 @@ const RegisterForm = () => {
             name="name"
             render={({ message }) => <p className="text-red-500">{message}</p>}
           />
+<<<<<<< HEAD
           <p className="text-red-500">{errors?.name?.message}</p>
+=======
+>>>>>>> 296ec60c9ce54bf6438431ced0d4c49d275ea1a6
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="email">Email</label>
           <input
             id="email"
+<<<<<<< HEAD
             className="input-field"
+=======
+            className="py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 
+                        opacity-30 border-grey-light focus:opacity-100 bg-background-grey"
+>>>>>>> 296ec60c9ce54bf6438431ced0d4c49d275ea1a6
             type="email"
             placeholder="mario@gmail.com"
             {...register('email', {
@@ -70,6 +87,7 @@ const RegisterForm = () => {
             name="email"
             render={({ message }) => <p className="text-red-500">{message}</p>}
           />
+<<<<<<< HEAD
           <p className="text-red-500">{errors?.email?.message}</p>
         </div>
         <div className="flex flex-col gap-2 mt-4">
@@ -78,6 +96,16 @@ const RegisterForm = () => {
             <input
               id="password"
               className="input-field"
+=======
+        </div>
+        <div className="flex flex-col gap-2 mt-4">
+          <label htmlFor="password">Password</label>
+          <div className={`relative opacity-30 focus-within:opacity-100`}>
+            <input
+              id="password"
+              className="py-2 px-6 pr-12 w-full duration-300 rounded-2xl outline-none border-2 
+                                border-grey-light focus:opacity-100 bg-background-grey"
+>>>>>>> 296ec60c9ce54bf6438431ced0d4c49d275ea1a6
               type={passwordsVisibility.pass ? 'text' : 'password'}
               placeholder="password..."
               {...register('password', {
@@ -94,11 +122,14 @@ const RegisterForm = () => {
               className="absolute top-9 right-5 transform -translate-y-5"
               onClick={() => handleChangePasswordVisibility('pass')}
             />
+<<<<<<< HEAD
             <ErrorMessage
               errors={errors}
               name="password"
               render={({ message }) => <p className="text-red-500">{message}</p>}
             />
+=======
+>>>>>>> 296ec60c9ce54bf6438431ced0d4c49d275ea1a6
           </div>
           <ErrorMessage
             errors={errors}
@@ -108,10 +139,20 @@ const RegisterForm = () => {
         </div>
         <div className="flex flex-col gap-2 mt-4 w-full">
           <label htmlFor="passwordConfirm">Repeat password</label>
+<<<<<<< HEAD
           <div className="relative focus-within:opacity-100">
             <input
               id="passwordConfirm"
               className="input-field"
+=======
+          <div
+            className={`relative w-full opacity-30
+            focus-within:opacity-100 `}>
+            <input
+              id="passwordConfirm"
+              className="py-2 px-6 pr-12 w-full  rounded-2xl outline-none border-2 
+                                border-grey-light focus:opacity-100 bg-background-grey"
+>>>>>>> 296ec60c9ce54bf6438431ced0d4c49d275ea1a6
               type={passwordsVisibility.passConfirm ? 'text' : 'password'}
               placeholder="password..."
               {...register('passwordConfirm', {
@@ -132,11 +173,17 @@ const RegisterForm = () => {
               onClick={() => handleChangePasswordVisibility('passConfirm')}
             />
           </div>
+<<<<<<< HEAD
           {errors.passwordConfirm && (
             <p className="text-red-500">{errors.passwordConfirm.message}</p>
           )}
         </div>
         <div className="flex gap-2 mt-4 items-center">
+=======
+        </div>
+        {errors.passwordConfirm && <p className="text-red-500">{errors.passwordConfirm.message}</p>}
+        <div className="flex gap-2 mt-4 items-center ">
+>>>>>>> 296ec60c9ce54bf6438431ced0d4c49d275ea1a6
           <label htmlFor="acceptTerms" className="cursor-pointer relative">
             <input
               id="acceptTerms"
