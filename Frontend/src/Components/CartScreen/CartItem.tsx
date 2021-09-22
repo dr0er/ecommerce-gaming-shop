@@ -4,9 +4,9 @@ import removeCircle from '../../Assets/remove-circle-outline.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch } from 'react-redux'
 import { addProduct, deleteProduct, removeProduct } from './CartScreenSlice'
-import { ProductProps } from './CartScreenSlice'
+import { Product } from './CartScreenSlice'
 
-const CartItem = ({ id, name, category, price, image, amount }: ProductProps) => {
+const CartItem = ({ id, name, category, price, image, amount }: Product) => {
   const dispatch = useDispatch()
 
   const handleAddProduct = () => {

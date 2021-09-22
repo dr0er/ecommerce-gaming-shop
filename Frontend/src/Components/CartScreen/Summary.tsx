@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { RootState } from '../../Store/store'
-import { ProductProps } from './CartScreenSlice'
+import { Product } from './CartScreenSlice'
 
 const Summary = () => {
   const { myProducts } = useSelector((state: RootState) => state.cartScreen)
@@ -9,7 +9,7 @@ const Summary = () => {
 
   const handleSubtotal = () => {
     let price = 0
-    myProducts.forEach((product: ProductProps) => {
+    myProducts.forEach((product: Product) => {
       price += product.price * product.amount
     })
     return price

@@ -4,18 +4,11 @@ import ninjaImage from '../../Assets/ninja.png'
 import zowieImage from '../../Assets/zowie.png'
 import { RootState } from '../../Store/store'
 import CartItem from './CartItem'
-import { setProducts } from './CartScreenSlice'
+import { Product, setProducts } from './CartScreenSlice'
 import Summary from './Summary'
 
 export interface CartScreenProps {
-  myProducts: {
-    id: number
-    name: string
-    category: string
-    price: number
-    image: string
-    amount: number
-  }
+  myProducts: Array<Product>
   createCartList: JSX.Element[]
 }
 
@@ -47,7 +40,7 @@ const CartScreen = () => {
 
   const { myProducts } = useSelector((state: RootState) => state.cartScreen)
 
-  const createCartList = myProducts.map((product) => (
+  const cartList = myProducts.map((product) => (
     <CartItem
       id={product.id}
       image={product.image}
@@ -63,7 +56,7 @@ const CartScreen = () => {
     <div className="flex flex-col text-grey-light px-6 max-w-sm bg-background-grey min-h-screen sm: mx-auto">
       <p className="text-3xl font-extrabold py-5">My cart</p>
 
-      <div className="flex flex-col gap-8">{createCartList}</div>
+      <div className="flex flex-col gap-8">{cartList}</div>
 
       <Summary />
 
