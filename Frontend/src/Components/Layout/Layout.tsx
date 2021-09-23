@@ -27,8 +27,7 @@ export default function Layout({
         className={c(
           'transform duration-200',
           isMenuOpen && 'translate-x-64 opacity-30 pointer-events-none',
-        )}
-      >
+        )}>
         <Header />
         {children}
         <Footer />

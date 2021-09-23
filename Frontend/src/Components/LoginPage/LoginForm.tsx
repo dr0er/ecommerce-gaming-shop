@@ -46,8 +46,7 @@ const LoginForm = () => {
           <div
             className={`relative duration-300 ${
               !password && 'opacity-30'
-            } focus-within:opacity-100 `}
-          >
+            } focus-within:opacity-100 `}>
             <input
               type={isPasswordVisible ? 'text' : 'password'}
               placeholder="Enter your password"
@@ -82,8 +81,7 @@ const LoginForm = () => {
       {/* LOGIN BUTTON */}
       <div
         className="flex px-9 py-3 justify-center bg-grey-light text-white rounded-2xl text-sm mt-9 font-bold cursor-pointer"
-        onClick={handleLogin}
-      >
+        onClick={handleLogin}>
         Login
       </div>
 

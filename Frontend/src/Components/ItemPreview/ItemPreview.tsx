@@ -23,8 +23,7 @@ const ItemPreview = ({ index }: ItemPreviewProps) => {
         'bg-gray-300 rounded-2xl w-2/3 h-64 flex flex-col flex-shrink-0 transform duration-200',
         inView && 'scale-110',
         isMenuOpen && 'scale-110',
-      )}
-    >
+      )}>
       <img className="mx-auto h-2/3 scroll-snap-center" src={mouse} alt="Displaying mouse image" />
       <div className="bg-white flex justify-between items-center justify-center m-1 p-3.5 rounded-xl h-1/3">
         <div>
