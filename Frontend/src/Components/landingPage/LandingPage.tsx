@@ -5,25 +5,24 @@ import { Link } from 'react-router-dom'
 
 export const LandingPage = () => {
   return (
-    <div className="text-white h-screen w-screen bg-no-repeat bg-landing-page-background bg-center bg-cover flex flex-col justify-center items-center overflow-hidden">
-      <div className="flex flex-col justify-center items-center z-10">
-        <p className="px-5 py-4 text-lg bg-gray-500 rounded-lg my-5">Stragan.com</p>
-        <div className="text-3xl font-semibold flex flex-col justify-center">
-          Next level of gaming
-          <span className="flex flex-col place-content-end bg-blue-500 h-4 my-5 w-1/2">
-            shopping
-          </span>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 rounded-full my-4 w-full">
-            Log in
-          </button>
+    <div className="text-white pl-8 h-screen w-screen bg-no-repeat bg-landing-page-background bg-left-transtion transform bg-cover max-w-xl mx-auto ">
+      <div className="flex flex-col justify-center items-start h-full gap-4 font-bold transform -translate-y-8">
+        <p className="px-6 py-3 text-xl bg-grey-light rounded-xl  mt-28">Stragan.com</p>
+        <div className="text-3xl flex flex-col justify-center font-extrabold">
+          Next level of
+          <div className="flex gap-2">
+            gaming
+            <div className="flex flex-col relative w-auto">
+              <div
+                className="absolute bg-blue-after h-4 my-5 w-full top-1"
+                style={{ zIndex: -10 }}></div>
+              shopping
+            </div>
+          </div>
         </div>
-        <button className="absolute top-10 right-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full m-4">
-          Sign up
-        </button>
-      </div>
-
-      <div className="bg-gray-500 font-bold text-white py-2 rounded-full my-4 w-32 flex justify-center hover:bg-gray-700 absolute bottom-10 right-10">
-        <Link to="/">
+        <Link
+          to="/"
+          className="bg-grey-verylight font-bold absolute bottom-3 right-8 text-base text-blue-after py-2 rounded-xl px-5 aboslute justify-center flex gap-2 items-center hover:bg-gray-700 ">
           Get started
           <FontAwesomeIcon icon={faChevronRight} />
         </Link>
