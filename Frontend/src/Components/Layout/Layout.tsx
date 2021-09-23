@@ -1,7 +1,6 @@
 import { Helmet } from 'react-helmet'
 import { Header } from './Header'
 import { Footer } from './Footer'
-import { useCallback, useState } from 'react'
 import c from 'clsx'
 import Menu from '../Navbar/Menu'
 import { useSelector } from 'react-redux'

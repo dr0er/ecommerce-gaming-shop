@@ -1,6 +1,6 @@
 import { faCheck, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const LoginForm = () => {
@@ -16,7 +16,7 @@ const LoginForm = () => {
   }
 
   // NEED VALIDATION HERE
-  const handleLogin = (e: any) => {
+  const handleLogin: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault()
     setEmail('')
     setPassword('')
@@ -64,7 +64,7 @@ const LoginForm = () => {
             />
           </div>
         </div>
-        <button className="hidden" type="submit" onClick={handleLogin}></button>
+        <button className="hidden" type="submit" onClick={handleLogin} />
       </form>
 
       {/* REMEMBE ME AND RESET PASSWORD */}
@@ -79,16 +79,16 @@ const LoginForm = () => {
       </div>
 
       {/* LOGIN BUTTON */}
-      <div
+      <button
         className="flex px-9 py-3 justify-center bg-grey-light text-white rounded-2xl text-sm mt-9 font-bold cursor-pointer"
         onClick={handleLogin}>
         Login
-      </div>
+      </button>
 
       {/* SIGN UP */}
 
       <div className="text-grey-light font-bold text-sm flex gap-3 justify-center">
-        <span className="opacity-30"> Don't have an account yet?</span>
+        <span className="opacity-30"> Don&apos;t have an account yet?</span>
         <Link to="/signup">
           <span className="text-blue-500 opacity-100 cursor-pointer underline">Sign up here!</span>
         </Link>
