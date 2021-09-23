@@ -15,7 +15,7 @@ export const Routing = () => {
         <LandingPage />
       </Route>
 
-      <Route path={'/CartScreen'}>
+      <Route path={Routes.cartScreen}>
         <CartScreen />
       </Route>
 
@@ -31,7 +31,7 @@ export const Routing = () => {
         <LoginPage />
       </Route>
 
-      <Route path={Routes.signup}>
+      <Route path={Routes.signUp}>
         <RegisterPage />
       </Route>
     </Switch>
