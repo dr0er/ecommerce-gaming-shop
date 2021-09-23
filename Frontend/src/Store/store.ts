@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
+import CartScreenSlice from '../Components/CartScreen/CartScreenSlice'
 import menu from './menuSlice'
 
 export const store = configureStore({
   reducer: {
+    cartScreen: CartScreenSlice,
     menu,
   },
 })
