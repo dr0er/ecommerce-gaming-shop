@@ -18,7 +18,7 @@ export interface ItemDetailsProps {
 const ItemDetails = () => {
   const [currentImage, setCurrentImage] = useState(0)
 
-  const [product, setProduct] = useState({
+  const [product] = useState({
     name: 'Xtrfy M4',
     shortDescription: 'Ultra-light gaming mouse',
     description:

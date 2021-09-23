@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  ignorePatterns: ['build/**/*.js'],
   extends: [
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
