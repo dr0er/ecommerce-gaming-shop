@@ -5,6 +5,7 @@ import { LandingPage } from '../Components/landingPage/LandingPage'
 import ItemDetails from '../Components/ItemDetails/ItemDetails'
 import { MainPage } from '../Components/MainPage/MainPage'
 import LoginPage from '../Components/LoginPage/LoginPage'
+import RegisterPage from '../Components/registerPage/RegisterPage'
 
 export const Routing = () => {
   return (
@@ -23,6 +24,10 @@ export const Routing = () => {
 
       <Route path={Routes.loginPage}>
         <LoginPage />
+      </Route>
+
+      <Route path={Routes.signup}>
+        <RegisterPage />
       </Route>
     </Switch>
   )
