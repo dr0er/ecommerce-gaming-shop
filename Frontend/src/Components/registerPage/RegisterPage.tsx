@@ -12,7 +12,7 @@ const RegisterPage = () => {
       <p className="flex gap-2 opacity-70 mx-auto">
         Already have an account?
         <Link
-          to={Routes.login}
+          to={Routes.loginPage}
           className="text-blue-500 opacity-100 cursor-pointer underline font-bold">
           Login!
         </Link>

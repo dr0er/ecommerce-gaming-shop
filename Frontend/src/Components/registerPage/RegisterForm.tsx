@@ -69,7 +69,6 @@ const RegisterForm = () => {
             name="email"
             render={({ message }) => <p className="text-red-500">{message}</p>}
           />
-          <p className="text-red-500">{errors?.email?.message}</p>
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="password">Password</label>
@@ -87,7 +86,6 @@ const RegisterForm = () => {
                 },
               })}
             />
-
             <FontAwesomeIcon
               icon={passwordsVisibility.pass ? faEye : faEyeSlash}
               className="absolute top-9 right-5 transform -translate-y-5"
@@ -99,7 +97,6 @@ const RegisterForm = () => {
               render={({ message }) => <p className="text-red-500">{message}</p>}
             />
           </div>
-          <p className="text-red-500">{errors?.password?.message}</p>
         </div>
         <div className="flex flex-col gap-2 mt-4 w-full">
           <label htmlFor="passwordConfirm">Repeat password</label>
@@ -119,7 +116,6 @@ const RegisterForm = () => {
                 },
               })}
             />
-
             <FontAwesomeIcon
               id="passConfirm"
               icon={passwordsVisibility.passConfirm ? faEye : faEyeSlash}
@@ -153,7 +149,6 @@ const RegisterForm = () => {
           name="acceptTerms"
           render={({ message }) => <p className="text-red-500">{message}</p>}
         />
-
         <SubmitBtn>Register</SubmitBtn>
       </form>
     </div>
