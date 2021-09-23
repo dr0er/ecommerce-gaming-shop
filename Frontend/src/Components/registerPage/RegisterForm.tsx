@@ -72,11 +72,10 @@ const RegisterForm = () => {
         </div>
         <div className="flex flex-col gap-2 mt-4">
           <label htmlFor="password">Password</label>
-          <div className={`relative opacity-30 focus-within:opacity-100`}>
+          <div className="relative">
             <input
               id="password"
-              className="py-2 px-6 pr-12 w-full duration-300 rounded-2xl outline-none border-2 
-                                border-grey-light focus:opacity-100 bg-background-grey"
+              className="input-field"
               type={passwordsVisibility.pass ? 'text' : 'password'}
               placeholder="password..."
               {...register('password', {
@@ -87,12 +86,13 @@ const RegisterForm = () => {
                 },
               })}
             />
-
-            <FontAwesomeIcon
-              icon={passwordsVisibility.pass ? faEye : faEyeSlash}
-              className="absolute top-9 right-5 transform -translate-y-5"
-              onClick={() => handleChangePasswordVisibility('pass')}
-            />
+            <div>
+              <FontAwesomeIcon
+                icon={passwordsVisibility.pass ? faEye : faEyeSlash}
+                className="absolute top-9 right-5 transform -translate-y-5"
+                onClick={() => handleChangePasswordVisibility('pass')}
+              />
+            </div>
           </div>
           <ErrorMessage
             errors={errors}
@@ -102,7 +102,7 @@ const RegisterForm = () => {
         </div>
         <div className="flex flex-col gap-2 mt-4 w-full">
           <label htmlFor="passwordConfirm">Repeat password</label>
-          <div className="relative focus-within:opacity-100">
+          <div className="relative">
             <input
               id="passwordConfirm"
               className="input-field"
@@ -118,13 +118,14 @@ const RegisterForm = () => {
                 },
               })}
             />
-
-            <FontAwesomeIcon
-              id="passConfirm"
-              icon={passwordsVisibility.passConfirm ? faEye : faEyeSlash}
-              className="absolute top-9 right-5 transform -translate-y-5"
-              onClick={() => handleChangePasswordVisibility('passConfirm')}
-            />
+            <div>
+              <FontAwesomeIcon
+                id="passConfirm"
+                icon={passwordsVisibility.passConfirm ? faEye : faEyeSlash}
+                className="absolute top-9 right-5 transform -translate-y-5"
+                onClick={() => handleChangePasswordVisibility('passConfirm')}
+              />
+            </div>
           </div>
           {errors.passwordConfirm && (
             <p className="text-red-500">{errors.passwordConfirm.message}</p>
