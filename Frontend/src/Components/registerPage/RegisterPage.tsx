@@ -1,11 +1,15 @@
 import RegisterForm from '../registerPage/RegisterForm'
 import { Link } from 'react-router-dom'
+<<<<<<< HEAD
 import BackToMain from '../shared/BackToMain'
+=======
+import { BackToMain } from '../Forms'
+>>>>>>> 241eea1... Extract forms components
 import { Routes } from '../../Utilities/routes'
 
 const RegisterPage = () => {
   return (
-    <div className="h-screen text-grey-light py-6 flex flex-col gap-6 items-center  max-w-md px-6 md: mx-auto">
+    <div className="h-screen text-grey-light py-6 flex flex-col gap-8 align-middle  max-w-md px-6 md: mx-auto">
       <BackToMain />
       <h1 className="font-bold text-3xl text-center ">Register to Stragan</h1>
       <RegisterForm />
