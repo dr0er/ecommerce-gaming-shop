@@ -2,6 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { Routes } from '../../Utilities/routes'
 
 export const LandingPage = () => {
   return (
@@ -21,7 +22,7 @@ export const LandingPage = () => {
           </div>
         </div>
         <Link
-          to="/"
+          to={Routes.mainPage}
           className="bg-grey-verylight font-bold absolute bottom-3 right-8 text-base text-blue-after py-2 rounded-xl px-5 aboslute justify-center flex gap-2 items-center hover:bg-gray-700 ">
           Get started
           <FontAwesomeIcon icon={faChevronRight} />
