@@ -6,7 +6,7 @@ import CartScreen from '../Components/CartScreen/CartScreen'
 import ItemDetails from '../Components/ItemDetails/ItemDetails'
 import { MainPage } from '../Components/MainPage/MainPage'
 import LoginPage from '../Components/LoginPage/LoginPage'
-import RegisterPage from '../Components/registerPage/RegisterPage'
+import RegisterPage from '../Components/RegisterPage/RegisterPage'
 
 export const Routing = () => {
   return (

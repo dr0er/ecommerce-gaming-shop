@@ -88,7 +88,7 @@ const RegisterForm = () => {
             />
             <FontAwesomeIcon
               icon={passwordsVisibility.pass ? faEye : faEyeSlash}
-              className="absolute top-9 right-5 transform -translate-y-5"
+              className="absolute right-5 top-0 h-full"
               onClick={() => handleChangePasswordVisibility('pass')}
             />
             <ErrorMessage
@@ -119,7 +119,7 @@ const RegisterForm = () => {
             <FontAwesomeIcon
               id="passConfirm"
               icon={passwordsVisibility.passConfirm ? faEye : faEyeSlash}
-              className="absolute top-9 right-5 transform -translate-y-5"
+              className="absolute right-5 top-0 h-full"
               onClick={() => handleChangePasswordVisibility('passConfirm')}
             />
           </div>
