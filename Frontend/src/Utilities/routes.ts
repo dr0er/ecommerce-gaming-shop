@@ -1,3 +1,4 @@
 export enum Routes {
-  index = "/",
+	index = "/",
+	mainPage = "/mainPage",
 }
