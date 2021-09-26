@@ -4,13 +4,14 @@ import c from 'clsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../Store/store'
 import { useCallback } from 'react'
-import { handleMenuClick } from '../../Store/menuSlice'
+import { handleMenuClick, toggleComponent } from '../../Store/menuSlice'
 
 export const NavBar = () => {
   const isMenuOpen = useSelector((state: RootState) => state.menu.isOpen)
   const dispatch = useDispatch()
 
   const onClick = useCallback(() => dispatch(handleMenuClick()), [dispatch])
+  const toggle = useCallback(() => dispatch(toggleComponent()), [dispatch])
 
   return (
     <>
@@ -29,7 +30,7 @@ export const NavBar = () => {
           <FontAwesomeIcon icon={faUser} />
         </div>
         <div>
-          <FontAwesomeIcon icon={faSearch} />
+          <FontAwesomeIcon icon={faSearch} onClick={toggle} />
         </div>
       </div>
     </>

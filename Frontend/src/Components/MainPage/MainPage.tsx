@@ -1,5 +1,5 @@
 import Layout from '../Layout/Layout'
-import SearchBar from '../SearchBar'
+import SearchBar from '../SearchBar/SearchBar'
 import { Carousel } from './Carousel'
 import { SpecialCarousel } from './SpecialCarousel'
 

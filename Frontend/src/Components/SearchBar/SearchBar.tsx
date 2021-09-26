@@ -1,12 +1,17 @@
 import { useState } from 'react'
 import c from 'clsx'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../Store/store'
 
 const SearchBar = () => {
   const [search, setSearch] = useState('')
+  const isComponentVisible = useSelector((state: RootState) => state.menu.isVisible)
+
   return (
     <>
       <input
-        className={c('input-field my-4 transform duration-200', !isMenuOpen && 'hidden')}
+        // add label with sr-only class
+        className={c('input-field my-4', !isComponentVisible && 'hidden')}
         value={search}
         type="text"
         name="search"
