@@ -6,7 +6,7 @@ import { SpecialCarousel } from './SpecialCarousel'
 export const MainPage = () => {
   return (
     <Layout title="MainPage">
-      <div className="mx-auto px-6 ">
+      <div className="mx-auto px-6 w-full">
         <SearchBar />
       </div>
       <div className="flex pl-6 flex-col gap-6">

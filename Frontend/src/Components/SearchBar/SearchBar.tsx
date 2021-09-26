@@ -1,28 +1,18 @@
 import { useState } from 'react'
+import c from 'clsx'
 
 const SearchBar = () => {
-  const itemList = ['mouse', 'keyboard', 'monitor']
   const [search, setSearch] = useState('')
-
-  const filterItems =
-    search.length === 0
-      ? itemList
-      : itemList.filter((item) => item.toLowerCase().includes(search.toLowerCase()))
-
   return (
     <>
       <input
+        className={c('input-field my-4 transform duration-200', !isMenuOpen && 'hidden')}
         value={search}
         type="text"
         name="search"
         placeholder="search..."
         onChange={(e) => setSearch(e.target.value)}
       />
-      <div>
-        {filterItems.map((item) => (
-          <p key={filterItems.indexOf(item)}>{item}</p>
-        ))}
-      </div>
     </>
   )
 }
