@@ -3,7 +3,8 @@ from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
-from rest_framework.generics import RetrieveUpdateAPIView
+from rest_framework.views import APIView
+from rest_framework.generics import RetrieveUpdateAPIView, RetrieveAPIView, UpdateAPIView
 from rest_framework.mixins import (
     ListModelMixin,
     CreateModelMixin,
@@ -60,17 +61,27 @@ class RegistrationViewset(
                 new_user = authenticate(email=request.POST.get('email'),
                     password=request.POST.get('password'),
                     )
-                if new_user is not None and if new_user.is_active:
+                if new_user is not None and new_user.is_active:
                     login(request, new_user)
             else:
                 data = serializer.errors
             return Response(data, status=status.HTTP_201_CREATED)
 
 
-class UserViewset(ReadOnlyModelViewSet, UpdateModelMixin):
+class getUserProfile(RetrieveAPIView):
+    queryset = USER_MODEL.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAuthenticated,]
 
+    def get_object(self):
+        user = self.request.user
+        return user
+
+class updateUserProfile(UpdateAPIView):
+    queryset = USER_MODEL.objects.all()
     serializer_class = UserSerializerWithToken
     permission_classes = [IsAuthenticated,]
 
-    def get_queryset(self):
-        return get_user_model().objects.filter(pk=self.request.user.id)
+    def get_object(self):
+        user = self.request.user
+        return user
