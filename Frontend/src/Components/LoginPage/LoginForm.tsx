@@ -1,8 +1,9 @@
-import { faCheck, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import Checkbox from "./Checkbox";
 
 interface Credentials {
 	email: string;
@@ -52,14 +53,12 @@ const LoginForm = () => {
 					<div
 						className={`relative ${
 							!Boolean(watch("password")) && "opacity-30"
-						} focus-within:opacity-100 `}
+						} duration-300 focus-within:opacity-100 `}
 					>
 						<input
 							type={isPasswordVisible ? "text" : "password"}
 							placeholder="Enter your password"
-							className={`py-2 px-6 w-full duration-300   rounded-2xl  outline-none border-2  border-grey-light  bg-background-grey focus:opacity-100 ${
-								!Boolean(watch("password")) && "opacity-30"
-							}`}
+							className={`py-2 px-6 w-full duration-300 rounded-2xl outline-none border-2 border-grey-light bg-background-grey focus:opacity-100`}
 							{...register("password")}
 						/>
 
@@ -79,21 +78,7 @@ const LoginForm = () => {
 
 			{/* REMEMBE ME AND RESET PASSWORD */}
 			<div className="flex justify-between ">
-				<div
-					className="flex gap-3 align-middle"
-					onClick={() => setIsRememberMe((prev) => !prev)}
-				>
-					<div className="border-2 w-5 h-5 rounded-md my-auto flex border-gray-400">
-						{isRememberMe && <FontAwesomeIcon icon={faCheck} />}
-					</div>
-					<p
-						className={`opacity-30 duration-300 font-bold text-sm my-auto ${
-							isRememberMe && "opacity-100"
-						}`}
-					>
-						Remember me
-					</p>
-				</div>
+				<Checkbox setCheckbox={setIsRememberMe} isCheckbox={isRememberMe} />
 				<p className="font-extrabold text-sm">Reset password</p>
 			</div>
 
