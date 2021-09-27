@@ -78,7 +78,11 @@ const LoginForm = () => {
 
 			{/* REMEMBE ME AND RESET PASSWORD */}
 			<div className="flex justify-between ">
-				<Checkbox setCheckbox={setIsRememberMe} isCheckbox={isRememberMe} />
+				<Checkbox
+					setCheckbox={setIsRememberMe}
+					isCheckbox={isRememberMe}
+					text={"Remember me"}
+				/>
 				<p className="font-extrabold text-sm">Reset password</p>
 			</div>
 

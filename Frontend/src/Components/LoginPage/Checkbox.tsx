@@ -4,9 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 interface CheckboxProps {
 	setCheckbox: React.Dispatch<React.SetStateAction<boolean>>;
 	isCheckbox: Boolean;
+	text: string;
 }
 
-const Checkbox = ({ setCheckbox, isCheckbox }: CheckboxProps) => {
+const Checkbox = ({ setCheckbox, isCheckbox, text }: CheckboxProps) => {
 	return (
 		<div
 			className="flex gap-3 align-middle"
@@ -20,7 +21,7 @@ const Checkbox = ({ setCheckbox, isCheckbox }: CheckboxProps) => {
 					isCheckbox && "opacity-100"
 				}`}
 			>
-				Remember me
+				{text}
 			</p>
 		</div>
 	);
