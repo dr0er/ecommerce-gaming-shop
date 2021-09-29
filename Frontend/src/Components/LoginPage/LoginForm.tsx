@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import Checkbox from "./Checkbox";
+import Checkbox from "../ShareComponents/Checkbox";
 
 interface Credentials {
 	email: string;
