@@ -1,3 +1,4 @@
+from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import (
@@ -35,7 +36,8 @@ class ProductViewset(
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [AllowAny]
-
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['name', 'brand__name']
 
 
 class MyOrderListViewset(
