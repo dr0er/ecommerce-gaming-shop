@@ -1,16 +1,11 @@
-export interface DeliveryStatusProps {
-  deliveryStatus: {
-    status: boolean
-    date: string
-    value: number
-  }
-}
+import { Order } from '../OrderListItem/Order'
 
-const DeliveryStatus = ({ deliveryStatus }: DeliveryStatusProps) => {
-  const { status, date, value } = deliveryStatus
+type deliveryStatus = Pick<Order, 'status' | 'date' | 'value'>
+
+const DeliveryStatus = ({ status, date, value }: deliveryStatus) => {
   return (
     <div className="overflow-hidden flex justify-between mt-4 gap-4 ">
-      {status ? (
+      {status === 'delivered' ? (
         <>
           <p className="font-bold ">Delivered</p>
           <p className="font-normal">{date}</p>
