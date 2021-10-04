@@ -1,4 +1,3 @@
-import { Order, order } from './Order'
 interface IOrderProps {
   id: number
   name: string

@@ -16,7 +16,7 @@ export const NavBar = () => {
     <>
       <div
         className={c(
-          'w-auto h-20 text-black flex justify-around font text-2xl items-center duration-200 transition-opacity',
+          'w-auto h-20 text-black flex justify-between px-9 font text-2xl items-center duration-200 transition-opacity',
           isMenuOpen && 'opacity-0',
         )}>
         <div>

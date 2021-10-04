@@ -6,7 +6,7 @@ import OrderNumber from './OrderNumber'
 
 const OrderItemWrapper = () => {
   return (
-    <div className="px-9 flex flex-col gap-4 max-w-md md: mx-auto">
+    <div className="flex flex-col gap-4 mb-8">
       <DeliveryStatus status={order.status} date={order.date} value={order.value} />
       <OrderNumber number={order.number} />
       <p className="font-bold">Items:</p>
