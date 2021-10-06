@@ -59,7 +59,7 @@ const OrdersPanel = () => {
           <div
             className="flex justify-between font-bold text-2xl"
             onClick={() => setisAddressOpen(!isAddressOpen)}>
-            <p>Account settings</p>
+            <p>Adresses</p>
             <ChevronBack className="w-6 transform -rotate-90" />
           </div>
           <span>Opened</span>
