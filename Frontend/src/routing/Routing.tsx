@@ -8,7 +8,7 @@ import { MainPage } from '../Components/MainPage/MainPage'
 import LoginPage from '../Components/LoginPage/LoginPage'
 import RegisterPage from '../Components/registerPage/RegisterPage'
 import OrderItemWrapper from '../Components/OrderListItem/OrderItemWrapper'
-import OrdersPanel from '../Components/OrdersPanel/OrdersPanel'
+import UserPanel from '../Components/UserPanel/UserPanel'
 
 export const Routing = () => {
   return (
@@ -41,8 +41,8 @@ export const Routing = () => {
         <OrderItemWrapper />
       </Route>
 
-      <Route path="/ordersPanel">
-        <OrdersPanel />
+      <Route path="/userPanel">
+        <UserPanel />
       </Route>
     </Switch>
   )
