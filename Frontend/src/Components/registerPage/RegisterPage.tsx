@@ -1,6 +1,6 @@
 import RegisterForm from '../registerPage/RegisterForm'
 import { Link } from 'react-router-dom'
-import BackToMain from '../registerPage/BackToMain'
+import BackToMain from '../shared/BackToMain'
 import { Routes } from '../../Utilities/routes'
 
 const RegisterPage = () => {
