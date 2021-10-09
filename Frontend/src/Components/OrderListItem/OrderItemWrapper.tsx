@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import DeliveryStatus from './DeliveryStatus'
 import { order } from './Order'
-import OrderItem from './OrderItem'
+import OrderItem from './Item'
 import OrderNumber from './OrderNumber'
 
 const OrderItemWrapper = () => {

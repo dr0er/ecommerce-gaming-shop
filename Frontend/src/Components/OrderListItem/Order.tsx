@@ -5,13 +5,15 @@ export interface Order {
   date: string
   value: number
   number: number
-  items: {
-    id: number
-    name: string
-    category: string
-    amount: number
-    price: number
-  }[]
+  items: OrderItem[]
+}
+
+export interface OrderItem {
+  id: number
+  name: string
+  category: string
+  amount: number
+  price: number
 }
 
 export const order: Order = {
