@@ -1,9 +1,9 @@
-import { Order, order } from '../OrderListItem/Order'
+import { Order } from './Order'
 
-type orderNumber = Pick<Order, 'number'>
+type OrderNumberProps = Pick<Order, 'number'>
 
-const OrderNumber = (number: orderNumber) => {
-  return <p className="font-normal">nr {order.number}</p>
+const OrderNumber = ({ number }: OrderNumberProps) => {
+  return <p>nr {number}</p>
 }
 
 export default OrderNumber

@@ -1,8 +1,8 @@
 import { Order } from '../OrderListItem/Order'
 
-type deliveryStatus = Pick<Order, 'status' | 'date' | 'value'>
+type DeliveryStatusProps = Pick<Order, 'status' | 'date' | 'value'>
 
-const DeliveryStatus = ({ status, date, value }: deliveryStatus) => {
+const DeliveryStatus = ({ status, date, value }: DeliveryStatusProps) => {
   return (
     <div className="overflow-hidden flex justify-between mt-4 gap-4 ">
       {status === 'delivered' ? (
