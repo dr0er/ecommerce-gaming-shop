@@ -25,7 +25,7 @@ const ItemPreview = ({ index }: ItemPreviewProps) => {
         isMenuOpen && 'scale-110',
       )}>
       <img className="mx-auto h-2/3 scroll-snap-center" src={mouse} alt="Displaying mouse image" />
-      <div className="bg-white flex justify-between items-center justify-center m-1 p-3.5 rounded-xl h-1/3">
+      <div className="bg-white flex justify-between items-center m-1 p-3.5 rounded-xl h-1/3">
         <div>
           <p className="text-sm font-bold">Ninja mouse</p>
           <div className="font-bold text-lg">40€</div>
