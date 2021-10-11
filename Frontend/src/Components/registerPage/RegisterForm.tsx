@@ -1,8 +1,6 @@
 import { useForm } from 'react-hook-form'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { ErrorMessage } from '@hookform/error-message'
-import { Input, PasswordInput, SubmitButton } from '../Forms'
+import { FormCheckbox, Input, PasswordInput, SubmitButton } from '../Forms'
 
 interface RegisterFormData {
   name: string
@@ -73,21 +71,12 @@ const RegisterForm = () => {
         errors={errors}
       />
       <div className="flex gap-2 items-center">
-        <label htmlFor="acceptTerms" className="cursor-pointer relative">
-          <input
-            id="acceptTerms"
-            className="appearance-none w-4 h-4 border-2 rounded-md border-grey-light opacity-30 active:opacity-100"
-            type="checkbox"
-            {...register('acceptTerms', {
-              required: 'Please accept Terms and Conditions.',
-            })}
-          />
-          <FontAwesomeIcon
-            icon={faCheck}
-            className="w-4 h-4 text-grey-light text-sm absolute left-0.5 top-0.5 text-opacity-0 check-1 transition"
-          />
-        </label>
-        <span>Accept Terms and Conditions</span>
+        <FormCheckbox
+          register={register('acceptTerms', {
+            required: 'Please accept Terms and Conditions.',
+          })}
+          text="Accept Terms and Conditions"
+        />
       </div>
       <ErrorMessage
         errors={errors}
