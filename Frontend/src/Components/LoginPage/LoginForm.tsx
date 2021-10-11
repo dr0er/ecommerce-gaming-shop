@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-import { Input, PasswordInput, SubmitButton } from '../Forms'
+import { FormCheckbox, Input, PasswordInput, SubmitButton } from '../Forms'
 
 interface LoginFormData {
   email: string
@@ -34,20 +34,7 @@ const LoginForm = () => {
       />
 
       <div className="flex justify-between">
-        <div className="flex gap-3 align-middle">
-          <input
-            id="rememberMe"
-            type="checkbox"
-            className="h-5 w-5 cursor-pointer"
-            style={{ accentColor: '#f3f5f7' }}
-            {...register('rememberMe')}
-          />
-          <label
-            htmlFor="rememberMe"
-            className="opacity-30 font-bold text-sm my-auto cursor-pointer">
-            Remember me
-          </label>
-        </div>
+        <FormCheckbox register={register('rememberMe')} text="Remember Me" />
         <p className="font-extrabold text-sm">Reset password</p>
       </div>
 

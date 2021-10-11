@@ -1,11 +1,11 @@
 import { ErrorMessage } from '@hookform/error-message'
-import { ComponentProps, FC, useCallback, useState } from 'react'
+import { ComponentPropsWithoutRef, FC, useCallback, useState } from 'react'
 import { FieldErrors, UseFormRegisterReturn } from 'react-hook-form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronLeft, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
-const ErrorSpan: FC = ({ children }) => <p className="text-red-500">{children}</p>
+const FormattedError: FC = ({ children }) => <p className="text-red-500">{children}</p>
 
 export const BackToMain = () => {
   return (
@@ -30,7 +30,30 @@ export const SubmitButton: FC = ({ children }) => {
   )
 }
 
-interface InputProps extends ComponentProps<'input'> {
+interface IFormCheckboxProps {
+  register: UseFormRegisterReturn
+  text: string
+}
+
+export const FormCheckbox = ({ register, text }: IFormCheckboxProps) => {
+  const { name } = register
+  return (
+    <div className="flex gap-3 align-middle">
+      <input
+        id={name}
+        type="checkbox"
+        className="h-5 w-5 cursor-pointer"
+        style={{ accentColor: '#f3f5f7' }}
+        {...register}
+      />
+      <label htmlFor={name} className="opacity-30 font-bold text-sm my-auto cursor-pointer">
+        {text}
+      </label>
+    </div>
+  )
+}
+
+interface InputProps extends ComponentPropsWithoutRef<'input'> {
   label: string
   register: UseFormRegisterReturn
   errors: FieldErrors
@@ -50,7 +73,7 @@ export const Input = ({ register, label, errors, children, ...inputProps }: Inpu
         />
         {children}
       </div>
-      <ErrorMessage name={name} errors={errors} as={<ErrorSpan />} />
+      <ErrorMessage name={name} errors={errors} as={<FormattedError />} />
     </div>
   )
 }
