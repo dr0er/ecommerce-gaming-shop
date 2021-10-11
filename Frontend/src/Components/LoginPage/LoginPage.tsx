@@ -1,4 +1,4 @@
-import BackToMain from './BackToMain'
+import BackToMain from '../shared/BackToMain'
 import LoginForm from './LoginForm'
 
 const LoginPage = () => {
