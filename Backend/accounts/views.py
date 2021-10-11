@@ -1,10 +1,16 @@
 from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.generics import RetrieveUpdateAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.generics import (
+    RetrieveUpdateDestroyAPIView,
+    RetrieveUpdateAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+    ListAPIView,
+)
 from rest_framework.mixins import (
     ListModelMixin,
     CreateModelMixin,
@@ -12,6 +18,7 @@ from rest_framework.mixins import (
     UpdateModelMixin,
     DestroyModelMixin
 )
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.contrib.auth import get_user_model
 from .utils import USER_MODEL
 from .serializers import (
@@ -70,12 +77,13 @@ class RegistrationViewset(
 
 class getUserProfile(RetrieveAPIView):
     queryset = USER_MODEL.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserSerializerWithToken
     permission_classes = [IsAuthenticated,]
 
     def get_object(self):
         user = self.request.user
         return user
+
 
 class updateUserProfile(UpdateAPIView):
     queryset = USER_MODEL.objects.all()
@@ -85,3 +93,52 @@ class updateUserProfile(UpdateAPIView):
     def get_object(self):
         user = self.request.user
         return user
+
+
+class AdminUserDashboardList(ListAPIView):
+    queryset = USER_MODEL.objects.all()
+    serializer_class = UserSerializerWithToken
+    permission_classes = [IsAdminUser,]
+
+    def list(self, request, *args, **kwargs):
+        user = self.request.user
+        if user.is_staff:
+            queryset = USER_MODEL.objects.all()
+            serializer = self.get_serializer(queryset, many=True)
+            return Response(serializer.data)
+        else:
+            return redirect('/api')
+
+    def get_permissions(self):
+        user_staff = self.request.user.is_staff
+        if user_staff:
+            return [IsAdminUser()]
+        else:
+            return []
+
+    def get_authenticators(self):
+        user_staff = self.request.user.is_staff
+        if user_staff:
+            return [JWTAuthentication()]
+        else:
+            return []
+
+
+class AdminUserDashboardManager(RetrieveUpdateDestroyAPIView):
+    queryset = USER_MODEL.objects.all()
+    serializer_class = UserSerializerWithToken
+    permission_classes = [IsAdminUser,]
+
+    def get_permissions(self):
+        user_staff = self.request.user.is_staff
+        if user_staff:
+            return [IsAdminUser()]
+        else:
+            return []
+
+    def get_authenticators(self):
+        user_staff = self.request.user.is_staff
+        if user_staff:
+            return [JWTAuthentication()]
+        else:
+            return []

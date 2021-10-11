@@ -12,4 +12,6 @@ urlpatterns = [
     path('account/login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('account/profile', getUserProfile.as_view(), name='users-profile'),
     path('account/profile/update/', updateUserProfile.as_view(), name='users-profile-update'),
+    path('admin', AdminUserDashboardList.as_view(), name='admin-list'),
+    path('admin/manager/<int:pk>', AdminUserDashboardManager.as_view(), name='admin-manager'),
 ]
