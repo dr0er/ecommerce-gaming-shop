@@ -4,7 +4,7 @@ import { NavBar } from '../Navbar/Navbar'
 import { ReactComponent as ChevronBack } from '../../Assets/chevron-back-sharp.svg'
 import OrderItemWrapper from '../OrderListItem/OrderItemWrapper'
 
-const OrdersPanel = () => {
+const UserPanel = () => {
   const [isOrderOpen, setIsOrderOpen] = useState(false)
   const [isAddressOpen, setisAddressOpen] = useState(false)
   const [isAccountSettingsOpen, setIsAccountSettingsOpen] = useState(false)
@@ -81,4 +81,4 @@ const OrdersPanel = () => {
   )
 }
 
-export default OrdersPanel
+export default UserPanel
