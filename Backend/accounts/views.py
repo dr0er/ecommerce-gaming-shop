@@ -26,7 +26,7 @@ from .serializers import (
     UserSerializer,
     UserSerializerWithToken
 )
-
+from .utils import chcek_admin_permissions, check_admin_authentication
 # tokens
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -95,7 +95,7 @@ class updateUserProfile(UpdateAPIView):
         return user
 
 
-class AdminUserDashboardList(ListAPIView):
+class AdminUserDashboardListUsers(ListAPIView):
     queryset = USER_MODEL.objects.all()
     serializer_class = UserSerializerWithToken
     permission_classes = [IsAdminUser,]
@@ -110,35 +110,26 @@ class AdminUserDashboardList(ListAPIView):
             return redirect('/api')
 
     def get_permissions(self):
-        user_staff = self.request.user.is_staff
-        if user_staff:
-            return [IsAdminUser()]
-        else:
-            return []
+        return chcek_admin_permissions(self)
 
     def get_authenticators(self):
-        user_staff = self.request.user.is_staff
-        if user_staff:
-            return [JWTAuthentication()]
-        else:
-            return []
+        return check_admin_authentication(self)
 
 
-class AdminUserDashboardManager(RetrieveUpdateDestroyAPIView):
+class AdminUserDashboardUserManager(RetrieveUpdateDestroyAPIView):
     queryset = USER_MODEL.objects.all()
     serializer_class = UserSerializerWithToken
     permission_classes = [IsAdminUser,]
 
-    def get_permissions(self):
-        user_staff = self.request.user.is_staff
-        if user_staff:
-            return [IsAdminUser()]
+    def get(self, *args, **kwargs):
+        user = self.request.user
+        if user.is_staff:
+            return self.retrieve(*args, **kwargs)
         else:
-            return []
+            return redirect('/api')
+
+    def get_permissions(self):
+        return chcek_admin_permissions(self)
 
     def get_authenticators(self):
-        user_staff = self.request.user.is_staff
-        if user_staff:
-            return [JWTAuthentication()]
-        else:
-            return []
+        return check_admin_authentication(self)
