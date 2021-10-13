@@ -11,7 +11,7 @@ const Checkbox = ({ setCheckbox, isCheckbox, text }: CheckboxProps) => {
   return (
     <div
       className="flex gap-3 align-middle cursor-pointer"
-      onClick={() => setCheckbox((prev: any) => !prev)}>
+      onClick={() => setCheckbox((prev: boolean) => !prev)}>
       <div className="border-2 w-5 h-5 rounded-md my-auto flex border-gray-400">
         {isCheckbox && <FontAwesomeIcon icon={faCheck} />}
       </div>
