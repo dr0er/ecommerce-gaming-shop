@@ -87,7 +87,7 @@ const LoginForm = () => {
       {/* SIGN UP */}
 
       <div className="text-grey-light font-bold text-sm flex gap-3 justify-center">
-        <span className="opacity-30"> Don't have an account yet?</span>
+        <span className="opacity-30">{`Don't have an account yet?`}</span>
         <Link to="/signup">
           <span className="text-blue-500 opacity-100 cursor-pointer underline">Sign up here!</span>
         </Link>
