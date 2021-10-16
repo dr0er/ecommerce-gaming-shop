@@ -10,5 +10,5 @@ router_b.register('myorders', MyOrderListViewset, basename='myorders')
 
 urlpatterns = [
     path('admin/products', AdminUserDashboardProductsList.as_view(), name='admin-products-list'),
-    path('admin/product/<int:pk>', AdminUserDashboardProductManager.as_view(), name='admin-product-manager'),
+    path('admin/products/<int:pk>', AdminUserDashboardProductManager.as_view(), name='admin-product-manager'),
 ]

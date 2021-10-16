@@ -26,7 +26,6 @@ from .serializers import (
     UserSerializer,
     UserSerializerWithToken
 )
-from .utils import chcek_admin_permissions, check_admin_authentication
 # tokens
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -100,36 +99,8 @@ class AdminUserDashboardListUsers(ListAPIView):
     serializer_class = UserSerializerWithToken
     permission_classes = [IsAdminUser,]
 
-    def list(self, request, *args, **kwargs):
-        user = self.request.user
-        if user.is_staff:
-            queryset = USER_MODEL.objects.all()
-            serializer = self.get_serializer(queryset, many=True)
-            return Response(serializer.data)
-        else:
-            return redirect('/api')
-
-    def get_permissions(self):
-        return chcek_admin_permissions(self)
-
-    def get_authenticators(self):
-        return check_admin_authentication(self)
-
 
 class AdminUserDashboardUserManager(RetrieveUpdateDestroyAPIView):
     queryset = USER_MODEL.objects.all()
     serializer_class = UserSerializerWithToken
     permission_classes = [IsAdminUser,]
-
-    def get(self, *args, **kwargs):
-        user = self.request.user
-        if user.is_staff:
-            return self.retrieve(*args, **kwargs)
-        else:
-            return redirect('/api')
-
-    def get_permissions(self):
-        return chcek_admin_permissions(self)
-
-    def get_authenticators(self):
-        return check_admin_authentication(self)
