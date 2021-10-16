@@ -67,3 +67,14 @@ class AdminUserDashboardProductManager(RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAdminUser,]
+
+
+class AdminUserDashboardOrderViewset(
+                                    ListModelMixin,
+                                    RetrieveModelMixin,
+                                    UpdateModelMixin,
+                                    DestroyModelMixin,
+                                    GenericViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAdminUser,]
