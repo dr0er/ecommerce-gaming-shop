@@ -94,13 +94,12 @@ class updateUserProfile(UpdateAPIView):
         return user
 
 
-class AdminUserDashboardListUsers(ListAPIView):
-    queryset = USER_MODEL.objects.all()
-    serializer_class = UserSerializerWithToken
-    permission_classes = [IsAdminUser,]
-
-
-class AdminUserDashboardUserManager(RetrieveUpdateDestroyAPIView):
+class AdminUserDashboardUsersViewset(
+                                ListModelMixin,
+                                RetrieveModelMixin,
+                                UpdateModelMixin,
+                                DestroyModelMixin,
+                                GenericViewSet):
     queryset = USER_MODEL.objects.all()
     serializer_class = UserSerializerWithToken
     permission_classes = [IsAdminUser,]

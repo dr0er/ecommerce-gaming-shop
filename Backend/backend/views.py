@@ -57,13 +57,13 @@ class MyOrderListViewset(
         return queryset
 
 
-class AdminUserDashboardProductsList(ListCreateAPIView):
-    queryset = Product.objects.all()
-    serializer_class = ProductSerializer
-    permission_classes = [IsAdminUser,]
-
-
-class AdminUserDashboardProductManager(RetrieveUpdateDestroyAPIView):
+class AdminUserDashboardProductsViewset(
+                                    ListModelMixin,
+                                    CreateModelMixin,
+                                    RetrieveModelMixin,
+                                    UpdateModelMixin,
+                                    DestroyModelMixin,
+                                    GenericViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAdminUser,]
