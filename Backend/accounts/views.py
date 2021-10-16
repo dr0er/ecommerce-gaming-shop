@@ -1,10 +1,16 @@
 from django.contrib.auth import authenticate, login
+from django.shortcuts import redirect
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.viewsets import GenericViewSet, ReadOnlyModelViewSet
 from rest_framework.response import Response
-from rest_framework.views import APIView
-from rest_framework.generics import RetrieveUpdateAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.generics import (
+    RetrieveUpdateDestroyAPIView,
+    RetrieveUpdateAPIView,
+    RetrieveAPIView,
+    UpdateAPIView,
+    ListAPIView,
+)
 from rest_framework.mixins import (
     ListModelMixin,
     CreateModelMixin,
@@ -12,6 +18,7 @@ from rest_framework.mixins import (
     UpdateModelMixin,
     DestroyModelMixin
 )
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.contrib.auth import get_user_model
 from .utils import USER_MODEL
 from .serializers import (
@@ -19,7 +26,6 @@ from .serializers import (
     UserSerializer,
     UserSerializerWithToken
 )
-
 # tokens
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -70,12 +76,13 @@ class RegistrationViewset(
 
 class getUserProfile(RetrieveAPIView):
     queryset = USER_MODEL.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserSerializerWithToken
     permission_classes = [IsAuthenticated,]
 
     def get_object(self):
         user = self.request.user
         return user
+
 
 class updateUserProfile(UpdateAPIView):
     queryset = USER_MODEL.objects.all()
@@ -85,3 +92,15 @@ class updateUserProfile(UpdateAPIView):
     def get_object(self):
         user = self.request.user
         return user
+
+
+class AdminUserDashboardListUsers(ListAPIView):
+    queryset = USER_MODEL.objects.all()
+    serializer_class = UserSerializerWithToken
+    permission_classes = [IsAdminUser,]
+
+
+class AdminUserDashboardUserManager(RetrieveUpdateDestroyAPIView):
+    queryset = USER_MODEL.objects.all()
+    serializer_class = UserSerializerWithToken
+    permission_classes = [IsAdminUser,]
