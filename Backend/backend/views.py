@@ -1,4 +1,7 @@
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from django.shortcuts import redirect
+from rest_framework.response import Response
+from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAdminUser
 from rest_framework.viewsets import GenericViewSet
 from rest_framework.mixins import (
     ListModelMixin,
@@ -7,7 +10,10 @@ from rest_framework.mixins import (
     UpdateModelMixin,
     DestroyModelMixin
 )
-
+from rest_framework.generics import (
+    RetrieveUpdateDestroyAPIView,
+    ListCreateAPIView,
+)
 from .models import (
     Address,
     Order,
@@ -35,7 +41,8 @@ class ProductViewset(
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [AllowAny]
-
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['name', 'brand__name']
 
 
 class MyOrderListViewset(
@@ -48,3 +55,26 @@ class MyOrderListViewset(
         user = self.request.user
         queryset = user.order_set.all().order_by('-createdAt')
         return queryset
+
+
+class AdminUserDashboardProductsViewset(
+                                    ListModelMixin,
+                                    CreateModelMixin,
+                                    RetrieveModelMixin,
+                                    UpdateModelMixin,
+                                    DestroyModelMixin,
+                                    GenericViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [IsAdminUser,]
+
+
+class AdminUserDashboardOrderViewset(
+                                    ListModelMixin,
+                                    RetrieveModelMixin,
+                                    UpdateModelMixin,
+                                    DestroyModelMixin,
+                                    GenericViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
+    permission_classes = [IsAdminUser,]

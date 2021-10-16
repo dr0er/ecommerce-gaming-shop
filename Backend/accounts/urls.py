@@ -4,7 +4,9 @@ from .views import *
 
 router_acc = routers.DefaultRouter()
 
+router_acc.register('admin/users', AdminUserDashboardUsersViewset, basename='admin-users')
 router_acc.register('account/register', RegistrationViewset, basename='register')
+
 # router_acc.register('account/profile', UserViewset, basename='user-profile')
 
 urlpatterns = [
